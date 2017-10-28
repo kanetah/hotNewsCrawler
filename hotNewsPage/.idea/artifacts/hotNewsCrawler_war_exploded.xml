@@ -4,7 +4,7 @@
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="hotNewsCrawler" />
+          <element id="module-output" name="hotNewsPage" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
@@ -45,7 +45,7 @@
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/HotNewsCrawler-0.0.1-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="hotNewsCrawler/web/Web" />
+      <element id="javaee-facet-resources" facet="hotNewsPage/web/Web" />
     </root>
   </artifact>
 </component>
