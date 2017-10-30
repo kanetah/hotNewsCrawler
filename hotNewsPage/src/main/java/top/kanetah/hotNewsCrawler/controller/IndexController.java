@@ -8,7 +8,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import top.kanetah.hotNewsCrawler.dao.NewsDAO;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
+/**
+ * created by kane on 2017/10/28.
+ */
 @Controller
 @RequestMapping("/")
 public class IndexController {
@@ -26,10 +31,14 @@ public class IndexController {
         return "index";
     }
 
-    @RequestMapping(value = "/out")
     @ResponseBody
-    public String outPage() {
+    @RequestMapping("/out")
+    public List<String> outPage() {
         logger.info("found: " + newsDAO.findNewsById(2169).getContent());
-        return newsDAO.findNewsById(2169).getContent();
+
+        List<String> list = new ArrayList<String>();
+        list.add("abc");
+        list.add("def");
+        return list;
     }
 }

@@ -9,6 +9,9 @@ import top.kanetah.hotNewsCrawler.service.NewsService;
 
 import javax.annotation.Resource;
 
+/**
+ * created by kane on 2017/10/28.
+ */
 @Service("newsService")
 public class NewsServiceImpl implements NewsService {
 

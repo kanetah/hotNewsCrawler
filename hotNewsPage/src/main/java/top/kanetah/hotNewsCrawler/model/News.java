@@ -2,6 +2,9 @@ package top.kanetah.hotNewsCrawler.model;
 
 import java.sql.Date;
 
+/**
+ * created by kane on 2017/10/28.
+ */
 public class News {
 
     private int id;
