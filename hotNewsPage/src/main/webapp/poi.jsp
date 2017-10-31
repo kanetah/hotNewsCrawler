@@ -9,25 +9,10 @@
 <html>
 <head>
     <title>Title</title>
-    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
-    <script>
-        function a() {
-            alert('poi');
-            $.ajax({
-                url: "/out",
-                success: function (result) {
-                    $('.p1').remove();
-                    $.each(result, function (index, elem) {
-                        $('.d1').append('<p>' + elem + '</p>');
-                    })
-                }
-            })
-        }
-    </script>
 </head>
-<body onload="a()">
+<body>
 pooi
-<input type="button" onclick="a()"/>
+<input type="button"/>
 <div class="d1">
     <p class="p1">12356789</p>
     <p class="p1">12356789</p>
@@ -36,4 +21,6 @@ pooi
     <p class="p1">12356789</p>
 </div>
 </body>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script src="js/index.js"></script>
 </html>
