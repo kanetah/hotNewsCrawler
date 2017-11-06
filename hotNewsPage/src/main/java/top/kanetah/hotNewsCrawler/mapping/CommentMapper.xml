@@ -3,13 +3,11 @@
 <mapper namespace="top.kanetah.hotNewsCrawler.dao.CommentDAO">
 
     <insert id="insertComment" parameterType="top.kanetah.hotNewsCrawler.model.Comment">
-        <![CDATA[
         INSERT INTO comment (
             user_id, news_id, content
         ) VALUES (
             #{userId}, #{newsId}, #{content}
         )
-        ]]>
     </insert>
 
     <sql id="delete_comment">

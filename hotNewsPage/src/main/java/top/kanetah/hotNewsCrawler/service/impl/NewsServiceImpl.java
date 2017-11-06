@@ -8,6 +8,7 @@ import top.kanetah.hotNewsCrawler.model.News;
 import top.kanetah.hotNewsCrawler.service.NewsService;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * created by kane on 2017/10/28.
@@ -22,5 +23,13 @@ public class NewsServiceImpl implements NewsService {
 
     public News getById(int id) {
         return newsDAO.findNewsById(id);
+    }
+
+    public List<String> getTypes() {
+        return null;
+    }
+
+    public List<News> getTopNewsByType(String type, int limit) {
+        return null;
     }
 }

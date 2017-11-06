@@ -13,6 +13,7 @@ public class News {
     private String content;
     private Date date;
     private String type;
+    private int rank;
 
     public News(){
         super();
@@ -64,5 +65,13 @@ public class News {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public int getRank() {
+        return rank;
+    }
+
+    public void setRank(int rank) {
+        this.rank = rank;
     }
 }

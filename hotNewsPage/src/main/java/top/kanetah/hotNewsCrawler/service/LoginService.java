@@ -5,5 +5,9 @@ package top.kanetah.hotNewsCrawler.service;
  */
 public interface LoginService {
 
-    boolean login (String name, String password);
+    boolean login(String name, String password);
+
+    boolean logout(String name);
+
+    boolean sign(String name, String password);
 }

@@ -62,4 +62,11 @@ public interface NewsDAO {
      * @return 符合条件的所有新闻实体
      */
     List<News> findNewsByTitle_Like(String title);
+
+    /**
+     * 查找所有存在的新闻类型
+     *
+     * @return 所有新闻类型
+     */
+    List<String> findAllTypes();
 }

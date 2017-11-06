@@ -2,8 +2,10 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/src/main/java/top/kanetah/hotNewsCrawler/mapping/CommentMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/top/kanetah/hotNewsCrawler/mapping/CrawlerInfoMapper.xml" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/top/kanetah/hotNewsCrawler/mapping/NewsMapper.xml" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/top/kanetah/hotNewsCrawler/mapping/UserMapper.xml" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/main/mysql/Script.sql" dialect="MySQL" />
+    <file url="PROJECT" dialect="MySQL" />
   </component>
 </project>

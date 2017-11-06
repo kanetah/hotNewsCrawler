@@ -17,7 +17,8 @@
             title   AS title,
             content AS content,
             date    AS date,
-            type    AS type
+            type    AS type,
+            rank    AS rank
         FROM news
     </sql>
 
@@ -55,6 +56,12 @@
         <where>
             title LIKE #{title}
         </where>
+    </select>
+
+    <select id="findAllTypes" resultType="java.lang.String">
+        SELECT type
+        FROM news
+        GROUP BY type
     </select>
 
 </mapper>

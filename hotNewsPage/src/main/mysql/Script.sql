@@ -15,4 +15,6 @@ CREATE TABLE news
 	UNIQUE (id)
 );
 
+
+
 TRUNCATE TABLE news;
