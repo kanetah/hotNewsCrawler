@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="top.kanetah.hotNewsCrawler.dao.CommentDAO">
+
+    <insert id="insertComment" parameterType="top.kanetah.hotNewsCrawler.model.Comment">
+        <![CDATA[
+        INSERT INTO comment (
+            user_id, news_id, content
+        ) VALUES (
+            #{userId}, #{newsId}, #{content}
+        )
+        ]]>
+    </insert>
+
+    <sql id="delete_comment">
+        DELETE FROM comment
+    </sql>
+
+    <delete id="deleteAllComment">
+        <include refid="delete_comment"/>
+    </delete>
+
+    <delete id="deleteCommentByNews_Id">
+        <include refid="delete_comment"/>
+        <where>
+            news_id = #{newsId}
+        </where>
+    </delete>
+
+    <delete id="deleteCommentByUser_Id">
+        <include refid="delete_comment"/>
+        <where>
+            user_id = #{userId}
+        </where>
+    </delete>
+
+    <delete id="deleteCommentByNews_IdAndUser_Id">
+        <include refid="delete_comment"/>
+        <where>
+            user_id = #{userId}
+            news_id = #{newsId}
+        </where>
+    </delete>
+
+    <update id="updateComment" parameterType="top.kanetah.hotNewsCrawler.model.Comment">
+        UPDATE comment
+        <set>
+            user_id = #{userId},
+            news_id = #{newsId},
+            content = #{content}
+        </set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+
+    <sql id="select_comment">
+        SELECT
+            id      AS id,
+            user_id AS userId,
+            news_id AS newsId,
+            content AS content
+        FROM comment
+    </sql>
+
+    <select id="findCommentById" resultType="top.kanetah.hotNewsCrawler.model.Comment">
+        <include refid="select_comment"/>
+        <where>
+            id = #{id}
+        </where>
+    </select>
+
+    <select id="findCommentByNews_Id" resultType="top.kanetah.hotNewsCrawler.model.Comment">
+        <include refid="select_comment"/>
+        <where>
+            news_id = #{newsId}
+        </where>
+    </select>
+
+</mapper>

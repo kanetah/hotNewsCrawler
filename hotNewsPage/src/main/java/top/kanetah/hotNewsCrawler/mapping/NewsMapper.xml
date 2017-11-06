@@ -2,18 +2,59 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="top.kanetah.hotNewsCrawler.dao.NewsDAO">
 
-    <select id="findNewsById" resultType="top.kanetah.hotNewsCrawler.model.News">
-        <![CDATA[
+    <sql id="delete_news">
+        DELETE FROM news
+    </sql>
+
+    <delete id="deleteAllNews">
+        <include refid="delete_news"/>
+    </delete>
+
+    <sql id="select_news">
         SELECT
-        id AS id,
-        src AS src,
-        title AS title,
-        content AS content,
-        date AS date,
-        type AS type
+            id      AS id,
+            src     AS src,
+            title   AS title,
+            content AS content,
+            date    AS date,
+            type    AS type
         FROM news
-        WHERE id = #{id}
-        ]]>
+    </sql>
+
+    <select id="findAllNews" resultType="top.kanetah.hotNewsCrawler.model.News">
+        <include refid="select_news"/>
+    </select>
+
+    <select id="findNewsById" resultType="top.kanetah.hotNewsCrawler.model.News">
+        <include refid="select_news"/>
+        <where>
+            id = #{id}
+        </where>
+    </select>
+
+    <select id="findNewsBetweenDate" resultType="top.kanetah.hotNewsCrawler.model.News">
+        <include refid="select_news"/>
+        <where>
+            date BETWEEN #{after} AND #{before}
+        </where>
+    </select>
+
+    <select id="findNewsByType" resultType="top.kanetah.hotNewsCrawler.model.News">
+        <include refid="select_news"/>
+        <where>
+            type = #{type}
+        </where>
+        ORDER BY date
+        <if test="count>0">
+            LIMIT #{count}
+        </if>
+    </select>
+
+    <select id="findNewsByTitle_Like" resultType="top.kanetah.hotNewsCrawler.model.News">
+        <include refid="select_news"/>
+        <where>
+            title LIKE #{title}
+        </where>
     </select>
 
 </mapper>

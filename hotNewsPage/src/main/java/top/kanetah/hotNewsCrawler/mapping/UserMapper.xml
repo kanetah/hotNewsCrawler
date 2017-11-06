@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="top.kanetah.hotNewsCrawler.dao.UserDAO">
+
+    <insert id="insertUser" parameterType="top.kanetah.hotNewsCrawler.model.User">
+        INSERT INTO user (
+            name, password
+        ) VALUES (
+            #{name}, #{password}
+        )
+    </insert>
+
+    <sql id="delete_user">
+        DELETE FROM user
+    </sql>
+
+    <delete id="deleteAllUser">
+        <include refid="delete_user"/>
+    </delete>
+
+    <delete id="deleteUserByName">
+        <include refid="delete_user"/>
+        <where>
+            name = #{name}
+        </where>
+    </delete>
+
+    <update id="updateUser" parameterType="top.kanetah.hotNewsCrawler.model.User">
+        UPDATE user
+        <set>
+            name = #{name},
+            password = #{password}
+        </set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+
+    <update id="updateUser_PasswordByUser_Name" parameterType="top.kanetah.hotNewsCrawler.model.User">
+        UPDATE user
+        <set>
+            password = #{password}
+        </set>
+        <where>
+            name = #{naem}
+        </where>
+    </update>
+
+    <sql id="select_user">
+        SELECT
+            id       AS id,
+            name     AS name,
+            password AS password
+        FROM user
+    </sql>
+
+    <select id="findAllUser" resultType="top.kanetah.hotNewsCrawler.model.User">
+        <include refid="select_user"/>
+    </select>
+
+    <select id="findUserById" resultType="top.kanetah.hotNewsCrawler.model.User">
+        <include refid="select_user"/>
+        <where>
+            id = #{id}
+        </where>
+    </select>
+
+    <select id="findUserByName" resultType="top.kanetah.hotNewsCrawler.model.User">
+        <include refid="select_user"/>
+        <where>
+            name = #{name}
+        </where>
+    </select>
+
+</mapper>
