@@ -1,2 +1,8 @@
 hotNewsPage/target/
-*/.idea
+*/.idea/
+hotNewsPage/.idea/*
+hotNewsPage/.idea*
+hotNewsPage/\.idea*
+crawler/.idea/*
+crawler/.idea*
+crawler/\.idea*
