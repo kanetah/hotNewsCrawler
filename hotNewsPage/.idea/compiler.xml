@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="hotNewsCrawler" />
+        <module name="hotNewsPage" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="hotNewsCrawler" target="1.5" />
+      <module name="hotNewsPage" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
