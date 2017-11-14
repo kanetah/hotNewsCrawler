@@ -126,7 +126,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="welcome-text">
 								<h2>Sign In</h2>
 							</div>
-							<form role="form" ng-model="signInForm"></form>
+							<form role="form" ng-model="signInForm" nocalidate="" id="signInForm" name="signInForm">
+								<div class="form-group form-group-lg label-floating is-empty">
+									<label class="control-label">Username</label>
+									<input class="form-control" ng-require="true" ng-model="signInLogin" name="LoginId" required ng-change="hideError()"/>
+									<p ng-cloak class="help-text text-danger" ng-show="signInForm.$submitted && !signInForm.loginId.$error.required && signInForm.loginId.$invalid"><span class="text-red">* </span>Username a valid email.</p>
+									<p ng-cloak class="help-text text-danger" ng-show="signInForm.$submitted && signInForm.loginId.$error.required"> <span class="text-red">* </span>Username is required.</p>
+									<p ng-cloak class="help-text text-danger" id="signInIncorrectEmail"><span class="text-red">* </span>The Username you entered is incorrect.</p>
+								</div>
+								<div class="form-group form-group-lg label-floating is-empty">
+									<label for="signInPassword" class="control-label">Password</label>
+									<input ng-minlength="6" ng-maxlength="20" ng-required="true" ng-model="signInPassword" name="password" type="password" id="signInPassword" ng-change="hideError()" required class="form-control"/>
+									<p ng-cloak class="help-text text-danger" ng-show="signInForm.$submitted && signInForm.password.$error.required"> <span class="text-red">* </span>Password is required</p>
+									<p ng-cloak class="help-text text-danger" ng-show="signInForm.$submitted && signInForm.password.$error.minlength"> <span class="text-red">* </span>Password is too short</p>
+									<p ng-cloak class="help-text text-danger" ng-show="signInForm.$submitted && signInForm.password.$error.maxlength"> <span class="text-red">* </span>Password is too long</p>
+									<p ng-cloak class="help-text text-danger" id="signInIncorrectPassword" ng-cloak><span class="text-red">* </span>Your password is incorrect.</p>
+								</div>
+								<div class="forgotten-text">
+									<p class="text-right" data-ga data-ga-action="click" data-ga-category="Login Form " data-ga-title="Toggle Login Form FP Btn"><a href="#"  ng-click="toggleForgotPasswordForm()">Forgotten Password?</a></p>
+								</div>
+								<button data-ga data-ga-action="click" data-ga-category="Login Form " data-ga-title="Submit Login Btn" type="submit" data-loading-text="Login<div class='btn-loader btn-loader-blue'></div>" class="btn btn-block">Login</button>
+							</form>
 						</div>
 					</div>
 				</div>
