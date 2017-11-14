@@ -6,7 +6,7 @@
         INSERT INTO crawler_info (
             start_date, state, message
         ) VALUES (
-            #{date}, #{state}, #{message}
+            #{time}, #{state}, #{message}
         )
     </insert>
 

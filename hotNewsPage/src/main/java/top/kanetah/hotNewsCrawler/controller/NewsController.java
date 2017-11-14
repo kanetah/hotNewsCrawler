@@ -1,37 +1,46 @@
 package top.kanetah.hotNewsCrawler.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import top.kanetah.hotNewsCrawler.DTO.CommentDTO;
+import top.kanetah.hotNewsCrawler.model.Comment;
 import top.kanetah.hotNewsCrawler.model.News;
 import top.kanetah.hotNewsCrawler.service.NewsService;
 
 import javax.annotation.Resource;
 import java.util.List;
 
-/**
- * created by kane on 2017/11/6.
- */
 @RequestMapping("/news")
-@Controller("newsController")
+@Controller("contentController")
 public class NewsController {
 
     @Resource
     private NewsService newsService;
 
-    @RequestMapping("/types")
-    @ResponseBody
-    public List<String> getTypes() {
-        return newsService.getTypes();
+    @RequestMapping("/{id}")
+    public String newsPage(
+            @PathVariable String id, Model model
+    ) {
+        model.addAttribute("id", id);
+        return "news";
     }
 
-    @RequestMapping("/topTypeNews")
     @ResponseBody
-    public List<News> getTopTypeNews(
-            @RequestParam String type,
-            @RequestParam int limit
+    @RequestMapping("/{id}/content")
+    public News getContent(
+            @PathVariable String id
     ) {
-        return newsService.getTopNewsByType(type, limit);
+        return newsService.getNewsById(Integer.valueOf(id));
+    }
+
+    @ResponseBody
+    @RequestMapping("/{id}/comments")
+    public List<CommentDTO> getComment(
+            @PathVariable String id
+    ) {
+        return newsService.getCommentDTOByNewsId(Integer.valueOf(id));
     }
 }

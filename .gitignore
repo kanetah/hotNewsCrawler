@@ -6,3 +6,5 @@ hotNewsPage/\.idea*
 crawler/.idea/*
 crawler/.idea*
 crawler/\.idea*
+
+.cpython

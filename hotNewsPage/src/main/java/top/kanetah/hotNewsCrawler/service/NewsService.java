@@ -1,5 +1,7 @@
 package top.kanetah.hotNewsCrawler.service;
 
+import top.kanetah.hotNewsCrawler.DTO.CommentDTO;
+import top.kanetah.hotNewsCrawler.model.Comment;
 import top.kanetah.hotNewsCrawler.model.News;
 
 import java.util.List;
@@ -9,7 +11,9 @@ import java.util.List;
  */
 public interface NewsService {
 
-    News getById(int id);
+    News getNewsById(int id);
+
+    List<CommentDTO> getCommentDTOByNewsId(int id);
 
     List<String> getTypes();
 

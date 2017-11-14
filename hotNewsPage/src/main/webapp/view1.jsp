@@ -55,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<h3>20岁女留学生在加拿大多伦多失联，当地警方启动寻人</h3>
 			</div>
 			<hr>
-			<div class="date-time">
+			<div class="time-time">
 				2017年11月10日 22:45   来源：法制晚报<br><br><br>
 			</div>
 			<div class="content">

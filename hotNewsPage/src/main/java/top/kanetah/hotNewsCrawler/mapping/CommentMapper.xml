@@ -4,9 +4,9 @@
 
     <insert id="insertComment" parameterType="top.kanetah.hotNewsCrawler.model.Comment">
         INSERT INTO comment (
-            user_id, news_id, content
+            user_id, news_id, content, time
         ) VALUES (
-            #{userId}, #{newsId}, #{content}
+            #{userId}, #{newsId}, #{content}, #{time}
         )
     </insert>
 
@@ -45,7 +45,8 @@
         <set>
             user_id = #{userId},
             news_id = #{newsId},
-            content = #{content}
+            content = #{content},
+            time = #{time}
         </set>
         <where>
             id = #{id}
@@ -57,7 +58,8 @@
             id      AS id,
             user_id AS userId,
             news_id AS newsId,
-            content AS content
+            content AS content,
+            time    AS time
         FROM comment
     </sql>
 

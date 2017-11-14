@@ -8,6 +8,7 @@ import top.kanetah.hotNewsCrawler.model.Comment;
 import top.kanetah.hotNewsCrawler.service.UserService;
 
 import javax.annotation.Resource;
+import java.sql.Date;
 
 /**
  * created by kane on 2017/11/6.
@@ -26,7 +27,8 @@ public class UserController {
             @RequestParam int newsId,
             @RequestParam String content
     ) {
-        return userService.leaveComment(new Comment(userId, newsId, content)) ?
+        return userService.leaveComment(
+                new Comment(userId, newsId, content, new Date(new java.util.Date().getTime()))) ?
                 "success" : "fail";
     }
 

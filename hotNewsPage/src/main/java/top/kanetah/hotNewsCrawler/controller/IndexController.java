@@ -23,15 +23,6 @@ public class IndexController {
         return "index";
     }
 
-    @RequestMapping("/news/{id}")
-    public String newsPage(
-            @PathVariable String id,
-            Model model
-    ) {
-        model.addAttribute("id", id);
-        return "news";
-    }
-
     @ResponseBody
     @RequestMapping("/out")
     public List<String> outPage() {

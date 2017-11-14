@@ -36,7 +36,7 @@
     <select id="findNewsBetweenDate" resultType="top.kanetah.hotNewsCrawler.model.News">
         <include refid="select_news"/>
         <where>
-            date BETWEEN #{after} AND #{before}
+            time BETWEEN #{after} AND #{before}
         </where>
     </select>
 
@@ -45,7 +45,7 @@
         <where>
             type = #{type}
         </where>
-        ORDER BY date
+        ORDER BY time
         <if test="count>0">
             LIMIT #{count}
         </if>
