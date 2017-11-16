@@ -8,3 +8,4 @@ crawler/.idea*
 crawler/\.idea*
 
 .cpython
+.pyc

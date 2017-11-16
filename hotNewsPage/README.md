@@ -1,2 +1,2 @@
-#hotNewsPAge
+#hotNewsPage
 新闻内容在这个项目中展示
