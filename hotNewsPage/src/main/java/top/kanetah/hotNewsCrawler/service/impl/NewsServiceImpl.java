@@ -30,6 +30,10 @@ public class NewsServiceImpl implements NewsService {
     @Resource
     private UserDAO userDAO;
 
+    public List<News> getAllNews() {
+        return newsDAO.findAllNews();
+    }
+
     public News getNewsById(int id) {
         return newsDAO.findNewsById(id);
     }

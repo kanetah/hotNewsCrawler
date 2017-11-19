@@ -3,14 +3,16 @@ CREATE TABLE news
 (
   id      INT AUTO_INCREMENT
     PRIMARY KEY,
-  src     TEXT          NOT NULL,
+  src     VARCHAR(1000) NOT NULL,
   title   VARCHAR(45)   NOT NULL,
   content LONGTEXT      NOT NULL,
-  time    DATETIME      NOT NULL,
+  date    DATETIME      NOT NULL,
   type    VARCHAR(1000) NULL,
   rank    INT           NULL,
   CONSTRAINT id_UNIQUE
-  UNIQUE (id)
+  UNIQUE (id),
+  CONSTRAINT news_src_uindex
+  UNIQUE (src)
 );
 CREATE INDEX news_date_index
-  ON news (time);
+  ON news (date);

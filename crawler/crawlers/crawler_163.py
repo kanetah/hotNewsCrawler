@@ -55,6 +55,8 @@ def do():
             continue
         except KeyError:
             continue
+        except ConnectionError:
+            continue
         finally:
             if db_flag:
                 connection.commit()
