@@ -1,4 +1,4 @@
-package top.kanetah.hotNewsCrawler.DTO;
+package top.kanetah.hotNewsCrawler.dto;
 
 public class CommentDTO {
     private int id;

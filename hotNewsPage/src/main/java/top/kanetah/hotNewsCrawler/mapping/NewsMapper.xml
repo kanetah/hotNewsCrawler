@@ -59,6 +59,21 @@
         </where>
     </select>
 
+    <select id="findNewsIdOrderByRank" resultType="java.lang.Integer">
+        SELECT id
+        FROM news
+        ORDER BY rank
+    </select>
+
+    <select id="findNewsIdByTypeOrderByRank" resultType="java.lang.Integer">
+        SELECT id
+        FROM news
+            <where>
+                type = #{type}
+            </where>
+        ORDER BY rank
+    </select>
+
     <select id="findAllTypes" resultType="java.lang.String">
         SELECT type
         FROM news

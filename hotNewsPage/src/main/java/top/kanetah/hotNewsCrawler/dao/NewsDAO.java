@@ -64,6 +64,21 @@ public interface NewsDAO {
     List<News> findNewsByTitle_Like(String title);
 
     /**
+     * 查找新闻Id并以热度排序
+     *
+     * @return 所有新闻的id
+     */
+    List<Integer> findNewsIdOrderByRank();
+
+    /**
+     * 通过新闻类型查找新闻Id并热度排序
+     *
+     * @param type 新闻类型
+     * @return 该类型的所有新闻id
+     */
+    List<Integer> findNewsIdByTypeOrderByRank(String type);
+
+    /**
      * 查找所有存在的新闻类型
      *
      * @return 所有新闻类型

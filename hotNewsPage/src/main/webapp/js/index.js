@@ -41,27 +41,6 @@
         });
     };
 
-    // Magnific Popup
-    var magnifPopup = function () {
-        $('.image-popup').magnificPopup({
-            type: 'image',
-            removalDelay: 300,
-            mainClass: 'mfp-with-zoom',
-            titleSrc: 'title',
-            gallery: {
-                enabled: true
-            },
-            zoom: {
-                enabled: true,
-                duration: 300,
-                easing: 'ease-in-out',
-                opener: function (openerElement) {
-                    return openerElement.is('img') ? openerElement : openerElement.find('img');
-                }
-            }
-        });
-    };
-
     var animateBoxWayPoint = function () {
         var animateBox = $('.animate-box');
         if (animateBox.length > 0) {
@@ -73,50 +52,76 @@
         }
     };
 
+    var grid = document.querySelector('#fh5co-board');
+    var news_index = void 0;
     var doAjax = function () {
+
         $.ajax({
             url: '/news',
+            type: 'POST',
             success: function (result) {
-                var template = $('#itemTemplate');
-                $.each(result, function (idx, elem) {
-                    var content = elem['content'];
-                    var img = content.match(/<img[^>]*>/i);
-                    if (img !== null && img.toString().indexOf('class="icon"') < 0) {
-                        var src = img.toString().match(/src=("[^"]*")|('[^']*')/i)[0].toString();
-                        src = src.replace("'", '"');
-                        src = src.substr(src.indexOf('"') + 1);
-                        src = src.substr(0, src.indexOf('"'));
-                        var node = $(template).clone(true);
+                news_index = result;
+                for (var i = 0; i < 15; ++i)
+                    lazyLoad(false);
+                lazyLoad(true);
+            }
+        })
+    };
 
-                        var box = node.find('.animate-box > a');
-                        box.attr('href', src);
-                        box.attr('title', elem['title']);
-                        img = box.find('img');
-                        img.attr('src', src);
-                        img.attr('alt', elem['title']);
+    var template = $('#itemTemplate');
+    var load_count = 0;
+    var nodes = [];
+    var lazyLoad = function (flag) {
+        if (void 0 === news_index)
+            return;
+        var id = news_index.pop();
+        $.ajax({
+            url: '/news/' + id,
+            type: 'POST',
+            success: function (result) {
+                var node = $(template).clone(true);
+                var box = node.find('.animate-box > a');
+                box.attr('href', 'javascript:void(0)');//src
+                box.attr('title', result['title']);
+                var img = box.find('img');
+                img.attr('src', result['imgSrc']);
+                img.attr('alt', result['imgSrc'] === null ? null : result['title']);
 
-                        var desc = node.find('.fh5co-desc');
-                        desc.html(elem['title']);
-                        $(desc).click(function () {
-                            window.open("/news/" + elem['id'], "_blank");
-                        });
-
-                        $(node).attr('hidden', false);
-                        node.insertAfter(template);
-                    }
+                var desc = node.find('.fh5co-desc');
+                desc.find('> .desc-title').html(result['title']);
+                desc.find('> .desc-type').html(result['type']);
+                desc.find('> .desc-rank').html(result['rank']);
+                $(desc).click(function () {
+                    window.open("/news/" + result['id'], "_blank");
                 });
-                salvattore.rescanMediaQueries();
-                magnifPopup();
+
+                $(node).attr('id', '');
+                $(node).attr('hidden', false);
+                node.insertBefore(template);
+                nodes.push(node);
+                if (flag || ++load_count % 2 === 0) {
+                    salvattore.rescanMediaQueries();
+                    setTimeout(
+                        $.each(nodes, function (idx, elem) {
+                            $(elem).find('> .animated').removeClass('animate-box bounceIn animated');
+                        }), 1000);
+                    nodes = [];
+                }
+                salvattore.appendElements(grid, [node]);
             }
         })
     };
 
     $(function () {
         doAjax();
-        magnifPopup();
         offCanvass();
         mobileMenuOutsideClick();
         animateBoxWayPoint();
-    });
 
+        $(window).scroll(function () {
+            var scrollBottom = $(document).height() - $(window).height() - $(window).scrollTop();
+            if (scrollBottom < $(document).height() * 0.3)
+                lazyLoad(false);
+        });
+    });
 }());

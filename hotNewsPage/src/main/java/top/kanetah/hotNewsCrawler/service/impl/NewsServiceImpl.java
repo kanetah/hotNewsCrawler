@@ -3,7 +3,7 @@ package top.kanetah.hotNewsCrawler.service.impl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import top.kanetah.hotNewsCrawler.DTO.CommentDTO;
+import top.kanetah.hotNewsCrawler.dto.CommentDTO;
 import top.kanetah.hotNewsCrawler.dao.CommentDAO;
 import top.kanetah.hotNewsCrawler.dao.NewsDAO;
 import top.kanetah.hotNewsCrawler.dao.UserDAO;
@@ -58,7 +58,11 @@ public class NewsServiceImpl implements NewsService {
         return null;
     }
 
-    public List<News> getTopNewsByType(String type, int limit) {
-        return null;
+    public List<Integer> getTopNewsId() {
+        return newsDAO.findNewsIdOrderByRank();
+    }
+
+    public List<Integer> getTopNewsIdByType(String type) {
+        return newsDAO.findNewsIdByTypeOrderByRank(type);
     }
 }

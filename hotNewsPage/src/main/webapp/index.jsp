@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -79,7 +80,10 @@
                         </a>
                     </div>
                     <div class="fh5co-desc">
-                        内容
+                        <div class="desc-title"></div>
+                        <hr/>
+                        <div class="desc-type"></div>
+                        <div class="desc-rank"></div>
                     </div>
                 </div>
                 <!-- END content -->
@@ -120,9 +124,9 @@
 <!-- Waypoints -->
 <script src="js/vendor/jquery.waypoints.min.js"></script>
 <!-- Magnific Popup -->
-<script src="js/vendor/jquery.magnific-popup.min.js"></script>
+<%--<script src="js/vendor/jquery.magnific-popup.min.js"></script>--%>
 <!-- Salvattore -->
-<script src="https://cdn.bootcss.com/salvattore/1.0.8/salvattore.min.js"></script>
+<script src="https://cdn.bootcss.com/salvattore/1.0.9/salvattore.min.js"></script>
 <!-- Main JS -->
 <script src="js/index.js"></script>
 

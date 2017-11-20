@@ -8,7 +8,6 @@ import top.kanetah.hotNewsCrawler.model.News;
 import top.kanetah.hotNewsCrawler.service.NewsService;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,18 +25,14 @@ public class IndexController {
     }
 
     @ResponseBody
-    @RequestMapping("/news")
+    @RequestMapping(value = "/news", method = RequestMethod.GET)
     public List<News> getAllNews() {
         return newsService.getAllNews();
     }
 
     @ResponseBody
-    @RequestMapping("/out")
-    public List<String> outPage() {
-        List<String> list = new ArrayList<String>();
-        list.add("a");
-        list.add("b");
-        list.add("c");
-        return list;
+    @RequestMapping(value = "/news", method = RequestMethod.POST)
+    public List<Integer> getNews() {
+        return newsService.getTopNewsId();
     }
 }

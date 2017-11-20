@@ -4,8 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import top.kanetah.hotNewsCrawler.DTO.CommentDTO;
+import top.kanetah.hotNewsCrawler.dto.CommentDTO;
+import top.kanetah.hotNewsCrawler.dto.NewsIndexDTO;
 import top.kanetah.hotNewsCrawler.model.News;
 import top.kanetah.hotNewsCrawler.service.NewsService;
 
@@ -19,12 +21,24 @@ public class NewsController {
     @Resource
     private NewsService newsService;
 
-    @RequestMapping("/{id}")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String newsPage(
             @PathVariable String id, Model model
     ) {
         model.addAttribute("id", id);
         return "news";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
+    public NewsIndexDTO getNewsIndexDTO(
+            @PathVariable int id
+    ) {
+        News news = newsService.getNewsById(id);
+        return new NewsIndexDTO(
+                news.getId(), news.getSrc(), news.getTitle(), news.getDate(),
+                news.getType(), news.getRank(), news.getContent()
+        );
     }
 
     @ResponseBody

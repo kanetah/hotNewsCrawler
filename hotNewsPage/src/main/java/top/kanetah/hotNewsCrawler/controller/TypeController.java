@@ -15,7 +15,7 @@ import java.util.List;
  */
 @RequestMapping("/news")
 @Controller("newsController")
-public class TtpeController {
+public class TypeController {
 
     @Resource
     private NewsService newsService;
@@ -28,10 +28,9 @@ public class TtpeController {
 
     @RequestMapping("/topTypeNews")
     @ResponseBody
-    public List<News> getTopTypeNews(
-            @RequestParam String type,
-            @RequestParam int limit
+    public List<Integer> getTopTypeNews(
+            @RequestParam String type
     ) {
-        return newsService.getTopNewsByType(type, limit);
+        return newsService.getTopNewsIdByType(type);
     }
 }
