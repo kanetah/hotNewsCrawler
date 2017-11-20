@@ -1,18 +1,46 @@
 body{
     padding: 0px;
 }
-.navbar{
-    background-color: rgba(28,28,28,0.89);
+nav:first-of-type {
+    background-color: white;
 }
-.home{
-    background-color: rgba(225,225,225,0.86);
+/*.home{*/
+    /*display: block;*/
+/*}*/
+nav:nth-of-type(2){
+    /*background-color: #8c8c8c;*/
+    box-shadow: 0px 1px 1px whitesmoke,
+                0px -1px 1px whitesmoke;
+    background-color: whitesmoke;
+}
+li a:hover{
+    font-size: medium;
+    background-color: whitesmoke;
 }
 .container1{
-    padding-left: 480px;
-    /*margin-bottom: 10px;*/
-    margin-top: 40px;
-    height: 50px;
+    margin-left: 100px;
+    height: 40px;
+    font-size: 15px;
+    text-align: center;
 }
-.container2{
-    padding-left: 380px;
+.container1 ul li a{
+    width: 70px;
+    height: 40px;
 }
+.container1 ul li a:hover{
+    background-color: white;
+    border: 1px solid lightgrey;
+    border-bottom: none;
+    border-top: none;
+}
+.input-group{
+    margin-top: 3px;
+    margin-left: 100px;
+}
+.input-group .form-control{
+    background-color: whitesmoke;
+}
+.input-group-btn .btn{
+    height: 34px;
+    background-color: whitesmoke;
+ }

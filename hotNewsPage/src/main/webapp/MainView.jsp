@@ -20,48 +20,51 @@
     <title>MainView</title>
 </head>
 <body>
-    <nav class="navbar navbar-default navbar-static-top">
-        <div class ="container">
+    <nav class="navbar navbar-default">
+        <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="MainView.jsp">Name</a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li class="btn btn-block" >
+                        <a data-toggle="modal" data-target="#loginModal" class="account-setting-seperator polyglot" >Login</a>
+                    </li>
+                    <%--<li><a href="#">Login</a></li>--%>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="container1">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for...">
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="button">搜索</button>
-            </span>
-        </div>
-    </div>
-    <nav class="navbar-transparent navbar-fixed-top navbar-color-on-scroll">
-        <div class="container2">
-            <div class="collapse navbar-collapse">
+   <nav class="navbar">
+        <div class="container1">
+            <div class="navbar-header">
                 <ul class="nav navbar-nav">
-                    <li class="home"><a href="#">Home</a></li>
+                    <li class="home" onfocus=""><a href="#">Home</a></li>
+                    <li><a href = "#">Type</a></li>
+                    <li><a href = "#">Type</a></li>
+                    <li><a href = "#">类型</a></li>
                     <li><a href = "#">Type</a></li>
                     <li><a href = "#">Type</a></li>
                     <li><a href = "#">Type</a></li>
                     <li><a href = "#">Type</a></li>
                     <li><a href = "#">Type</a></li>
                     <li><a href = "#">Type</a></li>
-                    <li><a href = "#">Type</a></li>
-                    <li><a href = "#">Type</a></li>
-                    <li><a href = "#">Type</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
                 </ul>
+            </div>
+
+            <div class="nav navbar-nav">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">搜索</button>
+                     </span>
+                </div>
             </div>
         </div>
     </nav>
-    <div class="starter-template">
+    <%-- <div class="starter-template">
         <div class="page-header">
             <h2>习近平强调，坚持“一国两制”，推进祖国统一<br></h2>
             <small>新华社北京10月18日电</small>
@@ -144,6 +147,48 @@
             习近平表示，实现中华民族伟大复兴，是全体中国人共同的梦想。我们坚信，只要包括港澳台同胞在内的全体中华儿女顺应历史大势、共担民族大义，把民族命运牢牢掌握在自己手中，就一定能够共创中华民族伟大复兴的美好未来。
 
         </p>
+    </div>--%>
+
+    <div class="modal" id="loginModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <%--如果你的modal弹窗里面加上这个按钮，那么点击则会关闭当前弹窗，关键在于data-dismiss="modal"，它让按钮有了这个功能。--%>
+                <div class="modal-body">
+                    <div ng-controller="loginCtrl"><%--ng-controller 指令用于为你的应用添加控制器--%>
+                        <div ng-show="showLoginForm"><%--ng-show 指令在表达式为 true 时显示指定的 HTML 元素，否则隐藏指定的 HTML 元素。--%>
+                            <div class="welcome-text">
+                                <h2>Sign In</h2>
+                            </div>
+                            <form role="form" novalidate="" ng-model="signInForm" name="signInForm">
+                                <div class="form-group form-group-lg label-floating is-empty">
+                                    <%--<label class="control-label">Username</label>--%>
+                                    <input class="form-control" name="loginId" type="text" id="loginId" placeholder="Username" required/>
+                                    <%--<p ng-cloak class="help-text text-danger" ng-show="signInForm.$submitted && !signInForm.loginId.$error.required && signInForm.loginId.$invalid"><span class="text-red">* </span>Enter a valid username.</p>--%>
+                                    <%--<p ng-cloak class="help-text text-danger" ng-show="signInForm.$submitted && signInForm.loginId.$error.required"> <span class="text-red">* </span>Username is required.</p>--%>
+                                    <%--<p ng-cloak class="help-text text-danger" id="signInIncorrectEmail"><span class="text-red">* </span>The username you entered is incorrect.</p>--%>
+                                </div>
+                                <div class="form-group form-group-lg label-floating is-empty">
+                                    <%--<label for="signInPassword" class="control-label">Password</label>--%>
+                                    <input name="password" type="password" id="signInPassword" required class="form-control" placeholder="Password"/>
+                                    <%--<p ng-cloak class="help-text text-danger" ng-show="signInForm.$submitted && signInForm.password.$error.required"> <span class="text-red">* </span>Password is required</p>--%>
+                                    <%--<p ng-cloak class="help-text text-danger" ng-show="signInForm.$submitted && signInForm.password.$error.minlength"> <span class="text-red">* </span>Password is too short</p>--%>
+                                    <%--<p ng-cloak class="help-text text-danger" ng-show="signInForm.$submitted && signInForm.password.$error.maxlength"> <span class="text-red">* </span>Password is too long</p>--%>
+                                    <%--<p ng-cloak class="help-text text-danger" id="signInIncorrectPassword" ng-cloak><span class="text-red">* </span>Your password is incorrect.</p>--%>
+                                </div>
+                                <div class="forgotten-text">
+                                    <p class="text-right"><a href="#" >Sign Up</a>|<a href="#" >Forgotten Password</a></p>
+                                </div>
+                                <button type="submit" class="btn btn-default">Login</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
+
+<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </html>

@@ -3,11 +3,13 @@ body {
 	padding-top: 20px;
 }
 .navbar {
-	background: white;
-	/*font-size: 18px;*/
-	z-index: 10;
-	min-height: 35px;
+	/*S*/
+	z-index: 100000;
 	border: none;
+	min-height: 40px;
+}
+nav:first-child{
+	height: 40px;
 }
 .navbar-brand{
 	font-size: 15px;
@@ -28,6 +30,13 @@ body {
 .date-time{
 	color: grey;
 	font-size: x-small;
+}
+.btn-block{
+	width: 68px;
+	height: 50px;
+	text-align: center;
+	margin: 0px;
+	padding: 0px;
 }
 p{
 	font-family: "宋体";
@@ -64,6 +73,9 @@ a{
 	font-family: "宋体";
 	color: black;
 }
+li a:hover{
+	font-size: medium;
+}
 small{
 	color: grey;
 }
@@ -97,3 +109,53 @@ small{
 	letter-spacing: 2px;
 	line-height: 1.5;
 }
+#loginModal{
+	z-index: 99999;
+	margin-top: 80px;
+	margin-left: auto;
+}
+.close{
+	margin-top:-30px;
+	margin-right:-30px;
+	font-size:25px;
+	color:whitesmoke;
+	background:#ccc;
+	opacity:1;
+	width:25px;
+	border-radius:50%;
+	height:25px;
+	text-shadow:none
+}
+.modal-dialog{
+	width: 400px;
+}
+.text-right{
+	font-size: small;
+}
+.control-label{font-size:14px;color:#72889b;margin-top:0}
+.modal-body button{padding:15px 30px;background:#00aeee;color:#fff!important;font-size:14px;border-radius:3px;width: 320px}
+.modal-body button.btn-block.disabled{background:#00aeee!important;color:#fff!important}
+.modal-content{
+	/*width: 400px;*/
+	-webkit-box-shadow:0 27px 24px 0 rgba(0,0,0,.2),0 40px 77px 0 rgba(0,0,0,.22);
+	box-shadow:0 27px 24px 0 rgba(0,0,0,.2),0 40px 77px 0 rgba(0,0,0,.22);
+	border-radius:2px;
+	border:none;
+	-webkit-transition:all .3s;
+	-moz-transition:all .3s;
+	transition:all .3s
+}
+.modal-backdrop {
+	 color: whitesmoke;
+ }
+#loginId{
+
+}
+.modal-body button:active,.modal-body button:focus,.modal-body button:hover,.modal-body button:visited,.modal-body button[disabled]{background:#00aeee!important;color:#fff!important}
+#loginModal .modal-body{padding:40px;font-size:16px}
+#loginModal .welcome-text{margin-bottom:10px;text-align:center;color: grey}
+#loginModal .form-group.form-group-lg{margin-top:0;margin-bottom:10px}
+#loginModal .form-group.form-group-lg input{padding-left:15px;border-bottom:1px solid lightgrey;border: none}
+#loginModal .form-group.form-group-lg label{color:#767c84}
+#loginModal .SignUp-text{margin-bottom:20px}
+#loginModal .SignUp-text a,#loginModal .forgotten-text a:hover{color:#767c84;font-weight:400;text-decoration:none}
