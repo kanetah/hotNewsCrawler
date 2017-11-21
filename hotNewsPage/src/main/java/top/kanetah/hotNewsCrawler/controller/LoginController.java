@@ -1,9 +1,9 @@
 package top.kanetah.hotNewsCrawler.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
 import top.kanetah.hotNewsCrawler.service.LoginService;
 
 import javax.annotation.Resource;
@@ -12,18 +12,24 @@ import javax.annotation.Resource;
  * created by kane on 2017/11/6.
  */
 @Controller("loginController")
+@SessionAttributes("name")
 public class LoginController {
 
     @Resource
     private LoginService loginService;
 
     @RequestMapping("/login")
+    @ResponseBody
     public String login(
             @RequestParam String name,
-            @RequestParam String password
+            @RequestParam String password,
+            ModelMap model
     ) {
-        return loginService.login(name, password) ?
-                "index" : "login";
+        if (loginService.login(name, password)) {
+            model.addAttribute("name", name);
+            return "success";
+        } else
+            return "fail";
     }
 
     @RequestMapping("/logout")
@@ -43,5 +49,11 @@ public class LoginController {
     ) {
         return loginService.register(name, password) ?
                 "success" : "fail";
+    }
+
+    @RequestMapping(value = "username")
+    @ResponseBody
+    public String getUsername(@ModelAttribute("name") String name) {
+        return name;
     }
 }

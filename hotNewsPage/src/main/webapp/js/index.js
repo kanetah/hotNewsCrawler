@@ -55,7 +55,6 @@
     var grid = document.querySelector('#fh5co-board');
     var news_index = void 0;
     var doAjax = function () {
-
         $.ajax({
             url: '/news',
             type: 'POST',

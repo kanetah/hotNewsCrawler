@@ -17,7 +17,7 @@ public class LoginServiceImpl implements LoginService {
     private UserDAO userDAO;
 
     public boolean login(String name, String password) {
-        return false;
+        return userDAO.findUserByNameAndPassword(name, password) != null;
     }
 
     public boolean logout(String name) {

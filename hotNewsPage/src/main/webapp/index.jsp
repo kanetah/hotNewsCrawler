@@ -130,12 +130,12 @@
                     <div class="content">
                         <div class="error"></div>
                         <div class="form loginBox">
-                            <form method="post" accept-charset="UTF-8">
+                            <%--<form method="post" accept-charset="UTF-8">--%>
                                 <input class="form-control" type="text" placeholder="昵称" name="name">
                                 <input class="form-control" type="password" placeholder="密码"
                                        name="password">
                                 <input id="login_button" class="btn btn-default btn-login" type="button" value="登陆">
-                            </form>
+                            <%--</form>--%>
                         </div>
                     </div>
                 </div>

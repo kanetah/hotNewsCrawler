@@ -45,25 +45,32 @@ $(function () {
         }, 230);
     }
 
-    function loginAjax() {
-        /*   Remove this comments when moving to server
-        $.post( "/login", function( data ) {
-                if(data == 1){
-                    window.location.replace("/home");
-                } else {
-                     shakeModal();
-                }
-            });
-        */
-
+    var login_form = $('.loginBox')[0];
+    var login_name = $(login_form).find('[name="name"]');
+    var login_password = $(login_form).find('[name="password"]');
+    $('#login_button').click(function loginAjax() {
+        $.ajax({
+            type: 'POST',
+            url: '/login',
+            data: {
+                name: login_name.val(),
+                password: login_password.val()
+            },
+            success: function (result) {
+                alert(result);
+            },
+            error: function (xhr) {
+                alert(xhr.responseJSON);
+            }
+        })
         /*   Simulate error message from the server   */
-        shakeModal();
-    }
+        // shakeModal();
+    });
 
-    var registerForm = $('.registerBox > .form')[0];
-    var register_name = $(registerForm).find('[name="name"]');
-    var register_password = $(registerForm).find('[name="password"]');
-    var password_confirmation = $(registerForm).find('[name="password_confirmation"]');
+    var register_form = $('.registerBox > .form')[0];
+    var register_name = $(register_form).find('[name="name"]');
+    var register_password = $(register_form).find('[name="password"]');
+    var password_confirmation = $(register_form).find('[name="password_confirmation"]');
     $('#register_button').click(function () {
         $.ajax({
             type: 'POST',

@@ -72,4 +72,13 @@
         </where>
     </select>
 
+    <select id="findUserByNameAndPassword" resultType="top.kanetah.hotNewsCrawler.model.User">
+        <include refid="select_user"/>
+        <where>
+            name = #{name}
+            AND
+            password = #{password}
+        </where>
+    </select>
+
 </mapper>

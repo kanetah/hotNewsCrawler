@@ -1,5 +1,6 @@
 package top.kanetah.hotNewsCrawler.dao;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 import top.kanetah.hotNewsCrawler.model.User;
 
@@ -72,4 +73,13 @@ public interface UserDAO {
      * @return 用户实体
      */
     User findUserByName(String name);
+
+    /**
+     * 通过用户名密码查找用户
+     *
+     * @param name     用户名
+     * @param password 密码
+     * @return 用户实体
+     */
+    User findUserByNameAndPassword(@Param("name") String name, @Param("password") String password);
 }
