@@ -35,13 +35,13 @@ public class LoginController {
                 "success" : "fail";
     }
 
-    @RequestMapping("/sign")
+    @RequestMapping("/register")
     @ResponseBody
-    public String sign(
+    public String register(
             @RequestParam String name,
             @RequestParam String password
     ) {
-        return loginService.sign(name, password) ?
+        return loginService.register(name, password) ?
                 "success" : "fail";
     }
 }

@@ -109,7 +109,8 @@
             <tx:method name="insert*"/>
             <tx:method name="change*"/>
             <tx:method name="do*"/>
-            <tx:method name="*" read-only="true"/>
+            <tx:method name="*" read-only="false"/>
+            <!-- read-only="false"! -->
         </tx:attributes>
     </tx:advice>
     <aop:config>

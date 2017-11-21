@@ -9,5 +9,5 @@ public interface LoginService {
 
     boolean logout(String name);
 
-    boolean sign(String name, String password);
+    boolean register(String name, String password);
 }

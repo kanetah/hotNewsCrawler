@@ -14,8 +14,12 @@ body {
 
 .fh5co-desc {
     word-wrap: break-word;
-    cursor: hand;
+    cursor: pointer;
     width: 100% !important;
+}
+
+.fh5co-desc > div {
+    cursor: pointer;
 }
 
 .fh5co-desc:hover {

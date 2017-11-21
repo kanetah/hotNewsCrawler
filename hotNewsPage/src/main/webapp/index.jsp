@@ -33,6 +33,7 @@
     <!--Theme Style -->
     <link rel="stylesheet" href="css/vendor/style.css">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/login-register.css"/>
 
 </head>
 <body>
@@ -42,7 +43,11 @@
     <h1 class="fh5co-logo"><a class="navbar-brand" href="index.jsp">热点新闻</a></h1>
     <ul>
         <li class="active"><a href="index.jsp">主页</a></li>
-        <li><a href="login">登陆</a></li>
+        <li>
+            <a id="openLoginModal" data-toggle="modal" href="javascript:void(0)">
+                登陆
+            </a>
+        </li>
         <li><a href="filter">过滤</a></li>
         <li><a href="about">关于</a></li>
     </ul>
@@ -59,7 +64,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <a href="#" class="fh5co-menu-btn js-fh5co-menu-btn">菜单<i class="icon-menu"></i></a>
+                <a href="javascript:void(0)" class="fh5co-menu-btn js-fh5co-menu-btn">菜单<i class="icon-menu"></i></a>
                 <a class="navbar-brand" href="index.jsp">热点新闻</a>
             </div>
         </div>
@@ -113,6 +118,58 @@
     </div>
 </footer>
 
+<div class="modal fade login" id="loginModal">
+    <div class="modal-dialog login animated">
+        <div class="modal-content" id="loginContent">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">登陆</h4>
+            </div>
+            <div class="modal-body">
+                <div class="box">
+                    <div class="content">
+                        <div class="error"></div>
+                        <div class="form loginBox">
+                            <form method="post" accept-charset="UTF-8">
+                                <input class="form-control" type="text" placeholder="昵称" name="name">
+                                <input class="form-control" type="password" placeholder="密码"
+                                       name="password">
+                                <input id="login_button" class="btn btn-default btn-login" type="button" value="登陆">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="content registerBox" style="display:none;">
+                        <div class="form">
+                            <%--<form method="post" html="{:multipart=>true}" data-remote="true"--%>
+                                  <%--accept-charset="UTF-8">--%>
+                                <input class="form-control" type="text" placeholder="昵称" name="name">
+                                <input class="form-control" type="password" placeholder="密码"
+                                       name="password">
+                                <input id="password_confirmation" class="form-control" type="password"
+                                       placeholder="确认密码" name="password_confirmation">
+                                <input id="register_button" class="btn btn-default btn-register" type="button" value="创建账号">
+                            <%--</form>--%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="forgot login-footer">
+                            <span>想要
+                                 <a id="show_register">创建一个账号</a>
+                            ?</span>
+                </div>
+                <div class="forgot register-footer" style="display:none">
+                    <span>已经有一个账号?</span>
+                    <a id="show_login">去登陆</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Modernizr JS -->
 <script src="https://cdn.bootcss.com/modernizr/2.6.2/modernizr.min.js"></script>
 <!-- jQuery -->
@@ -129,6 +186,7 @@
 <script src="https://cdn.bootcss.com/salvattore/1.0.9/salvattore.min.js"></script>
 <!-- Main JS -->
 <script src="js/index.js"></script>
+<script src="js/login-register.js" type="text/javascript"></script>
 
 </body>
 </html>
