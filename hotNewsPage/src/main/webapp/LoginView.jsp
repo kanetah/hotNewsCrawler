@@ -8,27 +8,36 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <title>登录</title>
 </head>
 <body>
-    <div class = "row">
-        <form action="MainView.jsp" class = "fh5co-form animate-box" data-animate-effect="fadeIn">
-            <h2>Sign In</h2>
-            <div class="form-group">
-                <label for="username" class="sr-only">Username</label>
-                <input type="text" class="form-control" id="username" placeholder="Username" autocomplete="off">
-            </div>
-            <div class="form-group">
-                <label for="password" class="sr-only">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="off">
-            </div>
-            <div class="form-group">
-                <p>Not registered? <a href="sign-up.html">Sign Up</a> | <a href="forgot.html">Forgot Password?</a></p>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Sign In" class="btn btn-primary">
-            </div>
-        </form>
-    </div>
+    <button class="btn btn-default" data-toggle="modal" data-target="#myTest">Begin Test</button>
+
+    <div class="modal" id="myTest" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        模态框（Modal）标题
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    在这里添加一些文本
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary">
+                        提交更改
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div>
 </body>
+<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </html>
