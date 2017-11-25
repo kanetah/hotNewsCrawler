@@ -63,11 +63,7 @@ def do():
             cursor.execute(crawler_attribute.update_rank_sql, [rank, href])
             print("update %s rank: %s" % (title, rank))
             db_flag = True
-        except IndexError:
-            continue
-        except KeyError:
-            continue
-        except AttributeError:
+        except Exception:
             continue
         finally:
             if db_flag:
