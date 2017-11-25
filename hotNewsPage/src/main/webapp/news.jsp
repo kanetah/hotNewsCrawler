@@ -19,22 +19,25 @@
     <title>news view</title>
 
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="css/Customize.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/Customize.css">
+    <link rel="stylesheet" href="css/news.css">
+    <link rel="stylesheet" href="css/login-register.css"/>
 </head>
 
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top mybar">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="MainView.jsp">Name</a>
+            <a id="name" class="navbar-brand" href="javascript:void(0)">Name</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li class="btn btn-block">
-                    <a data-toggle="modal" data-target="#loginModal"
-                       class="account-setting-seperator polyglot">Login</a>
+                    <a id="openLoginModal" data-toggle="modal" href="javascript:void(0)">
+                        登陆
+                    </a>
+                    <a id="logout_button">注销</a>
                 </li>
-                <%--<li><a href="#">Login</a></li>--%>
                 <li class="home"><a href="#">Home</a></li>
                 <li><a href="/about">About</a></li>
                 <li><a href="/contact">Contact</a></li>
@@ -44,17 +47,18 @@
 </nav>
 <div class="container">
     <div class="starter-template">
-        <div class="title" id="title"></div>
-        <hr>
+        <h2 class="title" id="title"></h2>
         <div class="time-time" id="time"></div>
         <div id="type"></div>
         <div id="rank"></div>
+        <br>
+        <hr>
         <div class="content" id="content"></div>
     </div>
-</div>
-<div class="container">
-    <div id="editor"></div>
-    <input type="button" class="btn btn-default" id="comment" value="评论">
+    <div id="editor-div">
+        <input type="button" class="btn btn-primary btn-sm" id="comment" value="发布评论">
+        <div id="editor"></div>
+    </div>
 </div>
 <div class="container">
     <div class="comment" id="comment_template" hidden="hidden">
@@ -63,6 +67,18 @@
         <div class="comment_content"></div>
     </div>
 </div>
+<footer id="fh5co-footer">
+    <div class="container">
+        <div class="row row-padded">
+            <div class="col-md-12 text-center">
+                <p>
+                    <span style="font-size: small;">nico | poi | duang</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
 <div>
     <a href="javascript:window.scrollTo(0,0)" class="BackToTop">
             <span class="glyphicon glyphicon-menu-up" aria-hidden="true">
@@ -70,40 +86,61 @@
             </span>
     </a>
 </div>
-<div class="modal" id="loginModal" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <button type="button" class="close" data-dismiss="modal">×</button>
+<div class="modal fade login" id="loginModal">
+    <div class="modal-dialog login animated">
+        <div class="modal-content" id="loginContent">
+            <div class="modal-header">
+                <button id="loginModalClose" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">登陆</h4>
+            </div>
             <div class="modal-body">
-                <div ng-controller="loginCtrl">
-                    <div ng-show="showLoginForm">
-                        <div class="welcome-text">
-                            <h2>Sign In</h2>
+                <div class="box">
+                    <div class="content">
+                        <div class="error"></div>
+                        <div class="form loginBox">
+                            <%--<form method="post" accept-charset="UTF-8">--%>
+                            <input class="form-control" type="text" placeholder="昵称" name="name">
+                            <input class="form-control" type="password" placeholder="密码"
+                                   name="password">
+                            <input id="login_button" class="btn btn-default btn-login" type="button" value="登陆">
+                            <%--</form>--%>
                         </div>
-                        <form role="form" novalidate="" ng-model="signInForm" name="signInForm">
-                            <div class="form-group form-group-lg label-floating is-empty">
-                                <input class="form-control" name="loginId" type="text" id="loginId"
-                                       placeholder="Username" required/>
-                            </div>
-                            <div class="form-group form-group-lg label-floating is-empty">
-                                <input name="password" type="password" id="signInPassword" required class="form-control"
-                                       placeholder="Password"/>
-                            </div>
-                            <div class="SignUp-text">
-                                <p class="text-right"><a href="#">Sign Up</a>|<a href="#">Forgotten Password</a></p>
-                            </div>
-                            <button type="submit" class="btn btn-default">Login</button>
-                        </form>
                     </div>
+                </div>
+                <div class="box">
+                    <div class="content registerBox" style="display:none;">
+                        <div class="form">
+                            <input class="form-control" type="text" placeholder="昵称" name="name">
+                            <input class="form-control" type="password" placeholder="密码"
+                                   name="password">
+                            <input id="password_confirmation" class="form-control" type="password"
+                                   placeholder="确认密码" name="password_confirmation">
+                            <input id="register_button" class="btn btn-default btn-register" type="button" value="创建账号">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="forgot login-footer">
+                            <span>想要
+                                 <a id="show_register">创建一个账号</a>
+                            ?</span>
+                </div>
+                <div class="forgot register-footer" style="display:none">
+                    <span>已经有一个账号?</span>
+                    <a id="show_login">去登陆</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 </body>
 
 <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script type="text/javascript" src="js/wangEditor.min.js"></script>
+<script type="text/javascript" src="js/login-register.js"></script>
 <script type="text/javascript" src="js/news.js"></script>
 </html>

@@ -45,6 +45,20 @@ $(function () {
         }, 230);
     }
 
+    $('#logout_button').hide();
+    $.setName = function () {
+        var name = $.cookie('name');
+        if (undefined !== name) {
+            $('#name').html(name);
+            $('#openLoginModal').toggle();
+            $('#logout_button').toggle();
+        }
+        else {
+            $('#name').html('未登陆');
+            $('#openLoginModal').toggle();
+            $('#logout_button').toggle();
+        }
+    };
     var login_form = $('.loginBox')[0];
     var login_name = $(login_form).find('[name="name"]');
     var login_password = $(login_form).find('[name="password"]');
@@ -57,14 +71,13 @@ $(function () {
                 password: login_password.val()
             },
             success: function (result) {
-                alert(result);
+                $('#loginModalClose').trigger('click');
+                $.setName();
             },
             error: function (xhr) {
                 alert(xhr.responseJSON);
             }
         })
-        /*   Simulate error message from the server   */
-        // shakeModal();
     });
 
     var register_form = $('.registerBox > .form')[0];

@@ -13,7 +13,6 @@ import java.util.List;
  * created by kane on 2017/10/28.
  */
 @Controller("indexController")
-@SessionAttributes("name")
 public class IndexController {
 
     @Resource

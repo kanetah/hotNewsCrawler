@@ -7,12 +7,14 @@ import org.springframework.web.bind.annotation.*;
 import top.kanetah.hotNewsCrawler.service.LoginService;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * created by kane on 2017/11/6.
  */
 @Controller("loginController")
-@SessionAttributes("name")
 public class LoginController {
 
     @Resource
@@ -23,10 +25,13 @@ public class LoginController {
     public String login(
             @RequestParam String name,
             @RequestParam String password,
-            ModelMap model
+            HttpServletResponse response
     ) {
         if (loginService.login(name, password)) {
-            model.addAttribute("name", name);
+            Cookie cookie = new Cookie("name", name);
+            cookie.setMaxAge(24 * 60 * 60);
+            cookie.setPath("/");
+            response.addCookie(cookie);
             return "success";
         } else
             return "fail";
@@ -49,11 +54,5 @@ public class LoginController {
     ) {
         return loginService.register(name, password) ?
                 "success" : "fail";
-    }
-
-    @RequestMapping(value = "username")
-    @ResponseBody
-    public String getUsername(@ModelAttribute("name") String name) {
-        return name.length() == 0 ? "null" : name;
     }
 }

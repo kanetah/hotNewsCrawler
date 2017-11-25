@@ -99,7 +99,6 @@
 </div>
 
 <footer id="fh5co-footer">
-
     <div class="container">
         <div class="row row-padded">
             <div class="col-md-12 text-center">
@@ -131,10 +130,10 @@
                         <div class="error"></div>
                         <div class="form loginBox">
                             <%--<form method="post" accept-charset="UTF-8">--%>
-                                <input class="form-control" type="text" placeholder="昵称" name="name">
-                                <input class="form-control" type="password" placeholder="密码"
-                                       name="password">
-                                <input id="login_button" class="btn btn-default btn-login" type="button" value="登陆">
+                            <input class="form-control" type="text" placeholder="昵称" name="name">
+                            <input class="form-control" type="password" placeholder="密码"
+                                   name="password">
+                            <input id="login_button" class="btn btn-default btn-login" type="button" value="登陆">
                             <%--</form>--%>
                         </div>
                     </div>
@@ -143,13 +142,13 @@
                     <div class="content registerBox" style="display:none;">
                         <div class="form">
                             <%--<form method="post" html="{:multipart=>true}" data-remote="true"--%>
-                                  <%--accept-charset="UTF-8">--%>
-                                <input class="form-control" type="text" placeholder="昵称" name="name">
-                                <input class="form-control" type="password" placeholder="密码"
-                                       name="password">
-                                <input id="password_confirmation" class="form-control" type="password"
-                                       placeholder="确认密码" name="password_confirmation">
-                                <input id="register_button" class="btn btn-default btn-register" type="button" value="创建账号">
+                            <%--accept-charset="UTF-8">--%>
+                            <input class="form-control" type="text" placeholder="昵称" name="name">
+                            <input class="form-control" type="password" placeholder="密码"
+                                   name="password">
+                            <input id="password_confirmation" class="form-control" type="password"
+                                   placeholder="确认密码" name="password_confirmation">
+                            <input id="register_button" class="btn btn-default btn-register" type="button" value="创建账号">
                             <%--</form>--%>
                         </div>
                     </div>
@@ -170,6 +169,8 @@
     </div>
 </div>
 
+</body>
+
 <!-- Modernizr JS -->
 <script src="https://cdn.bootcss.com/modernizr/2.6.2/modernizr.min.js"></script>
 <!-- jQuery -->
@@ -188,5 +189,4 @@
 <script src="js/index.js"></script>
 <script src="js/login-register.js" type="text/javascript"></script>
 
-</body>
 </html>

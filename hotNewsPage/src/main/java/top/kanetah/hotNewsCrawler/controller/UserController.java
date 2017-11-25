@@ -13,7 +13,6 @@ import java.sql.Date;
  */
 @RequestMapping("/user")
 @Controller("userController")
-@SessionAttributes("name")
 public class UserController {
 
     @Resource
@@ -22,11 +21,11 @@ public class UserController {
     @RequestMapping(value = "/leaveComment", method = RequestMethod.POST)
     @ResponseBody
     public String leaveComment(
-            @ModelAttribute("name") String username,
+            @RequestParam String name,
             @RequestParam int newsId,
             @RequestParam String content
     ) {
-        return userService.leaveComment(username, newsId, content) ?
+        return userService.leaveComment(name, newsId, content) ?
                 "success" : "fail";
     }
 

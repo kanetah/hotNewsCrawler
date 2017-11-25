@@ -1,5 +1,14 @@
 @charset "UTF-8";
 
+#loginModal {
+    z-index: 100000;
+}
+
+#loginModalClose {
+    margin-right: 0 !important;
+    margin-top: 0 !important;
+}
+
 .animated {
     -webkit-animation-duration: 1s;
     -moz-animation-duration: 1s;

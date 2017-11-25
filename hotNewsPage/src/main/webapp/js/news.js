@@ -7,6 +7,7 @@ $(function () {
     $.ajax({
         url: '/news/' + id + '/content',
         success: function (result) {
+            $('title').html(result.title);
             $('#title').html(result.title);
             $('#time').html(result.time);
             $('#type').html(result.type);
@@ -15,31 +16,50 @@ $(function () {
         }
     });
 
-    $.ajax({
-        url: '/news/' + id + '/comments',
-        success: function (result) {
-            var template = $('#comment_template');
-            $.each(result, function (idx, elem) {
-                var node = $(template).clone(true);
-                node.find('.comment_user').html(elem.userName);
-                node.find('.comment_time').html(elem.time);
-                node.find('.comment_content').html(elem.content);
-                $(node).attr('hidden', false);
-                node.insertAfter(template);
-            })
-        }
-    });
+    var items = [];
+    var template = $('#comment_template');
+    var loadComment = function () {
+        $.ajax({
+            url: '/news/' + id + '/comments',
+            success: function (result) {
+                $.each(items, function (idx, elem) {
+                    elem.remove()
+                });
+                items = [];
+                $.each(result, function (idx, elem) {
+                    var node = $(template).clone(true);
+                    node.find('.comment_user').html(elem.userName);
+                    node.find('.comment_time').html(elem.time);
+                    node.find('.comment_content').html(elem.content);
+                    $(node).attr('hidden', false);
+                    items.push(node);
+                    node.insertAfter(template);
+                })
+            }
+        });
+    };
+    loadComment();
+
+    $.setName();
 
     $('#comment').click(function () {
         $.ajax({
             url: '/user/leaveComment',
             type: 'POST',
             data: {
+                name: $.cookie('name'),
                 newsId: id,
                 content: editor.txt.html()
             },
-            success: function (result) {
-                location.reload()
+            beforeSend: function () {
+                if (0 === $.cookie('name').length) {
+                    alert('请先登陆');
+                    return false;
+                } else
+                    return true;
+            },
+            success: function () {
+                loadComment()
             }
         })
     });

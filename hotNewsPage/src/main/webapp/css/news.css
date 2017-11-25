@@ -1,4 +1,47 @@
+@charset "UTF-8";
+
 .navbar {
     background: black;
-    z-index: 100000;
+    z-index: 10010;
+}
+
+.w-e-text-container {
+    height: 200px !important;
+    z-index: 1000 !important;
+}
+
+.w-e-toolbar {
+    height: 30px;
+}
+
+#editor {
+    width: 700px;
+    margin-left: 100px;;
+    margin-top: 0;
+}
+
+#editor-div {
+    width: 800px !important;
+    margin-left: 0;
+}
+
+#comment {
+    float: right;
+}
+
+#type:before {
+    content: '来源： ';
+}
+
+#type {
+    float: left;
+}
+
+#rank:before {
+    content: '热度： ';
+    color: red;
+}
+
+#rank {
+    float: right;
 }
