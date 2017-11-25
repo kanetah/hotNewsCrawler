@@ -3,11 +3,15 @@ package top.kanetah.hotNewsCrawler.service.impl;
 import org.springframework.stereotype.Service;
 import top.kanetah.hotNewsCrawler.dao.CommentDAO;
 import top.kanetah.hotNewsCrawler.dao.UserDAO;
+import top.kanetah.hotNewsCrawler.dto.UserDTO;
 import top.kanetah.hotNewsCrawler.model.Comment;
+import top.kanetah.hotNewsCrawler.model.User;
 import top.kanetah.hotNewsCrawler.service.UserService;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * created by kane on 2017/11/6.
@@ -36,5 +40,17 @@ public class UserServiceImpl implements UserService {
 
     public boolean changePassword(String name, String newPassword) {
         return false;
+    }
+
+    public List<UserDTO> getAllUsers() {
+        List<UserDTO> userDTOs = new ArrayList<UserDTO>();
+        List<User> users = userDAO.findAllUser();//userDTOs类型与userDao.findAllUser所返回类型不相同
+        for (User user : users){
+            userDTOs.add(new UserDTO(
+                    user.getId(),
+                    user.getName()
+            ));
+        }
+        return userDTOs;
     }
 }

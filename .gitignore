@@ -2,4 +2,5 @@ hotNewsPage/target/
 */.idea/
 
 hotNewsPage.iml
+hotNewsCrawler.iml
 *.pyc

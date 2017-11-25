@@ -1,0 +1,35 @@
+nav:first-of-type{
+	margin-top: 50px;
+	margin-left: 1px;
+	min-width: 300px;
+}
+.table{
+	min-width: 800px;
+}
+td:first-child{
+	text-align: center;
+	width: 120px;
+	font-size: 15px;
+}
+td{
+	text-align: center;
+}
+.container {
+	width: 1000px;
+	padding-left: 300px;
+	margin-bottom: 50px;
+}
+.container input{
+	margin-left: 10px;
+	margin-right: 5px;
+}
+.container .btn{
+	width: 80px;
+	float: left;
+}
+#Add-btn{
+	margin-right: 20px;
+}
+.pagination{
+	margin: 0px;
+}
