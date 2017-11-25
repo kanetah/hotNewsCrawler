@@ -1,11 +1,5 @@
 hotNewsPage/target/
 */.idea/
-hotNewsPage/.idea/*
-hotNewsPage/.idea*
-hotNewsPage/\.idea*
-crawler/.idea/*
-crawler/.idea*
-crawler/\.idea*
 
-.cpython
-.pyc
+hotNewsPage.ini
+*.pyc
