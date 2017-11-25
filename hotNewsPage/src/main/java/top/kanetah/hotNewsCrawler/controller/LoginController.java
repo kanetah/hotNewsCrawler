@@ -54,6 +54,6 @@ public class LoginController {
     @RequestMapping(value = "username")
     @ResponseBody
     public String getUsername(@ModelAttribute("name") String name) {
-        return name;
+        return name.length() == 0 ? "null" : name;
     }
 }

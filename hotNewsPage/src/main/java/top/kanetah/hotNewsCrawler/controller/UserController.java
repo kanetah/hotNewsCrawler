@@ -1,9 +1,7 @@
 package top.kanetah.hotNewsCrawler.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import top.kanetah.hotNewsCrawler.model.Comment;
 import top.kanetah.hotNewsCrawler.service.UserService;
 
@@ -15,20 +13,20 @@ import java.sql.Date;
  */
 @RequestMapping("/user")
 @Controller("userController")
+@SessionAttributes("name")
 public class UserController {
 
     @Resource
     private UserService userService;
 
-    @RequestMapping("/leaveComment")
+    @RequestMapping(value = "/leaveComment", method = RequestMethod.POST)
     @ResponseBody
     public String leaveComment(
-            @RequestParam int userId,
+            @ModelAttribute("name") String username,
             @RequestParam int newsId,
             @RequestParam String content
     ) {
-        return userService.leaveComment(
-                new Comment(userId, newsId, content, new Date(new java.util.Date().getTime()))) ?
+        return userService.leaveComment(username, newsId, content) ?
                 "success" : "fail";
     }
 

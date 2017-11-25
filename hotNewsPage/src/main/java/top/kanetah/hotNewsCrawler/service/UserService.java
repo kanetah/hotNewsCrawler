@@ -2,12 +2,16 @@ package top.kanetah.hotNewsCrawler.service;
 
 import top.kanetah.hotNewsCrawler.model.Comment;
 
+import java.util.Date;
+
 /**
  * created by kane on 2017/11/6.
  */
 public interface UserService {
 
     boolean leaveComment(Comment comment);
+
+    boolean leaveComment(String username, int newsId, String content);
 
     boolean dropComment(String name, int newsId);
 

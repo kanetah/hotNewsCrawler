@@ -29,4 +29,18 @@ $(function () {
             })
         }
     });
+
+    $('#comment').click(function () {
+        $.ajax({
+            url: '/user/leaveComment',
+            type: 'POST',
+            data: {
+                newsId: id,
+                content: editor.txt.html()
+            },
+            success: function (result) {
+                location.reload()
+            }
+        })
+    });
 });

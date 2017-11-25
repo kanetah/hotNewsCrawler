@@ -1,9 +1,8 @@
 package top.kanetah.hotNewsCrawler.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
 import top.kanetah.hotNewsCrawler.model.News;
 import top.kanetah.hotNewsCrawler.service.NewsService;
 
@@ -14,6 +13,7 @@ import java.util.List;
  * created by kane on 2017/10/28.
  */
 @Controller("indexController")
+@SessionAttributes("name")
 public class IndexController {
 
     @Resource
