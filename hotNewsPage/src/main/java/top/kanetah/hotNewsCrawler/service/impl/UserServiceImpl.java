@@ -41,16 +41,4 @@ public class UserServiceImpl implements UserService {
     public boolean changePassword(String name, String newPassword) {
         return false;
     }
-
-    public List<UserDTO> getAllUsers() {
-        List<UserDTO> userDTOs = new ArrayList<UserDTO>();
-        List<User> users = userDAO.findAllUser();//userDTOs类型与userDao.findAllUser所返回类型不相同
-        for (User user : users){
-            userDTOs.add(new UserDTO(
-                    user.getId(),
-                    user.getName()
-            ));
-        }
-        return userDTOs;
-    }
 }

@@ -18,6 +18,4 @@ public interface UserService {
     boolean dropComment(String name, int newsId);
 
     boolean changePassword(String name, String newPassword);
-
-    List<UserDTO> getAllUsers();
 }

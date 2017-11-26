@@ -6,6 +6,9 @@ nav:first-of-type{
 .table{
 	min-width: 800px;
 }
+#showUserInfo:hover{
+	background-color: gainsboro;
+}
 td:first-child{
 	text-align: center;
 	width: 120px;
@@ -13,6 +16,7 @@ td:first-child{
 }
 td{
 	text-align: center;
+	/*background-color: g;*/
 }
 .container {
 	width: 1000px;
@@ -32,4 +36,14 @@ td{
 }
 .pagination{
 	margin: 0px;
+}
+#UserEditor .modal-dialog{
+	min-width: 405px;
+	max-width: 410px;
+}
+#UserEditor .modal-body{
+	min-width: 405px;
+}
+#UserEditor .btn-submit{
+	width: 100px;
 }

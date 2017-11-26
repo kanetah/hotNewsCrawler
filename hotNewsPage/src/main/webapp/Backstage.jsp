@@ -32,7 +32,7 @@
             <td>ID</td>
             <td>Name</td>
         </tr>
-        <tr hidden  id="showUserInfo">
+        <tr hidden  id="showUserInfo" data-toggle="modal" data-target="#UserEditor">
             <td><input type="checkbox"  value="0"  name="userCheckbox"/></td>
             <td class="userID"></td>
             <td class="userName"></td>
@@ -91,6 +91,24 @@
         <li><a href="#">2</a></li>
         <li><a href="#">&raquo;</a></li>
     </ul>
+</div>
+
+<div class="modal" id="UserEditor" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>用户编辑</h4>
+            </div>
+            <div class="modal-body">
+                <label>ID:</label><input type="text" readonly="readonly" value="1" id="IDText"/>
+                <label>用户名:</label><input type="text" value="11" id="userNameText"/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-submit">提交</button>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>

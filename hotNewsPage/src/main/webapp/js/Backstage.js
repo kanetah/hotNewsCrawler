@@ -26,38 +26,54 @@ $(function(){
 		$(".comment-info").show()
 		$(".news-info").hide()
 	})
-	
-	$(".UserSA").click(function(){
-		if($(".UserAe").prop("checked") == true){
-			$(".UserAe").prop("checked",false)
-		}
-		if($(".UserSA").prop("checked") == true){
-			$("input[name='userCheckbox']").prop("checked",true);
-		}
-		else if($(".UserSA").prop("checked") == false){
-			$("input[name='userCheckbox']").prop("checked",false);
-		}
-	})
-	$(".UserAe").click(function(){
-		if($(".UserSA").prop("checked") == true){
-			$(".UserSA").prop("checked",false)
-		}
-		if($(".UserAe").prop("checked") == true){
-			if($("input[name='userCheckbox']").is(":checked")){
-			$("input[name='userCheckbox']").prop("checked",false);
-			}else{
-				$("input[name='userCheckbox']").prop("checked",true);
-			}
-		}
-		else if($(".UserAe").is(":checked") == false){
-			if($("input[name='userCheckbox']").is(":checked")){
-			$("input[name='userCheckbox']").prop("checked",false);
-			}else{
-				$("input[name='userCheckbox']").prop("checked",true);
-			}
-		}
-	})
 
+	$("input[type='checkbox']").prop("checked",false)
+
+    $(".UserSA").click(function(){
+        if($(".UserAe").prop("checked")){
+            $(".UserAe").removeAttr("checked");
+        }
+        if($(".UserSA").prop("checked")){
+            $("input[name='userCheckbox']").prop("checked",true);
+        }
+        else{
+            $("input[name='userCheckbox']").removeAttr("checked");
+        }
+    })
+    $(".UserAe").click(function(){
+        if($(".UserSA").prop("checked")){
+            $(".UserSA").removeAttr("checked");
+        }
+        if($(".UserAe").prop("checked")){
+            $("input[name='userCheckbox']").each(function () {
+                if($(this).prop("checked")){
+                    $(this).removeAttr("checked")
+                }else{
+                    $(this).prop("checked",true);
+                }
+            })
+        }
+        else{
+            alert("AeIsnotChecked")
+            $("input[name='userCheckbox']").each(function () {
+                if($(this).prop("checked")){
+                    $(this).removeAttr("checked")
+                }else{
+                    $(this).prop("checked",true);
+                }
+            })
+        }
+    })
+
+
+    $("#showUserInfo").click(function(){
+        var currenTd = $(this).find("td")
+        var id=currenTd[1].innerHTML;
+        var username=currenTd[2].innerHTML;
+
+        $("#IDText").val(id)
+        $("#userNameText").val(username)
+    })
 
     $.ajax({
 		url:"/getAllUsers",
@@ -68,7 +84,7 @@ $(function(){
                 node.find('.userID').html(elem.id);
                 node.find('.userName').html(elem.username);
                 $(node).attr('hidden',false);
-				node.insertAfter(showInfo);
+                node.insertBefore(showInfo);
             })
         }
 	})
