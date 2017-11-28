@@ -50,13 +50,13 @@ $(function () {
         var name = $.cookie('name');
         if (undefined !== name) {
             $('#name').html(name);
-            $('#openLoginModal').toggle();
-            $('#logout_button').toggle();
+            $('#openLoginModal').fadeOut();
+            $('#logout_button').fadeIn();
         }
         else {
             $('#name').html('未登陆');
-            $('#openLoginModal').toggle();
-            $('#logout_button').toggle();
+            $('#openLoginModal').fadeIn();
+            $('#logout_button').fadeOut();
         }
     };
     var login_form = $('.loginBox')[0];

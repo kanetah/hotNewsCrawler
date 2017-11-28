@@ -16,7 +16,7 @@
 
 #editor {
     width: 700px;
-    margin-left: 100px;;
+    margin-left: 100px;
     margin-top: 0;
 }
 
@@ -44,4 +44,43 @@
 
 #rank {
     float: right;
+}
+
+.comment {
+    width: 700px;
+    margin-left: 100px;
+}
+
+.comment > div {
+    position: relative;
+    transition: background 0.8s;
+    border-radius: 7px;
+    min-height: 80px;
+}
+
+.comment > div:hover {
+    background: gainsboro;
+}
+
+.comment_info {
+    float: left;
+    width: 100px;
+    margin-top: auto;
+    padding-left: 10px;
+}
+
+.comment_user {
+    font-size: x-large;
+}
+
+.comment_content {
+    font-size: large;
+    width: 600px;
+    margin-left: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.comment_content:hover {
+    text-shadow: 1px 1px 1px gray;
 }
