@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="newsId" content="${id}">
-    <link rel="icon" href="images/favicon.ico">
+    <link rel="icon" href="images/favicon.png">
     <base href="/">
 
     <title>news view</title>
@@ -28,7 +28,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top mybar">
     <div class="container">
         <div class="navbar-header">
-            <a id="name" class="navbar-brand" href="javascript:void(0)">Name</a>
+            <a id="name" class="navbar-brand">Name</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -107,12 +107,10 @@
                     <div class="content">
                         <div class="error"></div>
                         <div class="form loginBox">
-                            <%--<form method="post" accept-charset="UTF-8">--%>
                             <input class="form-control" type="text" placeholder="昵称" name="name">
                             <input class="form-control" type="password" placeholder="密码"
                                    name="password">
                             <input id="login_button" class="btn btn-default btn-login" type="button" value="登陆">
-                            <%--</form>--%>
                         </div>
                     </div>
                 </div>

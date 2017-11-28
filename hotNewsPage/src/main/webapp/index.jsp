@@ -22,6 +22,8 @@
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css">
     <!-- Icomoon Icon Fonts-->
@@ -39,17 +41,28 @@
 <body>
 
 <div id="fh5co-offcanvass">
-    <a href="#" class="fh5co-offcanvass-close js-fh5co-offcanvass-close">Menu <i class="icon-cross"></i> </a>
-    <h1 class="fh5co-logo"><a id="name" class="navbar-brand" href="index.jsp">热点新闻</a></h1>
+    <a href="" class="fh5co-offcanvass-close js-fh5co-offcanvass-close">Menu <i class="icon-cross"></i> </a>
+    <h1 class="fh5co-logo"><a class="navbar-brand" href="javascript:void(0)">热点新闻</a></h1>
     <ul>
-        <li class="active"><a href="index.jsp">主页</a></li>
+        <li><a id="name">Name</a></li>
         <li>
             <a id="openLoginModal" data-toggle="modal" href="javascript:void(0)">
                 登陆
             </a>
-            <a id="logout_button">注销</a>
+            <a id="logout_button" href="javascript:void(0)">注销</a>
         </li>
-        <li><a href="filter">过滤</a></li>
+        <li>
+            <div class="dropdown">
+                <a class="dropdown-toggle" id="filter" href="javascript:void(0)" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    过滤
+                    <span class="caret"></span>
+                </a>
+                <ul id="types_list" class="dropdown-menu" aria-labelledby="filter">
+                    <li>全部</li>
+                </ul>
+            </div>
+        </li>
         <li><a href="about">关于</a></li>
     </ul>
     <h3 class="fh5co-lead">联系我们</h3>
@@ -66,7 +79,7 @@
         <div class="row">
             <div class="col-md-12">
                 <a href="javascript:void(0)" class="fh5co-menu-btn js-fh5co-menu-btn">菜单<i class="icon-menu"></i></a>
-                <a class="navbar-brand" href="index.jsp">热点新闻</a>
+                <a class="navbar-brand" href="">热点新闻</a>
             </div>
         </div>
     </div>
@@ -118,11 +131,14 @@
     </div>
 </footer>
 
+
 <div class="modal fade login" id="loginModal">
     <div class="modal-dialog login animated">
         <div class="modal-content" id="loginContent">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <button id="loginModalClose" type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
                 <h4 class="modal-title">登陆</h4>
             </div>
             <div class="modal-body">
@@ -130,27 +146,22 @@
                     <div class="content">
                         <div class="error"></div>
                         <div class="form loginBox">
-                            <%--<form method="post" accept-charset="UTF-8">--%>
                             <input class="form-control" type="text" placeholder="昵称" name="name">
                             <input class="form-control" type="password" placeholder="密码"
                                    name="password">
                             <input id="login_button" class="btn btn-default btn-login" type="button" value="登陆">
-                            <%--</form>--%>
                         </div>
                     </div>
                 </div>
                 <div class="box">
                     <div class="content registerBox" style="display:none;">
                         <div class="form">
-                            <%--<form method="post" html="{:multipart=>true}" data-remote="true"--%>
-                            <%--accept-charset="UTF-8">--%>
                             <input class="form-control" type="text" placeholder="昵称" name="name">
                             <input class="form-control" type="password" placeholder="密码"
                                    name="password">
                             <input id="password_confirmation" class="form-control" type="password"
                                    placeholder="确认密码" name="password_confirmation">
                             <input id="register_button" class="btn btn-default btn-register" type="button" value="创建账号">
-                            <%--</form>--%>
                         </div>
                     </div>
                 </div>
@@ -178,6 +189,8 @@
 <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
 <!-- jQuery Easing -->
 <script src="https://cdn.bootcss.com/jquery-easing/1.3/jquery.easing.js"></script>
+<!-- jQuery Cookie -->
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <!-- Bootstrap -->
 <script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <!-- Waypoints -->

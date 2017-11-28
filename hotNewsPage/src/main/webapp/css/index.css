@@ -42,3 +42,13 @@ body {
 .fh5co-board-img:hover {
     cursor: default;
 }
+
+#types_list {
+    max-height: 650% !important;
+    overflow-y: scroll;
+}
+
+#types_list > li:hover {
+    cursor: pointer;
+    background: #FFFFCC;
+}

@@ -21,7 +21,7 @@ public class LoginServiceImpl implements LoginService {
     }
 
     public boolean logout(String name) {
-        return false;
+        return true;
     }
 
     public boolean register(String name, String password) {

@@ -55,7 +55,7 @@ public class NewsServiceImpl implements NewsService {
     }
 
     public List<String> getTypes() {
-        return null;
+        return newsDAO.findAllTypes();
     }
 
     public List<Integer> getTopNewsId() {
