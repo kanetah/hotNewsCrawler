@@ -16,6 +16,7 @@ $(function(){
 		$(".user-info").hide()
 		$(".comment-info").hide()
 		$(".news-info").show()
+        $("#Add-btn").hide();
 	})
 	$("#comment").click(function(){
 		$("#user").removeClass("active")
@@ -29,23 +30,23 @@ $(function(){
 
 	$("input[type='checkbox']").prop("checked",false)
 
-    $(".UserSA").click(function(){
-        if($(".UserAe").prop("checked")){
-            $(".UserAe").removeAttr("checked");
+    $(".SelectAll").click(function(){
+        if($(".Anti-election").prop("checked")){
+            $(".Anti-election").removeAttr("checked");
         }
-        if($(".UserSA").prop("checked")){
-            $("input[name='userCheckbox']").prop("checked",true);
+        if($(".SelectAll").prop("checked")){
+            $("input[name='checkbox']").prop("checked",true);
         }
         else{
-            $("input[name='userCheckbox']").removeAttr("checked");
+            $("input[name='checkbox']").removeAttr("checked");
         }
     })
-    $(".UserAe").click(function(){
-        if($(".UserSA").prop("checked")){
-            $(".UserSA").removeAttr("checked");
+    $(".Anti-election").click(function(){
+        if($(".SelectAll").prop("checked")){
+            $(".SelectAll").removeAttr("checked");
         }
-        if($(".UserAe").prop("checked")){
-            $("input[name='userCheckbox']").each(function () {
+        if($(".Anti-election").prop("checked")){
+            $("input[name='checkbox']").each(function () {
                 if($(this).prop("checked")){
                     $(this).removeAttr("checked")
                 }else{
@@ -54,7 +55,7 @@ $(function(){
             })
         }
         else{
-            $("input[name='userCheckbox']").each(function () {
+            $("input[name='checkbox']").each(function () {
                 if($(this).prop("checked")){
                     $(this).removeAttr("checked")
                 }else{
@@ -169,7 +170,7 @@ $(function(){
 
     $("#Delete-btn").click(function () {
         // alert($('input[name="userCheckbox"]:checked').size());
-        $('input[name="userCheckbox"]:checked').each(function () {
+        $('input[name="checkbox"]:checked').each(function () {
             var id = $(this).parent().parent().attr('id');
             $.ajax({
                 url:"/deleteUserById",
@@ -201,6 +202,8 @@ $(function(){
             },
             success:function () {
                 $('#UserAdd').modal('hide');
+                $('#newNameText').val("");
+                $('#passwordText').val("");
                 $.ajax({
                     url:'/pageCount',
                     success:function (result) {

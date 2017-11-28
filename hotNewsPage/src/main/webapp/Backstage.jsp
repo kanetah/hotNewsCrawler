@@ -26,14 +26,14 @@
     <table class="table table-striped user-info-table">
         <tr>
             <td>
-                <input type="checkbox" name="SelectAll UserSA" id="SelectAll UserSA" class="SelectAll UserSA"/>全选 &nbsp;
-                <input type="checkbox" name="Anti-election UserAe" id="Anti-election UserAe" class="Anti-election UserAe"/>反选
+                <input type="checkbox" name="SelectAll UserSA" id="SelectAll UserSA" class="SelectAll"/>全选 &nbsp;
+                <input type="checkbox" name="Anti-election UserAe" id="Anti-election UserAe" class="Anti-election"/>反选
             </td>
             <td>ID</td>
             <td>Name</td>
         </tr>
         <tr hidden  class="showUserInfo">
-            <td><input type="checkbox"  value="0"  name="userCheckbox"/></td>
+            <td><input type="checkbox"  value="0"  name="checkbox"/></td>
             <td class="userID"></td>
             <td class="userName"></td>
         </tr>
@@ -43,8 +43,8 @@
     <table class="table table-striped">
         <tr>
             <td>
-                <input type="checkbox" name="SelectAll" id="SelectAll" class="SelectAll" value="0"/>全选
-                <input type="checkbox" name="Anti-election" id="Anti-election" class="Anti-election" value="0"/>反选
+                <input type="checkbox" name="SelectAll" id="SelectAll" class="SelectAll" />全选
+                <input type="checkbox" name="Anti-election" id="Anti-election" class="Anti-election" />反选
             </td>
             <td>ID</td>
             <td>Src</td>
@@ -53,7 +53,7 @@
             <td>Type</td>
             <td>Rank</td>
         </tr>
-        <tr>
+        <tr hidden>
             <td><input type="checkbox"  value="0" name="checkbox"/></td>
             <td>ID</td>
             <td>Src</td>
