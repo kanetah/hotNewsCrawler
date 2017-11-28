@@ -15,6 +15,7 @@ public class BackstageServiceImpl implements BackstageService {
 
     @Resource
     private UserDAO userDAO;
+    private int pageSize = 10;
 
     public List<UserDTO> getAllUsers() {
         List<UserDTO> userDTOs = new ArrayList<UserDTO>();
@@ -29,28 +30,19 @@ public class BackstageServiceImpl implements BackstageService {
     }
 
     public boolean updateUserInfo(int id, String name){
-        User auser = new User(id, name);
-        int result = userDAO.updateUser(auser);
-        if(result != 0){
-            return true;
-        }
-        return false;
+        User user = userDAO.findUserById(id);
+        user.setName(name);
+        return userDAO.updateUser(user) > 0;
     }
 
     public boolean deleteUserByName(String name) {
         int result = userDAO.deleteUserByName(name);
-        if (result != 0){
-            return true;
-        }
-        return false;
+        return result != 0;
     }
 
     public boolean deleteAllUsers(){
         int result = userDAO.deleteAllUser();
-        if (result != 0){
-            return true;
-        }
-        return false;
+        return result != 0;
     }
 
     public boolean insertUser(String name, String password){
@@ -62,4 +54,46 @@ public class BackstageServiceImpl implements BackstageService {
         return false;
     }
 
+    public UserDTO searchUpdatedUser(int id) {
+       User user = userDAO.findUserById(id);//userDTOs类型与userDao.findAllUser所返回类型不相同
+        UserDTO userDTO = new UserDTO(user.getId(), user.getName());
+        return userDTO;
+    }
+
+    public List<UserDTO> pagination(int pageCode) {
+        List<UserDTO> userDTOS = getAllUsers();
+        List<UserDTO> userDTOList = new ArrayList<UserDTO>();
+        int count = 0;
+//        if(pageCode == 1){
+            for(UserDTO userDTO:userDTOS){
+                if (pageCode == 1){
+                    if (count < 10){
+                        userDTOList.add(count,new UserDTO(userDTO.getId(), userDTO.getUsername()));
+                        count++;
+                    }else{
+                        break;
+                    }
+                }else if(pageCode > 1){
+                    int increment = (pageCode-1)*pageSize;
+                    if (count < 10){
+                        userDTOList.add(count+increment,new UserDTO(userDTO.getId(), userDTO.getUsername()));
+                        count++;
+                    }else{
+                        break;
+                    }
+                }
+            }
+//        }
+        return userDTOList;
+    }
+
+    public int pageCount() {
+        List<UserDTO> userDTOS = getAllUsers();
+        double count = userDTOS.size() / pageSize;
+        int pageCount=0;
+        if(String.valueOf(count).contains(".")){
+            pageCount = (int)count + 1;
+        }
+        return pageCount;
+    }
 }

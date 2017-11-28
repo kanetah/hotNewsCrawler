@@ -23,7 +23,7 @@
     </ul>
 </nav>
 <div class="user-info">
-    <table class="table table-striped"x>
+    <table class="table table-striped user-info-table">
         <tr>
             <td>
                 <input type="checkbox" name="SelectAll UserSA" id="SelectAll UserSA" class="SelectAll UserSA"/>全选 &nbsp;
@@ -32,7 +32,7 @@
             <td>ID</td>
             <td>Name</td>
         </tr>
-        <tr hidden  id="showUserInfo" data-toggle="modal" data-target="#UserEditor">
+        <tr hidden  class="showUserInfo">
             <td><input type="checkbox"  value="0"  name="userCheckbox"/></td>
             <td class="userID"></td>
             <td class="userName"></td>
@@ -86,10 +86,10 @@
     <input type="button" name="Delete-btn" id="Delete-btn" class="btn btn-danger" value="删除"/>
     <input type="button" name="Add-btn" id="Add-btn" class="btn btn-default" value="添加" />
     <ul class="pagination">
-        <li><a href="#">&laquo;</a></li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">&raquo;</a></li>
+        <li id="previous"><a href="#">&laquo;</a></li>
+        <li class="active" id="1"><a href="#">1</a></li>
+        <%--<li><a href="#">2</a></li>--%>
+        <li id="next"><a href="#">&raquo;</a></li>
     </ul>
 </div>
 
@@ -105,7 +105,7 @@
                 <label>用户名:</label><input type="text" value="11" id="userNameText"/>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-submit">提交</button>
+                <button type="button" class="btn btn-submit" id="updateUserBtn">提交</button>
             </div>
         </div>
     </div>

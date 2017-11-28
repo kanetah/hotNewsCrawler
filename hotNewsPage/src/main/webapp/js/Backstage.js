@@ -66,26 +66,98 @@ $(function(){
     })
 
 
-    $("#showUserInfo").click(function(){
-        var currenTd = $(this).find("td")
-        var id=currenTd[1].innerHTML;
-        var username=currenTd[2].innerHTML;
+    $(".showUserInfo").dblclick(function(){
+        var currentTd = $(this).find("td")
+        var id=currentTd[1].innerHTML;
+        var username=currentTd[2].innerHTML;
+
+        $("#UserEditor").modal("show")
 
         $("#IDText").val(id)
         $("#userNameText").val(username)
     })
 
+    $("#updateUserBtn").click(function () {
+        var id = $("#IDText").val()
+        var name = $("#userNameText").val()
+
+        $.ajax({
+            url: '/updateUserInfo',
+            data: {
+                id: id,
+                name: name
+            },
+            success: function () {
+                $('#UserEditor').modal('hide')
+                $('#'+id).find('.userName').html(name)
+            },
+            error:function () {
+                alert("error")
+            }
+        })
+    })
+
+    var pageCode = 1;
+    var show = function () {
+        var items = [];
+        var showInfo = $('.showUserInfo');
+        $.ajax({
+            url:"/pagination",
+            data:{
+                pageCode:pageCode
+            },
+            success:function (result) {
+                $('items').each(function (index,elem) {
+                    elem.remove();
+                })
+                items=[];
+                $.each(result, function (idx,elem) {
+                    var node = $(showInfo).clone(true);
+                    node.find('.userID').html(elem.id);
+                    node.find('.userName').html(elem.username);
+                    node.attr("id",elem.id)
+                    $(node).attr('hidden',false);
+                    items.push(node);
+                    node.insertBefore(showInfo);
+                })
+            }
+        })
+    }
+
+    show(pageCode);
+
+    var count = 2;
     $.ajax({
+        url:"/pageCount",
+        success:function (result) {
+            for (var i = 1; i < result; i++){
+                $(".pagination > li:last-child").before('<li id="'+count+'"><a href="#">'+count+'</a></li>');
+                count++;
+            }
+            $(".pagination li a").click(function () {
+                pageCode = $(this).parent().attr('id');
+                alert(pageCode)
+                show(pageCode);
+            })
+        }
+    })
+
+    /*$.ajax({
 		url:"/getAllUsers",
 		success: function (result) {
-            var showInfo = $('#showUserInfo');
+            var showInfo = $('.showUserInfo');
             $.each(result, function (idx,elem) {
                 var node = $(showInfo).clone(true);
                 node.find('.userID').html(elem.id);
                 node.find('.userName').html(elem.username);
+                node.attr("id",elem.id)
                 $(node).attr('hidden',false);
                 node.insertBefore(showInfo);
             })
         }
-	})
+	})*/
+
+    // $("#Delete-btn").click(function () {
+    //
+    // })
 })

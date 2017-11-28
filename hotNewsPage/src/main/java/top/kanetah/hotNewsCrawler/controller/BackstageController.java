@@ -1,9 +1,7 @@
 package top.kanetah.hotNewsCrawler.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import top.kanetah.hotNewsCrawler.dto.UserDTO;
 import top.kanetah.hotNewsCrawler.service.BackstageService;
 
@@ -30,16 +28,16 @@ public class BackstageController {
     @RequestMapping("/updateUserInfo")
     @ResponseBody
     public String updateUserInfo(
-            @RequestParam int id,
+            @RequestParam String id,
             @RequestParam String name
     ){
-            return backstageService.updateUserInfo(id, name)? "success" : "fail";
+            return backstageService.updateUserInfo(Integer.valueOf(id), name)? "success" : "fail";
     }
 
-    @RequestMapping("/deleteUserByName")
+    @RequestMapping("/{name}/deleteUserByName")
     @ResponseBody
     public String deleteUserByName(
-            @RequestParam String name
+            @PathVariable String name
     ){
                 return backstageService.deleteUserByName(name)? "success" : "fail";
     }
@@ -58,5 +56,28 @@ public class BackstageController {
     ){
 
         return backstageService.insertUser(name, password)? "success" : "fail";
+    }
+
+    @RequestMapping("/searchUpdatedUser")
+    @ResponseBody
+    public UserDTO searchUpdatedUser(
+            @RequestParam String id
+    ){
+            return backstageService.searchUpdatedUser(Integer.valueOf(id));
+    }
+
+
+    @RequestMapping("/pagination")
+    @ResponseBody
+    public List<UserDTO> pagination(
+           @RequestParam int pageCode
+    ){
+                return backstageService.pagination(pageCode);
+    }
+
+    @RequestMapping("/pageCount")
+    @ResponseBody
+    public int pageCount(){
+                return backstageService.pageCount();
     }
 }
