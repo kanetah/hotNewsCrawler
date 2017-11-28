@@ -38,7 +38,7 @@
                     </a>
                     <a id="logout_button">注销</a>
                 </li>
-                <li class="home"><a href="#">Home</a></li>
+                <li class="home"><a href="">首页</a></li>
                 <li><a href="/about">About</a></li>
                 <li><a href="/contact">Contact</a></li>
             </ul>
@@ -55,6 +55,8 @@
         <hr>
         <div class="content" id="content"></div>
     </div>
+    <hr>
+    <h3 style="margin-left: 100px">评论区</h3>
     <div id="editor-div">
         <input type="button" class="btn btn-primary btn-sm" id="comment" value="发布评论">
         <div id="editor"></div>
@@ -62,9 +64,14 @@
 </div>
 <div class="container">
     <div class="comment" id="comment_template" hidden="hidden">
-        <div class="comment_user"></div>
-        <div class="comment_time"></div>
-        <div class="comment_content"></div>
+        <hr>
+        <div>
+            <div class="comment_info">
+                <div class="comment_user"></div>
+                <div class="comment_time"></div>
+            </div>
+            <div class="comment_content"></div>
+        </div>
     </div>
 </div>
 <footer id="fh5co-footer">
@@ -90,7 +97,9 @@
     <div class="modal-dialog login animated">
         <div class="modal-content" id="loginContent">
             <div class="modal-header">
-                <button id="loginModalClose" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <button id="loginModalClose" type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
                 <h4 class="modal-title">登陆</h4>
             </div>
             <div class="modal-body">

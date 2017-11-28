@@ -40,13 +40,14 @@
 
 <div id="fh5co-offcanvass">
     <a href="#" class="fh5co-offcanvass-close js-fh5co-offcanvass-close">Menu <i class="icon-cross"></i> </a>
-    <h1 class="fh5co-logo"><a class="navbar-brand" href="index.jsp">热点新闻</a></h1>
+    <h1 class="fh5co-logo"><a id="name" class="navbar-brand" href="index.jsp">热点新闻</a></h1>
     <ul>
         <li class="active"><a href="index.jsp">主页</a></li>
         <li>
             <a id="openLoginModal" data-toggle="modal" href="javascript:void(0)">
                 登陆
             </a>
+            <a id="logout_button">注销</a>
         </li>
         <li><a href="filter">过滤</a></li>
         <li><a href="about">关于</a></li>

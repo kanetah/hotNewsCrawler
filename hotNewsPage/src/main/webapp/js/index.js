@@ -108,7 +108,7 @@
 
         $(window).scroll(function () {
             var scrollBottom = $(document).height() - $(window).height() - $(window).scrollTop();
-            if (scrollBottom < 2500)
+            if (scrollBottom/$(document).height() < .15)
                 lazyLoad();
         });
     });

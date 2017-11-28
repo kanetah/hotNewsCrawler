@@ -32,6 +32,7 @@ $(function () {
                     node.find('.comment_time').html(elem.time);
                     node.find('.comment_content').html(elem.content);
                     $(node).attr('hidden', false);
+                    $(node).attr('id', null);
                     items.push(node);
                     node.insertAfter(template);
                 })
@@ -42,7 +43,9 @@ $(function () {
 
     $.setName();
 
-    $('#comment').click(function () {
+    var comment_btn = $('#comment');
+    $(comment_btn).trigger('focus');
+    $(comment_btn).click(function () {
         $.ajax({
             url: '/user/leaveComment',
             type: 'POST',
