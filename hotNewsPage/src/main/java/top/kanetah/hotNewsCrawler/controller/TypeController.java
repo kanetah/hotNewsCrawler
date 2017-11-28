@@ -30,6 +30,8 @@ public class TypeController {
     public List<Integer> getTopTypeNews(
             @RequestParam String type
     ) {
+        if (type.equals("全部"))
+            return newsService.getTopNewsId();
         return newsService.getTopNewsIdByType(type);
     }
 }

@@ -94,11 +94,41 @@
 
                 $(node).attr('id', '');
                 $(node).attr('hidden', false);
+                $(node).addClass('all_news_items');
                 node.insertBefore(template);
                 salvattore.appendElements(grid, [node[0]]);
             }
         })
     };
+
+    $.ajax({
+        url: '/news/types',
+        success: function (result) {
+            var list = $('#types_list');
+            $.each(result, function (idx, elem) {
+                list.append('<li>' + elem + '</li>')
+            });
+
+            list.find('> li').click(function () {
+                var type = $(this).html();
+                $.ajax({
+                    url: '/news/topTypeNews',
+                    data: {
+                        type: type
+                    },
+                    success: function (result) {
+                        news_index = [];
+                        $.each($('.all_news_items'),function (idx, elem) {
+                            elem.remove();
+                        });
+                        news_index = result;
+                        for (var i = 0; i < 15; ++i)
+                            lazyLoad();
+                    }
+                })
+            });
+        }
+    });
 
     $(function () {
         doAjax();
@@ -108,7 +138,7 @@
 
         $(window).scroll(function () {
             var scrollBottom = $(document).height() - $(window).height() - $(window).scrollTop();
-            if (scrollBottom/$(document).height() < .15)
+            if (scrollBottom / $(document).height() < .25)
                 lazyLoad();
         });
     });

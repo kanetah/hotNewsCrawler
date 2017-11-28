@@ -42,7 +42,7 @@ def do():
                 match_time = re.search('\d{4}年\d{2}月\d{2}日\s*\d{2}:\d{2}', time_source).group(0)
                 match_time = match_time.replace(" ", "")
                 news_time = datetime.strptime(match_time, '%Y年%m月%d日%H:%M')  # !important
-                type_select = ".article-a__sourcename, .time-source > span, #media_name, .ent-source"
+                type_select = ".source, .article-a__sourcename, .time-source > span, #media_name, .ent-source"
                 news_type = news_soup.select(type_select)[0].text.strip()  # !important
                 comments = None
                 for meta in news_soup.select("[name='sudameta']"):

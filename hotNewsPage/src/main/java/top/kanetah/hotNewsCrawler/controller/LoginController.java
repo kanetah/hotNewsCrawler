@@ -39,11 +39,15 @@ public class LoginController {
 
     @RequestMapping("/logout")
     @ResponseBody
-    public String logout(
-            @RequestParam String name
+    public void logout(
+            @RequestParam String name,
+            HttpServletResponse response
     ) {
-        return loginService.logout(name) ?
-                "success" : "fail";
+        if(!loginService.logout(name))
+            return;
+        Cookie cookie = new Cookie("name", "");
+        cookie.setPath("/");
+        response.addCookie(cookie);
     }
 
     @RequestMapping("/register")

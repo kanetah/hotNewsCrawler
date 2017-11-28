@@ -48,21 +48,21 @@ $(function () {
     $('#logout_button').hide();
     $.setName = function () {
         var name = $.cookie('name');
-        if (undefined !== name) {
+        if (undefined !== name && 0 !== name.length) {
             $('#name').html(name);
             $('#openLoginModal').fadeOut();
             $('#logout_button').fadeIn();
-        }
-        else {
+        } else {
             $('#name').html('未登陆');
             $('#openLoginModal').fadeIn();
             $('#logout_button').fadeOut();
         }
     };
+    $.setName();
     var login_form = $('.loginBox')[0];
     var login_name = $(login_form).find('[name="name"]');
     var login_password = $(login_form).find('[name="password"]');
-    $('#login_button').click(function loginAjax() {
+    $('#login_button').click(function () {
         $.ajax({
             type: 'POST',
             url: '/login',
@@ -70,12 +70,24 @@ $(function () {
                 name: login_name.val(),
                 password: login_password.val()
             },
-            success: function (result) {
+            success: function () {
                 $('#loginModalClose').trigger('click');
                 $.setName();
             },
             error: function (xhr) {
                 alert(xhr.responseJSON);
+            }
+        })
+    });
+
+    $('#logout_button').click(function () {
+        $.ajax({
+            url: '/logout',
+            data: {
+                name: $.cookie('name')
+            },
+            success: function () {
+                $.setName()
             }
         })
     });
@@ -92,10 +104,10 @@ $(function () {
                 name: register_name.val(),
                 password: register_password.val()
             },
-            beforeSend: function (xhr) {
+            beforeSend: function () {
                 return password_confirmation.val() === register_password.val();
             },
-            success: function (result) {
+            success: function () {
                 showLoginForm();
             }
         })
