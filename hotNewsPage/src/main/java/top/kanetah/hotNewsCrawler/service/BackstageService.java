@@ -10,15 +10,14 @@ public interface BackstageService {
 
     boolean updateUserInfo(int id, String name);
 
-    boolean deleteUserByName(String name);
+    boolean deleteUserById(int id);
 
     boolean deleteAllUsers();
 
     boolean insertUser(String name, String password);
 
-    UserDTO searchUpdatedUser(int id);
-
-    List<UserDTO> pagination(int pageCode);
+    List<UserDTO> pagination(int pageCode, String addr);
 
     int pageCount();
+
 }

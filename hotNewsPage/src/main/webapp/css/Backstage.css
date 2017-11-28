@@ -6,7 +6,7 @@ nav:first-of-type{
 .table{
 	min-width: 800px;
 }
-#showUserInfo:hover{
+.showUserInfo:hover{
 	background-color: gainsboro;
 }
 td:first-child{
@@ -37,13 +37,13 @@ td{
 .pagination{
 	margin: 0px;
 }
-#UserEditor .modal-dialog{
-	min-width: 405px;
-	max-width: 410px;
+#UserEditor .modal-dialog, #UserAdd .modal-dialog{
+	min-width: 425px;
+	max-width: 430px;
 }
-#UserEditor .modal-body{
-	min-width: 405px;
+#UserEditor .modal-body, #UserAdd .modal-body{
+	min-width: 425px;
 }
-#UserEditor .btn-submit{
+#UserEditor .btn-submit, #UserAdd .btn-submit{
 	width: 100px;
 }

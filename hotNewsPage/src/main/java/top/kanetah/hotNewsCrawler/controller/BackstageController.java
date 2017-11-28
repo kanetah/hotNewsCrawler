@@ -6,6 +6,7 @@ import top.kanetah.hotNewsCrawler.dto.UserDTO;
 import top.kanetah.hotNewsCrawler.service.BackstageService;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller("backstageController")
@@ -15,13 +16,13 @@ public class BackstageController {
     private BackstageService backstageService;
 
     @RequestMapping("/back")
-    public String backstagePage(){
+    public String backstagePage() {
         return "Backstage";
     }
 
     @RequestMapping("/getAllUsers")
     @ResponseBody
-    public List<UserDTO> getAllUsers(){
+    public List<UserDTO> getAllUsers() {
         return backstageService.getAllUsers();
     }
 
@@ -30,54 +31,47 @@ public class BackstageController {
     public String updateUserInfo(
             @RequestParam String id,
             @RequestParam String name
-    ){
-            return backstageService.updateUserInfo(Integer.valueOf(id), name)? "success" : "fail";
+    ) {
+        return backstageService.updateUserInfo(Integer.valueOf(id), name) ? "success" : "fail";
     }
 
-    @RequestMapping("/{name}/deleteUserByName")
+    @RequestMapping("/deleteUserById")
     @ResponseBody
-    public String deleteUserByName(
-            @PathVariable String name
-    ){
-                return backstageService.deleteUserByName(name)? "success" : "fail";
+    public String deleteUserById(
+            @RequestParam String id
+    ) {
+        return backstageService.deleteUserById(Integer.valueOf(id)) ? "success" : "fail";
     }
 
     @RequestMapping("/deleteAllUsers")
     @ResponseBody
-    public String deleteAllUsers(){
-        return backstageService.deleteAllUsers()? "success" : "fail";
+    public String deleteAllUsers() {
+        return backstageService.deleteAllUsers() ? "success" : "fail";
     }
 
-    @RequestMapping("/insertUsers")
+    @RequestMapping("/insertUser")
     @ResponseBody
     public String insertUser(
             @RequestParam String name,
             @RequestParam String password
-    ){
+    ) {
 
-        return backstageService.insertUser(name, password)? "success" : "fail";
+        return backstageService.insertUser(name, password) ? "success" : "fail";
     }
-
-    @RequestMapping("/searchUpdatedUser")
-    @ResponseBody
-    public UserDTO searchUpdatedUser(
-            @RequestParam String id
-    ){
-            return backstageService.searchUpdatedUser(Integer.valueOf(id));
-    }
-
 
     @RequestMapping("/pagination")
     @ResponseBody
     public List<UserDTO> pagination(
-           @RequestParam int pageCode
-    ){
-                return backstageService.pagination(pageCode);
+            @RequestParam int pageCode, HttpServletRequest request
+    ) {
+        String addr = request.getLocalAddr();
+        return backstageService.pagination(pageCode, addr);
     }
 
     @RequestMapping("/pageCount")
     @ResponseBody
-    public int pageCount(){
-                return backstageService.pageCount();
+    public int pageCount() {
+        return backstageService.pageCount();
     }
+
 }

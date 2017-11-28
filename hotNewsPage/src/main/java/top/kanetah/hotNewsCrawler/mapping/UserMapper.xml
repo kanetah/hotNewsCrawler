@@ -18,10 +18,10 @@
         <include refid="delete_user"/>
     </delete>
 
-    <delete id="deleteUserByName">
+    <delete id="deleteUserById">
         <include refid="delete_user"/>
         <where>
-            name = #{name}
+            id = #{id}
         </where>
     </delete>
 
