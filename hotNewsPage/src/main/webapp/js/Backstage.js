@@ -54,7 +54,6 @@ $(function(){
             })
         }
         else{
-            alert("AeIsnotChecked")
             $("input[name='userCheckbox']").each(function () {
                 if($(this).prop("checked")){
                     $(this).removeAttr("checked")
@@ -97,9 +96,9 @@ $(function(){
         })
     })
 
-    var pageCode = 1;
-    var show = function () {
-        var items = [];
+    var pageCode;
+    var items = [];
+    var show = function (pageCode) {
         var showInfo = $('.showUserInfo');
         $.ajax({
             url:"/pagination",
@@ -107,57 +106,117 @@ $(function(){
                 pageCode:pageCode
             },
             success:function (result) {
-                $('items').each(function (index,elem) {
+                $.each(items, function (index,elem) {
                     elem.remove();
-                })
+                });
                 items=[];
                 $.each(result, function (idx,elem) {
                     var node = $(showInfo).clone(true);
                     node.find('.userID').html(elem.id);
                     node.find('.userName').html(elem.username);
                     node.attr("id",elem.id)
+                    node.removeClass('showUserInfo')
                     $(node).attr('hidden',false);
                     items.push(node);
                     node.insertBefore(showInfo);
                 })
+            },
+            error: function () {
+                alert('error')
             }
         })
     }
 
-    show(pageCode);
+    show(1);
 
-    var count = 2;
+    var count = 1;
     $.ajax({
         url:"/pageCount",
         success:function (result) {
-            for (var i = 1; i < result; i++){
-                $(".pagination > li:last-child").before('<li id="'+count+'"><a href="#">'+count+'</a></li>');
+            for (var i = 0; i < result; i++){
+                $(".pagination > li:last-child").before('<li id="li_'+count+'"><a href="javascript:void(0)">'+count+'</a></li>');
                 count++;
             }
+            $('#li_1').addClass('active');
             $(".pagination li a").click(function () {
-                pageCode = $(this).parent().attr('id');
-                alert(pageCode)
-                show(pageCode);
+                var id = $(this).parent().attr('id');
+                if(id === "previous"){
+                    if (pageCode > 1){
+                        pageCode = Number(pageCode)-1;
+                        show(pageCode);
+                        $('.pagination li').removeClass('active');
+                        $('#li_'+ pageCode).addClass('active');
+                    }
+                }
+                else if (id === "next"){
+                    if (pageCode < (result)){
+                        pageCode = Number(pageCode)+1;
+                        show(pageCode);
+                        $('.pagination li').removeClass('active');
+                        $('#li_'+ pageCode).addClass('active');
+                    }
+                }
+                else{
+                    pageCode = id.substring(3,id.length+1);
+                    $('.pagination li').removeClass('active');
+                    $(this).parent().addClass('active');
+                    show(pageCode)
+                }
+
             })
         }
     })
 
-    /*$.ajax({
-		url:"/getAllUsers",
-		success: function (result) {
-            var showInfo = $('.showUserInfo');
-            $.each(result, function (idx,elem) {
-                var node = $(showInfo).clone(true);
-                node.find('.userID').html(elem.id);
-                node.find('.userName').html(elem.username);
-                node.attr("id",elem.id)
-                $(node).attr('hidden',false);
-                node.insertBefore(showInfo);
+    $("#Delete-btn").click(function () {
+        // alert($('input[name="userCheckbox"]:checked').size());
+        $('input[name="userCheckbox"]:checked').each(function () {
+            var id = $(this).parent().parent().attr('id');
+            $.ajax({
+                url:"/deleteUserById",
+                data:{
+                    id:id
+                },
+                success:function () {
+                    $('#'+ id).remove();
+                },
+                error:function () {
+                    alert("delete error");
+                }
             })
-        }
-	})*/
+        })
+    })
 
-    // $("#Delete-btn").click(function () {
-    //
-    // })
+    $('#Add-btn').click(function () {
+        $('#UserAdd').modal('show')
+    });
+    $('#AddUserBtn').click(function () {
+        // newNameText  passwordText
+        var newName = $('#newNameText').val();
+        var password = $('#passwordText').val();
+        $.ajax({
+            url:"/insertUser",
+            data:{
+                name:newName,
+                password:password
+            },
+            success:function () {
+                $('#UserAdd').modal('hide');
+                $.ajax({
+                    url:'/pageCount',
+                    success:function (result) {
+                        if(pageCode !== result){
+                            show(result);
+                            $('.pagination li').removeClass('active');
+                            $('#li_'+result).attr('class','active');
+                        }else {
+                            show(result);
+                        }
+                    }
+                })
+            },
+            error:function () {
+                alert("error")
+            }
+        })
+    })
 })

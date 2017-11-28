@@ -28,12 +28,12 @@ public interface UserDAO {
     int deleteAllUser();
 
     /**
-     * 依照用户名删除用户
+     * 依照用户ID删除用户
      *
-     * @param name 用户名
+     * @param  id id
      * @return 被影响的总行数
      */
-    int deleteUserByName(String name);
+    int deleteUserById(int id);
 
     /**
      * 修改一个用户

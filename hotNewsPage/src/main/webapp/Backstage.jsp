@@ -86,10 +86,10 @@
     <input type="button" name="Delete-btn" id="Delete-btn" class="btn btn-danger" value="删除"/>
     <input type="button" name="Add-btn" id="Add-btn" class="btn btn-default" value="添加" />
     <ul class="pagination">
-        <li id="previous"><a href="#">&laquo;</a></li>
-        <li class="active" id="1"><a href="#">1</a></li>
+        <li id="previous"><a href="javascript:void(0)">&laquo;</a></li>
+        <%--<li class="active" id="li_1"><a href="javascript:void(0)">1</a></li>--%>
         <%--<li><a href="#">2</a></li>--%>
-        <li id="next"><a href="#">&raquo;</a></li>
+        <li id="next"><a href="javascript:void(0)">&raquo;</a></li>
     </ul>
 </div>
 
@@ -101,11 +101,29 @@
                 <h4>用户编辑</h4>
             </div>
             <div class="modal-body">
-                <label>ID:</label><input type="text" readonly="readonly" value="1" id="IDText"/>
-                <label>用户名:</label><input type="text" value="11" id="userNameText"/>
+                <label>ID:</label><input type="text" readonly="readonly" id="IDText"/>
+                <label>用户名:</label><input type="text" id="userNameText"/>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-submit" id="updateUserBtn">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" id="UserAdd" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>用户编辑</h4>
+            </div>
+            <div class="modal-body">
+                <%--<label>ID:</label><input type="text" readonly="readonly" value="1" id="newIDText"/>--%>
+                <label>用户名:</label><input type="text"  id="newNameText" value=""/>
+                <label>密码:</label><input type="password" id="passwordText"/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-submit" id="AddUserBtn">提交</button>
             </div>
         </div>
     </div>
