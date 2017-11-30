@@ -38,6 +38,15 @@ public class NewsIndexDTO {
             this.imgSrc = null;
     }
 
+    public NewsIndexDTO(int id, String src, String title, Date date, String type, int rank) {
+        this.id = id;
+        this.src = src;
+        this.title = title;
+        this.date = date;
+        this.type = type;
+        this.rank = rank;
+    }
+
     public void setImgSrc(String imgSrc) {
         this.imgSrc = imgSrc;
     }

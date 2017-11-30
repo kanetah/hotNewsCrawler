@@ -6,7 +6,7 @@ nav:first-of-type{
 .table{
 	min-width: 800px;
 }
-.showUserInfo:hover{
+td:hover{
 	background-color: gainsboro;
 }
 td:first-child{
@@ -16,7 +16,6 @@ td:first-child{
 }
 td{
 	text-align: center;
-	/*background-color: g;*/
 }
 .container {
 	width: 1000px;

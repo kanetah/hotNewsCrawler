@@ -17,23 +17,23 @@
 <body>
 <nav>
     <ul class="nav nav-tabs">
-        <li role="presentation" class="active" id="user"><a href="#">用户信息</a></li>
-        <li role="presentation" id="news"><a href="#">新闻信息</a></li>
-        <li role="presentation" id="comment"><a href="#">评论信息</a></li>
+        <li role="presentation" class="active" id="user"><a href="javascript:void(0)">用户信息</a></li>
+        <li role="presentation" id="news"><a href="javascript:void(0)">新闻信息</a></li>
+        <li role="presentation" id="comment"><a href="javascript:void(0)">评论信息</a></li>
     </ul>
 </nav>
 <div class="user-info">
     <table class="table table-striped user-info-table">
         <tr>
             <td>
-                <input type="checkbox" name="SelectAll UserSA" id="SelectAll UserSA" class="SelectAll"/>全选 &nbsp;
-                <input type="checkbox" name="Anti-election UserAe" id="Anti-election UserAe" class="Anti-election"/>反选
+                <input type="checkbox" name="SelectAll" id="SelectAll_UserSA" class="SelectAll"/>全选 &nbsp;
+                <input type="checkbox" name="Anti-election" id="Anti-election_UserAe" class="Anti-election"/>反选
             </td>
             <td>ID</td>
             <td>Name</td>
         </tr>
         <tr hidden  class="showUserInfo">
-            <td><input type="checkbox"  value="0"  name="checkbox"/></td>
+            <td><input type="checkbox"  name="checkbox"/></td>
             <td class="userID"></td>
             <td class="userName"></td>
         </tr>
@@ -43,24 +43,24 @@
     <table class="table table-striped">
         <tr>
             <td>
-                <input type="checkbox" name="SelectAll" id="SelectAll" class="SelectAll" />全选
-                <input type="checkbox" name="Anti-election" id="Anti-election" class="Anti-election" />反选
+                <input type="checkbox" name="SelectAll" id="SelectAll_NewsSA" class="SelectAll" />全选 &nbsp;
+                <input type="checkbox" name="Anti-election" id="Anti-election_NewsAe" class="Anti-election" />反选
             </td>
             <td>ID</td>
-            <td>Src</td>
             <td>Title</td>
             <td>Date</td>
             <td>Type</td>
             <td>Rank</td>
+            <td>Src</td>
         </tr>
-        <tr hidden>
-            <td><input type="checkbox"  value="0" name="checkbox"/></td>
-            <td>ID</td>
-            <td>Src</td>
-            <td>Title</td>
-            <td>Date</td>
-            <td>Type</td>
-            <td>Rank</td>
+        <tr hidden class="showNewsInfo">
+            <td><input type="checkbox"  name="newsCheckbox"/></td>
+            <td class="newsID"></td>
+            <td class="newsTitle" data-toggle="tooltip" data-placement="bottom" title=""></td>
+            <td class="newsDate"></td>
+            <td class="newsType"></td>
+            <td class="newsRank"></td>
+            <td class="newsSrc"></td>
         </tr>
     </table>
 </div>
@@ -84,6 +84,7 @@
 </div>
 <div class="container">
     <input type="button" name="Delete-btn" id="Delete-btn" class="btn btn-danger" value="删除"/>
+    <input type="button" name="Delete-btn" id="Delete-btn-news" class="btn btn-danger" value="删除"/>
     <input type="button" name="Add-btn" id="Add-btn" class="btn btn-default" value="添加" />
     <ul class="pagination">
         <li id="previous"><a href="javascript:void(0)">&laquo;</a></li>

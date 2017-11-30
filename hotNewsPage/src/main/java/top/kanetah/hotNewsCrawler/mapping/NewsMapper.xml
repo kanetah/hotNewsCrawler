@@ -9,6 +9,13 @@
     <delete id="deleteAllNews">
         <include refid="delete_news"/>
     </delete>
+    
+    <delete id="deleteNewsById">
+        <include refid="delete_news"/>
+        <where>
+            id = #{id}
+        </where>
+    </delete>
 
     <sql id="select_news">
         SELECT
