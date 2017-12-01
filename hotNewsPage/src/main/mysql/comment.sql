@@ -3,9 +3,10 @@ CREATE TABLE comment
 (
   id      INT AUTO_INCREMENT
     PRIMARY KEY,
-  user_id INT  NOT NULL,
-  news_id INT  NOT NULL,
-  content TEXT NOT NULL,
+  user_id INT      NOT NULL,
+  news_id INT      NOT NULL,
+  content TEXT     NOT NULL,
+  time    DATETIME NULL,
   CONSTRAINT user_foreign
   FOREIGN KEY (user_id) REFERENCES user (id)
     ON UPDATE CASCADE

@@ -1,8 +1,10 @@
 package top.kanetah.hotNewsCrawler.service;
 
 import top.kanetah.hotNewsCrawler.dao.NewsDAO;
+import top.kanetah.hotNewsCrawler.dto.CommentDTO;
 import top.kanetah.hotNewsCrawler.dto.NewsIndexDTO;
 import top.kanetah.hotNewsCrawler.dto.UserDTO;
+import top.kanetah.hotNewsCrawler.model.Comment;
 
 import java.util.List;
 
@@ -39,5 +41,11 @@ public interface BackstageService {
     /*
      * comment
      */
+    List<CommentDTO> findAllComments();
 
+    int commentPageCount();
+
+    List<CommentDTO> commentPagination(int pageCode, String addr);
+
+    boolean deleteCommentByUserAndNewsId(int userId, int newsId);
 }

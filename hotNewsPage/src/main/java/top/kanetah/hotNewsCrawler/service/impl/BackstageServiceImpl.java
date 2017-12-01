@@ -1,10 +1,13 @@
 package top.kanetah.hotNewsCrawler.service.impl;
 
 import org.springframework.stereotype.Service;
+import top.kanetah.hotNewsCrawler.dao.CommentDAO;
 import top.kanetah.hotNewsCrawler.dao.NewsDAO;
 import top.kanetah.hotNewsCrawler.dao.UserDAO;
+import top.kanetah.hotNewsCrawler.dto.CommentDTO;
 import top.kanetah.hotNewsCrawler.dto.NewsIndexDTO;
 import top.kanetah.hotNewsCrawler.dto.UserDTO;
+import top.kanetah.hotNewsCrawler.model.Comment;
 import top.kanetah.hotNewsCrawler.model.News;
 import top.kanetah.hotNewsCrawler.model.User;
 import top.kanetah.hotNewsCrawler.service.BackstageService;
@@ -23,10 +26,15 @@ public class BackstageServiceImpl implements BackstageService {
     @Resource
     private NewsDAO newsDAO;
 
+    @Resource
+    private CommentDAO commentDAO;
+
     final private int UserPageSize = 20;
     final private int NewsPageSize = 80;
+    final private int CommentPageSize = 2;
     private HashMap<String, List<UserDTO>> userMap = new HashMap<String, List<UserDTO>>();
     private HashMap<String, List<NewsIndexDTO>> newsMap = new HashMap<String, List<NewsIndexDTO>>();
+    private HashMap<String, List<CommentDTO>> commentMap = new HashMap<String, List<CommentDTO>>();
 
 
     public List<UserDTO> getAllUsers() {
@@ -125,8 +133,7 @@ public class BackstageServiceImpl implements BackstageService {
     }
     public List<NewsIndexDTO> newsPagination(int pageCode, String addr) {
 
-//        if(pageCode == 1 || pageCode == newsPageCount())
-            newsMap.put(addr, getAllNews());
+        newsMap.put(addr, getAllNews());
         List<NewsIndexDTO> newsIndexDTOS = newsMap.get(addr);
         List<NewsIndexDTO> newsIndexDTOList = new ArrayList<NewsIndexDTO>();
         int from = (pageCode - 1) * NewsPageSize;
@@ -143,5 +150,57 @@ public class BackstageServiceImpl implements BackstageService {
     public boolean deleteNewsById(int id){
         int result = newsDAO.deleteNewsById(id);
         return result!= 0;
+    }
+
+    public List<CommentDTO> findAllComments() {
+        List<Comment> comments = commentDAO.findAllComments();
+        List<CommentDTO> commentDTOS = new ArrayList<CommentDTO>();
+        for(Comment comment:comments){
+            commentDTOS.add(new CommentDTO(
+                    comment.getId(),
+                    String.valueOf(comment.getUserId()),
+                    String.valueOf(comment.getNewsId()),
+                    comment.getContent(),
+                    String.valueOf(comment.getTime())
+            ));
+        }
+        return commentDTOS;
+    }
+
+    public int commentPageCount() {
+        List<CommentDTO> commentDTOS = findAllComments();
+        int rest = commentDTOS.size() % CommentPageSize;
+        int count = commentDTOS.size() / CommentPageSize;
+        int pageCount;
+        if (rest == 0){
+            pageCount = count;
+        }
+        else{
+            pageCount = count + 1;
+        }
+
+        return pageCount;
+    }
+
+    public List<CommentDTO> commentPagination(int pageCode, String addr) {
+
+        commentMap.put(addr, findAllComments());
+        List<CommentDTO> commentDTOS = commentMap.get(addr);
+        List<CommentDTO> commentDTOList = new ArrayList<CommentDTO>();
+        int from = (pageCode - 1) * CommentPageSize;
+        for (int i = from; i < from + CommentPageSize; ++i) {
+            try {
+                commentDTOList.add(commentDTOS.get(i));
+            } catch (IndexOutOfBoundsException e) {
+                break;
+            }
+        }
+        return commentDTOList;
+    }
+
+    public boolean deleteCommentByUserAndNewsId(int userId, int newsId){
+        int result = commentDAO.deleteCommentByNews_IdAndUser_Id(newsId, userId);
+        System.out.println(result!=0);
+        return result!=0;
     }
 }

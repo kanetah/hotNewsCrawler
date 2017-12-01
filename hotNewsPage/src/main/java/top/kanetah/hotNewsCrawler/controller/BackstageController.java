@@ -2,6 +2,7 @@ package top.kanetah.hotNewsCrawler.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import top.kanetah.hotNewsCrawler.dto.CommentDTO;
 import top.kanetah.hotNewsCrawler.dto.NewsIndexDTO;
 import top.kanetah.hotNewsCrawler.dto.UserDTO;
 import top.kanetah.hotNewsCrawler.service.BackstageService;
@@ -104,5 +105,34 @@ public class BackstageController {
             @RequestParam int id
     ){
         return  backstageService.deleteNewsById(id);
+    }
+
+    @RequestMapping("/findAllComments")
+    @ResponseBody
+    public List<CommentDTO> findAllComments(){
+                return backstageService.findAllComments();
+    }
+
+    @RequestMapping("/commentPageCount")
+    @ResponseBody
+    public int commentPageCount(){
+        return backstageService.commentPageCount();
+    }
+
+    @RequestMapping("/commentPagination")
+    @ResponseBody
+    public List<CommentDTO> commentPagination(
+            @RequestParam int pageCode
+    ){
+        return backstageService.commentPagination(pageCode,"3");
+    }
+
+    @RequestMapping("/deleteComments")
+    @ResponseBody
+    public boolean deleteCommentByUserAndNewsId(
+            @RequestParam int userId,
+            @RequestParam int newsId
+    ){
+                return backstageService.deleteCommentByUserAndNewsId(userId, newsId);
     }
 }

@@ -75,4 +75,10 @@ public interface CommentDAO {
      * @return 找到的所有留言
      */
     List<Comment> findCommentByNews_Id(int newsId);
+
+    /**
+     * 查找所有评论
+     * @return 查找到的所有评论
+     */
+    List<Comment> findAllComments();
 }
