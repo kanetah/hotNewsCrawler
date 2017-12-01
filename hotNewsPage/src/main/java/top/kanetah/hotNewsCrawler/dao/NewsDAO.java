@@ -84,4 +84,11 @@ public interface NewsDAO {
      * @return 所有新闻类型
      */
     List<String> findAllTypes();
+
+    /**
+     * 通过id删除指定新闻
+     * @param id
+     * @return 被影响的行数
+     */
+    int deleteNewsById(int id);
 }

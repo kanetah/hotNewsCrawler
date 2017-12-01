@@ -2,6 +2,7 @@ package top.kanetah.hotNewsCrawler.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import top.kanetah.hotNewsCrawler.dto.NewsIndexDTO;
 import top.kanetah.hotNewsCrawler.dto.UserDTO;
 import top.kanetah.hotNewsCrawler.service.BackstageService;
 
@@ -29,10 +30,10 @@ public class BackstageController {
     @RequestMapping("/updateUserInfo")
     @ResponseBody
     public String updateUserInfo(
-            @RequestParam String id,
+            @RequestParam int id,
             @RequestParam String name
     ) {
-        return backstageService.updateUserInfo(Integer.valueOf(id), name) ? "success" : "fail";
+        return backstageService.updateUserInfo(id, name) ? "success" : "fail";
     }
 
     @RequestMapping("/deleteUserById")
@@ -59,19 +60,49 @@ public class BackstageController {
         return backstageService.insertUser(name, password) ? "success" : "fail";
     }
 
-    @RequestMapping("/pagination")
+    @RequestMapping("/userPagination")
     @ResponseBody
-    public List<UserDTO> pagination(
+    public List<UserDTO> userPagination(
             @RequestParam int pageCode, HttpServletRequest request
     ) {
         String addr = request.getLocalAddr();
-        return backstageService.pagination(pageCode, addr);
+        return backstageService.userPagination(pageCode, addr);
     }
 
-    @RequestMapping("/pageCount")
+    @RequestMapping("/userPageCount")
     @ResponseBody
-    public int pageCount() {
-        return backstageService.pageCount();
+    public int userPageCount() {
+        return backstageService.userPageCount();
     }
 
+
+    @RequestMapping("/newsPagination")
+    @ResponseBody
+    public List<NewsIndexDTO> newsPagination(
+            @RequestParam int pageCode
+//            HttpServletRequest request
+    ) {
+//        String addr = request.getLocalAddr();
+        return backstageService.newsPagination(pageCode,"2");
+    }
+
+    @RequestMapping("/newsPageCount")
+    @ResponseBody
+    public int newsPageCount() {
+        return backstageService.newsPageCount();
+    }
+
+    @RequestMapping("/getAllNews")
+    @ResponseBody
+    public List<NewsIndexDTO> getAllNews(){
+        return backstageService.getAllNews();
+    }
+
+    @RequestMapping("/deleteNewsById")
+    @ResponseBody
+    public boolean deleteNewsById(
+            @RequestParam int id
+    ){
+        return  backstageService.deleteNewsById(id);
+    }
 }

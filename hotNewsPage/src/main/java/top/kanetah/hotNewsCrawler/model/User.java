@@ -14,7 +14,7 @@ public class User {
         this.password = password;
     }
 
-    public User(int id, String name) {
+    /*public User(int id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -23,7 +23,7 @@ public class User {
         this.id = id;
         this.name = name;
         this.password = password;
-    }
+    }*/
 
     public User() {
         super();
