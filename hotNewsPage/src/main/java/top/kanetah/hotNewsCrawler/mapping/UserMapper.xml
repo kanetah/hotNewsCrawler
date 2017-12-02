@@ -19,7 +19,6 @@
     </delete>
 
     <delete id="deleteUserById">
-        DELETE FROM comment WHERE user_id = #{id};
         <include refid="delete_user"/>
         <where>
             id = #{id}
