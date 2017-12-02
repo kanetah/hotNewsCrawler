@@ -20,6 +20,8 @@
         <li role="presentation" class="active" id="user"><a href="javascript:void(0)">用户信息</a></li>
         <li role="presentation" id="news"><a href="javascript:void(0)">新闻信息</a></li>
         <li role="presentation" id="comment"><a href="javascript:void(0)">评论信息</a></li>
+        <li><input type="text" id="SearchText" placeholder="bugjhvu"/></li>
+        <li><input type="button" id="SearchBtn" value="Search"/></li>
     </ul>
 </nav>
 <div class="user-info">
@@ -72,19 +74,22 @@
             <td>UserID</td>
             <td>News_ID</td>
             <td>Content</td>
+            <td>Time</td>
         </tr>
-        <tr>
-            <td><input type="checkbox" value="0"/></td>
-            <td>ID</td>
-            <td>UserID</td>
-            <td>News_ID</td>
-            <td>Content</td>
+        <tr hidden class="showCommentInfo">
+            <td><input type="checkbox" name="commentCheckbox"/></td>
+            <td class="CommentId"></td>
+            <td class="UserId"></td>
+            <td class="NewsId"></td>
+            <td class="CommentContent"></td>
+            <td class="CommentTime"></td>
         </tr>
     </table>
 </div>
 <div class="container">
     <input type="button" name="Delete-btn" id="Delete-btn" class="btn btn-danger" value="删除"/>
     <input type="button" name="Delete-btn" id="Delete-btn-news" class="btn btn-danger" value="删除"/>
+    <input type="button" name="Delete-btn" id="Delete-btn-comment" class="btn btn-danger" value="删除"/>
     <input type="button" name="Add-btn" id="Add-btn" class="btn btn-default" value="添加" />
     <ul class="pagination">
         <li id="previous"><a href="javascript:void(0)">&laquo;</a></li>

@@ -2,6 +2,7 @@ $(function(){
 
 	$("input[type='checkbox']").prop("checked",false);
     $("#Delete-btn-news").hide();
+    $("#Delete-btn-comment").hide();
 
 
     /**
@@ -246,25 +247,6 @@ $(function(){
         }
     });
 
-    $("#Delete-btn-news").click(function () {
-        // alert($('input[name="userCheckbox"]:checked').size());
-        $('input[name="newsCheckbox"]:checked').each(function () {
-            var id = $(this).parent().parent().attr('id');
-            $.ajax({
-                url:"/deleteNewsById",
-                data:{
-                    id:id
-                },
-                success:function () {
-                    $('#'+ id).remove();
-                },
-                error:function () {
-                    alert("delete error");
-                }
-            });
-        })
-    });
-
     var showNews = $('.showNewsInfo')
     var newsList = function (pageCode) {
         $.ajax({
@@ -300,7 +282,7 @@ $(function(){
                 alert("error")
             }
         })
-    }
+    };
 
     var newsPagination = function (count,pageCode) {
         $.ajax({
@@ -341,10 +323,128 @@ $(function(){
                 })
             }
         })
-    }
+    };
+
+    $("#Delete-btn-news").click(function () {
+        // alert($('input[name="userCheckbox"]:checked').size());
+        $('input[name="newsCheckbox"]:checked').each(function () {
+            var id = $(this).parent().parent().attr('id');
+            $.ajax({
+                url:"/deleteNewsById",
+                data:{
+                    id:id
+                },
+                success:function () {
+                    $('#'+ id).remove();
+                },
+                error:function () {
+                    alert("delete error");
+                }
+            });
+        })
+    });
 
 
+    /**
+     * comment
+     */
 
+    var showComment = $(".showCommentInfo");
+    var commentList = function (pageCode) {
+        $.ajax({
+            url:"/commentPagination",
+            data:{
+                pageCode:pageCode
+            },
+            success:function (result) {
+                $.each(items, function (index,elem) {
+                    elem.remove();
+                })
+                items = [];
+                $.each(result, function (index,elem) {
+                    var node = $(showComment).clone(true);
+                    node.find('.CommentId').html(elem.id);
+                    node.find('.UserId').html(elem.userName);
+                    node.find('.NewsId').html(elem.newsTitle);
+                    node.find('.CommentContent').html(elem.content);
+                    node.find('.CommentTime').html(elem.time);
+                    node.attr("id",elem.id);
+                    node.removeClass('showCommentInfo');
+                    $(node).attr('hidden',false);
+                    items.push(node);
+                    node.insertBefore(showComment);
+                })
+            },
+            error:function () {
+                alert("error")
+            }
+        })
+    };
+
+    var commentPagination = function (count,pageCode) {
+        $.ajax({
+            url:"/commentPageCount",
+            success:function (result) {
+                for (var i = 0; i < result; i++){
+                    $(".pagination > li:last-child").before('<li id="li_'+count+'"><a href="javascript:void(0)">'+count+'</a></li>');
+                    count++;
+                }
+                $('#li_1').addClass('active');
+                $(".pagination li a").click(function () {
+                    var id = $(this).parent().attr('id');
+                    if($('#comment').attr('class')==='active'){
+                        if(id === "previous"){
+                            if (pageCode > 1){
+                                pageCode = Number(pageCode)-1;
+                                commentList(pageCode);
+                                $('.pagination li').removeClass('active');
+                                $('#li_'+ pageCode).addClass('active');
+                            }
+                        }
+                        else if (id === "next"){
+                            if (pageCode < (result)){
+                                pageCode = Number(pageCode)+1;
+                                commentList(pageCode);
+                                $('.pagination li').removeClass('active');
+                                $('#li_'+ pageCode).addClass('active');
+                            }
+                        }
+                        else{
+                            pageCode = id.substring(3,id.length+1);
+                            $('.pagination li').removeClass('active');
+                            $(this).parent().addClass('active');
+                            commentList(pageCode)
+                        }
+                    }
+
+                })
+            }
+        })
+    };
+
+    $("#Delete-btn-comment").click(function () {
+        // alert($('input[name="userCheckbox"]:checked').size());
+        $('input[name="commentCheckbox"]:checked').each(function () {
+            var row = $(this).parent().parent();
+            var id = row.attr('id');
+            var userId = row.find('.UserId').html();
+            var newsId = row.find('.NewsId').html();
+            alert(userId + newsId);
+            $.ajax({
+                url:"/deleteComments",
+                data:{
+                    userId:userId,
+                    newsId:newsId
+                },
+                success:function () {
+                    $('#'+ id).remove();
+                },
+                error:function () {
+                    alert("delete error");
+                }
+            });
+        })
+    });
 
 
 
@@ -366,8 +466,7 @@ $(function(){
         $("#Add-btn").show();
         $("#Delete-btn").show();
         $("#Delete-btn-news").hide();
-        showUsers(1);
-        userPage(1,1);
+        $("#Delete-btn-comment").hide();
         $.each($(".pagination li"), function (index, elem) {
             if ($(this).attr('id')!== 'previous'){
                 if ($(this).attr('id')!== 'next'){
@@ -375,7 +474,9 @@ $(function(){
                 }
             }
         })
-    })
+        showUsers(1);
+        userPage(1,1);
+    });
     $("#news").click(function(){
         $("#user").removeClass("active");
         $("#comment").removeClass("active");
@@ -387,13 +488,8 @@ $(function(){
         $("#Add-btn").hide();
         $("#Delete-btn").hide();
         $("#Delete-btn-news").show();
-        // $("#Delete-btn").click();
-        // $("input[type='checkbox']").prop("checked",false);
-        // alert($("input[name = 'SelectAll']").prop("checked"));
-        // $("script[src = './js/Backstage.js']").attr('src','./js/Backstage.js');
+        $("#Delete-btn-comment").hide();
         var pageCode = 1;
-        newsList(pageCode);
-        newsPagination(1,pageCode);
         $.each($(".pagination li"), function (index, elem) {
             if ($(this).attr('id')!== 'previous'){
                 if ($(this).attr('id')!== 'next'){
@@ -401,37 +497,30 @@ $(function(){
                 }
             }
         });
-        /*var showNews = $(".showNewsInfo");
-        $.ajax({
-            url:'/getAllNews',
-            success:function (result) {
-                alert(result.length)
-                $.each(result, function (idx,elem) {
-                    var node = $(showNews).clone(true);
-                    node.find('.newsID').html(elem.id);
-                    node.find('.newsTitle').html(elem.title);
-                    node.find('.newsDate').html(elem.date);
-                    node.find('.newsType').html(elem.type);
-                    node.find('.newsRank').html(elem.rank);
-                    node.find('.newsSrc').html(elem.src);
-                    node.attr("id",elem.id);
-                    node.removeClass('showNewsInfo');
-                    $(node).attr('hidden',false);
-                    node.insertBefore(showNews);
-                });
-            },
-            error:function () {
-                alert("fanews error")
-            }
-        })*/
-    })
+        newsList(pageCode);
+        newsPagination(1,pageCode);
+    });
     $("#comment").click(function(){
         $("#user").removeClass("active")
         $("#comment").addClass("active")
         $("#news").removeClass("active")
 
         $(".user-info").hide()
-        $(".comment-info").show()
         $(".news-info").hide()
+        $(".comment-info").show()
+        $("#Add-btn").hide();
+        $("#Delete-btn").hide();
+        $("#Delete-btn-news").hide();
+        $("#Delete-btn-comment").show();
+        var pageCode = 1;
+        $.each($(".pagination li"), function (index, elem) {
+            if ($(this).attr('id')!== 'previous'){
+                if ($(this).attr('id')!== 'next'){
+                    elem.remove();
+                }
+            }
+        });
+        commentList(pageCode);
+        commentPagination(1,pageCode);
     })
 })

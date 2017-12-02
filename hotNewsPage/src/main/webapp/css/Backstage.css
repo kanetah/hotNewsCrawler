@@ -46,3 +46,25 @@ td{
 #UserEditor .btn-submit, #UserAdd .btn-submit{
 	width: 100px;
 }
+#SearchText{
+	text-align: center;
+	/*font-size: 18px;*/
+	width: 200px;
+	height: 30px;
+	color: #0f0f0f;
+	background-color: white;
+	/*padding: 10px;*/
+	/*margin: 10px;*/
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border: 1px solid lightgrey;
+	margin-top: 8px;
+}
+#SearchBtn{
+	height: 30px;
+	background-color: white;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border: 1px solid lightgrey;
+	margin-top: 8px;
+}
