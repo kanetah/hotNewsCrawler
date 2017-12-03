@@ -13,6 +13,24 @@ $(function () {
             $('#type').html(result.type);
             $('#rank').html(result.rank);
             $('#content').html(result.content);
+
+            $.ajax({
+                url: '/news/find/' + result.title,
+                success: function (res) {
+                    var relatedNews = $('#relatedNews');
+                    $.each(res, function (idx, elem) {
+                        var li = document.createElement('li');
+                        li.setAttribute('class', 'list-group-item');
+                        li.innerHTML = elem.title;
+                        li.onclick = function () {
+                            window.open("/news/" + elem['id'], "_blank");
+                        };
+                        relatedNews[0].appendChild(
+                            li
+                        )
+                    });
+                }
+            })
         }
     });
 
@@ -22,6 +40,7 @@ $(function () {
         $.ajax({
             url: '/news/' + id + '/comments',
             success: function (result) {
+                editor.txt.html('');
                 $.each(items, function (idx, elem) {
                     elem.remove()
                 });

@@ -73,6 +73,11 @@
             <div class="comment_content"></div>
         </div>
     </div>
+    <div class="sider">
+        <h2 style="text-align: center">相关新闻</h2>
+        <ul class="list-group" id="relatedNews">
+        </ul>
+    </div>
 </div>
 <footer id="fh5co-footer">
     <div class="container">

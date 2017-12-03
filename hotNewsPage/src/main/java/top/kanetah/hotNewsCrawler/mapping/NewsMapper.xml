@@ -88,4 +88,9 @@
         GROUP BY type
     </select>
 
+    <select id="findAllTitle" resultType="java.lang.String">
+        SELECT title
+        FROM news
+    </select>
+
 </mapper>

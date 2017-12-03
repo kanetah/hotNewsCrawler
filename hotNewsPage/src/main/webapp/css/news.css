@@ -84,3 +84,16 @@
 .comment_content:hover {
     text-shadow: 1px 1px 1px gray;
 }
+
+.sider {
+    margin-left: 800px;
+    position: absolute;
+    top: 100px;
+    max-width: 300px;
+    overflow: hidden;
+}
+
+.sider .list-group-item:hover {
+    background: #FFFFCC;
+    cursor: hand;
+}

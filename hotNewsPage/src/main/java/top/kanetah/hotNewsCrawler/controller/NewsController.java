@@ -44,16 +44,24 @@ public class NewsController {
     @ResponseBody
     @RequestMapping("/{id}/content")
     public News getContent(
-            @PathVariable String id
+            @PathVariable int id
     ) {
-        return newsService.getNewsById(Integer.valueOf(id));
+        return newsService.getNewsById(id);
     }
 
     @ResponseBody
     @RequestMapping("/{id}/comments")
     public List<CommentDTO> getComment(
-            @PathVariable String id
+            @PathVariable int id
     ) {
-        return newsService.getCommentDTOByNewsId(Integer.valueOf(id));
+        return newsService.getCommentDTOByNewsId(id);
+    }
+
+    @ResponseBody
+    @RequestMapping("/find/{title}")
+    public List<News> getRelatedNews(
+            @PathVariable String title
+    ) {
+        return newsService.getRelatedNews(title);
     }
 }
