@@ -26,7 +26,7 @@ td{
 	margin-left: 10px;
 	margin-right: 5px;
 }
-.container .btn{
+.container .btn-danger, .container .btn-default{
 	width: 80px;
 	float: left;
 }
@@ -35,6 +35,13 @@ td{
 }
 .pagination{
 	margin: 0px;
+}
+.btn-link{
+	float: left;
+	width: 120px;
+	margin-top: 14px;
+	padding: 0px;
+	color: #275fc5;
 }
 #UserEditor .modal-dialog, #UserAdd .modal-dialog{
 	min-width: 425px;
@@ -46,25 +53,36 @@ td{
 #UserEditor .btn-submit, #UserAdd .btn-submit{
 	width: 100px;
 }
+#searchGroup{
+	margin-left: 845px;
+}
+.radio-inline:nth-of-type(2){
+	margin-right: 15px;
+}
 #SearchText{
 	text-align: center;
-	/*font-size: 18px;*/
 	width: 200px;
 	height: 30px;
 	color: #0f0f0f;
 	background-color: white;
-	/*padding: 10px;*/
-	/*margin: 10px;*/
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px 0px 0px 5px;
+	-moz-border-radius: 5px 0px 0px 5px;
 	border: 1px solid lightgrey;
+	border-right: none;
 	margin-top: 8px;
 }
 #SearchBtn{
 	height: 30px;
 	background-color: white;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
+	-webkit-border-radius: 0px 5px 5px 0px;
+	-moz-border-radius: 0px 5px 5px 0px;
 	border: 1px solid lightgrey;
 	margin-top: 8px;
+}
+.dropdown-toggle, .selectButton, .commentSelectButton{
+	float: left;
+	width: 95px !important;
+	height: 30px;
+	margin-top: 4px;
+	margin-right: 3px;
 }

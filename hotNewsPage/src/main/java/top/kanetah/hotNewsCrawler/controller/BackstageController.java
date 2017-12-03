@@ -135,4 +135,60 @@ public class BackstageController {
     ){
                 return backstageService.deleteCommentByUserAndNewsId(userId, newsId);
     }
+
+    @RequestMapping("/findUserById")
+    @ResponseBody
+    public UserDTO findUserById(
+            @RequestParam int id
+    ){
+        return backstageService.findUserById(id);
+    }
+
+    @RequestMapping("/findUserByName")
+    @ResponseBody
+    public UserDTO findUserByName(
+            @RequestParam String name
+    ){
+        return backstageService.findUserByName(name);
+    }
+
+    @RequestMapping("/deleteCommentByUserId")
+    @ResponseBody
+    public boolean deleteCommentByUserId(
+            @RequestParam int userId
+    ){
+        return backstageService.deleteCommentByUserId(userId);
+    }
+
+    @RequestMapping("/deleteCommentsByNewsId")
+    @ResponseBody
+    public boolean deleteCommentByNewsId(
+            @RequestParam int newsId
+    ){
+        return backstageService.deleteCommentByNewsId(newsId);
+    }
+
+    @RequestMapping("/findCommentById")
+    @ResponseBody
+    public CommentDTO  findCommentById(
+           @RequestParam int id
+    ){
+        return backstageService.findCommentById(id);
+    }
+
+    @RequestMapping("/findCommentsByNewsId")
+    @ResponseBody
+    public List<CommentDTO>  findCommentByNewsId(
+            @RequestParam int newsId
+    ){
+        return backstageService.findCommentByNewsId(newsId);
+    }
+
+    @RequestMapping("/findCommentsByUserId")
+    @ResponseBody
+    public List<CommentDTO>  findCommentByUserId(
+            @RequestParam int userId
+    ){
+        return backstageService.findCommentByUserId(userId);
+    }
 }

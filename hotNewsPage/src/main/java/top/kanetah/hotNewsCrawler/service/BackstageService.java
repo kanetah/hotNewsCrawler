@@ -27,6 +27,10 @@ public interface BackstageService {
 
     int userPageCount();
 
+    UserDTO findUserById(int id);
+
+    UserDTO findUserByName(String name);
+
     /*
      * news
      */
@@ -48,4 +52,15 @@ public interface BackstageService {
     List<CommentDTO> commentPagination(int pageCode, String addr);
 
     boolean deleteCommentByUserAndNewsId(int userId, int newsId);
+
+    boolean deleteCommentByUserId(int userId);
+
+    boolean deleteCommentByNewsId(int newsId);
+
+    CommentDTO  findCommentById(int id);
+
+    List<CommentDTO> findCommentByNewsId(int newId);
+
+    List<CommentDTO> findCommentByUserId(int userId);
+
 }

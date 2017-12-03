@@ -81,4 +81,11 @@ public interface CommentDAO {
      * @return 查找到的所有评论
      */
     List<Comment> findAllComments();
+
+    /**
+     * 通过用户ID查找该用户的所有评论
+     * @param userId
+     * @return 查找到的留言
+     */
+    List<Comment>findCommentByUser_Id(int userId);
 }

@@ -76,6 +76,13 @@
         </where>
     </select>
 
+    <select id="findCommentByUser_Id" resultType="top.kanetah.hotNewsCrawler.model.Comment">
+        <include refid="select_comment"/>
+        <where>
+            user_id = #{userId}
+        </where>
+    </select>
+
     <select id="findAllComments" resultType="top.kanetah.hotNewsCrawler.model.Comment">
         <include refid="select_comment"/>
     </select>

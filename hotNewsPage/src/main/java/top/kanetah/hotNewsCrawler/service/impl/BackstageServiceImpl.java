@@ -101,6 +101,27 @@ public class BackstageServiceImpl implements BackstageService {
         return userDTOList;
     }
 
+    public UserDTO findUserById(int id) {
+        User user = userDAO.findUserById(id);
+        UserDTO userDTO = new UserDTO(
+                user.getId(),
+                user.getName()
+        );
+        return userDTO;
+    }
+
+    public UserDTO findUserByName(String name) {
+        User user = userDAO.findUserByName(name);
+        UserDTO userDTO = new UserDTO(
+                user.getId(),
+                user.getName()
+        );
+        return userDTO;
+    }
+
+    /*
+        news
+         */
     public List<NewsIndexDTO> getAllNews() {
         List<News> news = newsDAO.findAllNews();
         List<NewsIndexDTO> newsIndexDTOS = new ArrayList<NewsIndexDTO>();
@@ -202,5 +223,57 @@ public class BackstageServiceImpl implements BackstageService {
         int result = commentDAO.deleteCommentByNews_IdAndUser_Id(newsId, userId);
         System.out.println(result!=0);
         return result!=0;
+    }
+
+    public boolean deleteCommentByUserId(int userId) {
+        int result = commentDAO.deleteCommentByUser_Id(userId);
+        return result!=0;
+    }
+
+    public boolean deleteCommentByNewsId(int newsId) {
+        int result = commentDAO.deleteCommentByNews_Id(newsId);
+        return result!=0;
+    }
+
+    public CommentDTO  findCommentById(int id){
+        Comment comment = commentDAO.findCommentById(id);
+        CommentDTO commentDTO = new CommentDTO(
+                comment.getId(),
+                String.valueOf(comment.getUserId()),
+                String.valueOf(comment.getNewsId()),
+                comment.getContent(),
+                String.valueOf(comment.getTime())
+        );
+        return commentDTO;
+    }
+
+    public List<CommentDTO>  findCommentByNewsId(int newsId){
+        List<Comment> comments = commentDAO.findCommentByNews_Id(newsId);
+        List<CommentDTO> commentDTOS = new ArrayList<CommentDTO>();
+        for (Comment comment:comments){
+            commentDTOS.add(new CommentDTO(
+                    comment.getId(),
+                    String.valueOf(comment.getUserId()),
+                    String.valueOf(comment.getNewsId()),
+                    comment.getContent(),
+                    String.valueOf(comment.getTime())
+            ));
+        }
+        return commentDTOS;
+    }
+
+    public List<CommentDTO> findCommentByUserId(int userId) {
+        List<Comment> comments = commentDAO.findCommentByUser_Id(userId);
+        List<CommentDTO> commentDTOS = new ArrayList<CommentDTO>();
+        for (Comment comment:comments){
+            commentDTOS.add(new CommentDTO(
+                    comment.getId(),
+                    String.valueOf(comment.getUserId()),
+                    String.valueOf(comment.getNewsId()),
+                    comment.getContent(),
+                    String.valueOf(comment.getTime())
+            ));
+        }
+        return commentDTOS;
     }
 }
