@@ -15,7 +15,7 @@ $(function () {
             $('#content').html(result.content);
 
             $.ajax({
-                url: '/news/find/' + result.title,
+                url: '/news/related/' + result.title,
                 success: function (res) {
                     var relatedNews = $('#relatedNews');
                     $.each(res, function (idx, elem) {

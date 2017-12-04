@@ -49,11 +49,11 @@ $(function () {
     $.setName = function () {
         var name = $.cookie('name');
         if (undefined !== name && 0 !== name.length) {
-            $('#name').html(name);
+            $('#name').html('<i class="icon-user"></i>' + name);
             $('#openLoginModal').fadeOut();
             $('#logout_button').fadeIn();
         } else {
-            $('#name').html('未登陆');
+            $('#name').html('<i class="icon-user"></i>未登陆');
             $('#openLoginModal').fadeIn();
             $('#logout_button').fadeOut();
         }

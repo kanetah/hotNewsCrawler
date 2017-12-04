@@ -44,7 +44,6 @@
     <a href="" class="fh5co-offcanvass-close js-fh5co-offcanvass-close">Menu <i class="icon-cross"></i> </a>
     <h1 class="fh5co-logo"><a class="navbar-brand" href="javascript:void(0)">热点新闻</a></h1>
     <ul>
-        <li><a id="name">Name</a></li>
         <li>
             <a id="openLoginModal" data-toggle="modal" href="javascript:void(0)">
                 登陆
@@ -63,6 +62,7 @@
                 </ul>
             </div>
         </li>
+        <li><a href="back">管理员页面</a></li>
         <li><a href="about">关于</a></li>
     </ul>
     <h3 class="fh5co-lead">联系我们</h3>
@@ -78,8 +78,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                </i><a id="name">Name</a>
                 <a href="javascript:void(0)" class="fh5co-menu-btn js-fh5co-menu-btn">菜单<i class="icon-menu"></i></a>
                 <a class="navbar-brand" href="">热点新闻</a>
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="icon-search"></i></div>
+                    <input type="text" class="form-control" id="search" placeholder="快速搜素">
+                </div>
             </div>
         </div>
     </div>

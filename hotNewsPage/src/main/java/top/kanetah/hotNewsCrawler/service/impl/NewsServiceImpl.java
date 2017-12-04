@@ -66,6 +66,13 @@ public class NewsServiceImpl implements NewsService {
         return newsDAO.findNewsIdByTypeOrderByRank(type);
     }
 
+    public List<Integer> searchNews(String title){
+        List<Integer> list = new ArrayList<Integer>();
+        for (News news:newsDAO.findNewsByTitle_Like("%" + title + "%"))
+            list.add(news.getId());
+        return list;
+    }
+
     public List<News> getRelatedNews(String title) {
         List<News> result = new ArrayList<News>();
         List<String> titles = newsDAO.findAllTitle();

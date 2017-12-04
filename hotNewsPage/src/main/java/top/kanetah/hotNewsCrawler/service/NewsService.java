@@ -22,5 +22,7 @@ public interface NewsService {
 
     List<Integer> getTopNewsIdByType(String type);
 
+    List<Integer> searchNews(String title);
+
     List<News> getRelatedNews(String title);
 }

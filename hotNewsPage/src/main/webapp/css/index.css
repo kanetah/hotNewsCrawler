@@ -52,3 +52,32 @@ body {
     cursor: pointer;
     background: #FFFFCC;
 }
+
+#name {
+    float: left;
+    padding: 20px 20px;
+    height: 60px;
+}
+
+#name:hover {
+    text-decoration: none;
+}
+
+.input-group {
+    max-width: 200px;
+    position: absolute;
+    right: 24px;
+}
+
+.input-group > input {
+    max-height: 24px;
+}
+
+.input-group > input:focus {
+    border-color: #00aeee;
+}
+
+.input-group > div {
+    padding-bottom: 0;
+    padding-top: 0;
+}

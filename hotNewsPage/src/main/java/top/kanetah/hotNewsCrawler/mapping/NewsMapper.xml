@@ -65,6 +65,7 @@
         <where>
             title LIKE #{title}
         </where>
+        ORDER BY rank
     </select>
 
     <select id="findNewsIdOrderByRank" resultType="java.lang.Integer">

@@ -3155,7 +3155,7 @@ output {
   color: #555555;
   background-color: #fff;
   background-image: none;
-  border: 1px solid #ccc;
+  /*border: 1px solid #ccc;*/
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -3164,10 +3164,10 @@ output {
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 .form-control:focus {
-  border-color: #EF5353;
-  outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(239, 83, 83, 0.6);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(239, 83, 83, 0.6);
+  /*border-color: #EF5353;*/
+  /*outline: 0;*/
+  /*-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(239, 83, 83, 0.6);*/
+  /*box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(239, 83, 83, 0.6);*/
 }
 .form-control::-moz-placeholder {
   color: #999;
@@ -3531,14 +3531,14 @@ select[multiple].input-lg,
   color: #a94442;
 }
 .has-error .form-control {
-  border-color: #a94442;
+  /*border-color: #a94442;*/
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 .has-error .form-control:focus {
-  border-color: #843534;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;
+  /*border-color: #843534;*/
+  /*-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;*/
+  /*box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;*/
 }
 .has-error .input-group-addon {
   color: #a94442;
@@ -3546,7 +3546,7 @@ select[multiple].input-lg,
   background-color: #f2dede;
 }
 .has-error .form-control-feedback {
-  color: #a94442;
+  /*color: #a94442;*/
 }
 
 .has-feedback label ~ .form-control-feedback {
@@ -7831,14 +7831,14 @@ pre {
 
 .form-control {
   box-shadow: none !important;
-  border: 2px solid #444;
+  /*border: 2px solid #444;*/
   background: transparent;
   font-family: "Montserrat", arial, sans-serif;
 }
 .form-control:hover, .form-control:focus, .form-control:active {
   outline: none;
   box-shadow: none !important;
-  border: 2px solid #EF5353;
+  /*border: 2px solid #EF5353;*/
 }
 
 .fh5co-social {

@@ -61,7 +61,7 @@
             success: function (result) {
                 news_index = result;
                 salvattore.rescanMediaQueries();
-                for (var i = 0; i < 15; ++i)
+                for (var i = 0; i < 30; ++i)
                     lazyLoad();
             }
         })
@@ -118,11 +118,11 @@
                     },
                     success: function (result) {
                         news_index = [];
-                        $.each($('.all_news_items'),function (idx, elem) {
+                        $.each($('.all_news_items'), function (idx, elem) {
                             elem.remove();
                         });
                         news_index = result;
-                        for (var i = 0; i < 15; ++i)
+                        for (var i = 0; i < 30; ++i)
                             lazyLoad();
                     }
                 })
@@ -141,5 +141,24 @@
             if (scrollBottom / $(document).height() < .25)
                 lazyLoad();
         });
+    });
+
+    $('#search').change(function (e) {
+        var value = e.target.value;
+        $.ajax({
+            url: '/news/search',
+            data: {
+                title: value
+            },
+            success: function (result) {
+                news_index = [];
+                $.each($('.all_news_items'), function (idx, elem) {
+                    elem.remove();
+                });
+                news_index = result;
+                for (var i = 0; i < 30; ++i)
+                    lazyLoad();
+            }
+        })
     });
 }());

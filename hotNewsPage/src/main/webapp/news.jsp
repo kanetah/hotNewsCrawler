@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="css/Customize.css">
     <link rel="stylesheet" href="css/news.css">
     <link rel="stylesheet" href="css/login-register.css"/>
+    <link rel="stylesheet" href="css/vendor/icomoon.css">
 </head>
 
 <body>

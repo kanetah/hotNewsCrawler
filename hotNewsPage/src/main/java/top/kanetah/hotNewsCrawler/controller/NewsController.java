@@ -2,10 +2,7 @@ package top.kanetah.hotNewsCrawler.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import top.kanetah.hotNewsCrawler.dto.CommentDTO;
 import top.kanetah.hotNewsCrawler.dto.NewsIndexDTO;
 import top.kanetah.hotNewsCrawler.model.News;
@@ -58,10 +55,18 @@ public class NewsController {
     }
 
     @ResponseBody
-    @RequestMapping("/find/{title}")
+    @RequestMapping("/related/{title}")
     public List<News> getRelatedNews(
             @PathVariable String title
     ) {
         return newsService.getRelatedNews(title);
+    }
+
+    @ResponseBody
+    @RequestMapping("/search")
+    public List<Integer> searchNews(
+            @RequestParam String title
+    ) {
+        return newsService.searchNews(title);
     }
 }
