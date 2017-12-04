@@ -79,10 +79,42 @@ td{
 	border: 1px solid lightgrey;
 	margin-top: 8px;
 }
-.dropdown-toggle, .selectButton, .commentSelectButton{
+.dropdown-toggle, .selectButton,.commentSelectButton{
 	float: left;
 	width: 95px !important;
 	height: 30px;
 	margin-top: 4px;
 	margin-right: 3px;
 }
+.btn-group{
+	width: 95px !important;
+	height: 30px;
+}
+.dateChoose{
+	float: left;
+	width: 230px;
+	height: 25px;
+	margin-top: 12px;
+}
+#From{
+	float: left;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border: 1px solid lightgrey;
+}
+#To{
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border: 1px solid lightgrey;
+}
+p{
+	margin: 0px;
+}
+.CommentContent{
+	margin-left: 0px;
+	margin-right: 0px;
+}
+/*
+.CommentTime{
+	 text-align: left;
+ }*/

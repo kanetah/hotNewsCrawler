@@ -13,6 +13,7 @@ import top.kanetah.hotNewsCrawler.model.User;
 import top.kanetah.hotNewsCrawler.service.BackstageService;
 
 import javax.annotation.Resource;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,7 +32,7 @@ public class BackstageServiceImpl implements BackstageService {
 
     final private int UserPageSize = 20;
     final private int NewsPageSize = 80;
-    final private int CommentPageSize = 2;
+    final private int CommentPageSize = 100;
     private HashMap<String, List<UserDTO>> userMap = new HashMap<String, List<UserDTO>>();
     private HashMap<String, List<NewsIndexDTO>> newsMap = new HashMap<String, List<NewsIndexDTO>>();
     private HashMap<String, List<CommentDTO>> commentMap = new HashMap<String, List<CommentDTO>>();
@@ -149,7 +150,6 @@ public class BackstageServiceImpl implements BackstageService {
         else{
             pageCount = count + 1;
         }
-
         return pageCount;
     }
     public List<NewsIndexDTO> newsPagination(int pageCode, String addr) {
@@ -171,6 +171,51 @@ public class BackstageServiceImpl implements BackstageService {
     public boolean deleteNewsById(int id){
         int result = newsDAO.deleteNewsById(id);
         return result!= 0;
+    }
+
+    public NewsIndexDTO findNewsById(int id){
+        News news = newsDAO.findNewsById(id);
+        NewsIndexDTO newsIndexDTO = new NewsIndexDTO(
+                news.getId(),
+                news.getSrc(),
+                news.getTitle(),
+                news.getDate(),
+                news.getType(),
+                news.getRank()
+        );
+        return newsIndexDTO;
+    }
+
+    public List<NewsIndexDTO> findNewsByTitle_Like(String title){
+        List<News> news = newsDAO.findNewsByTitle_Like("%"+title+"%");
+        List<NewsIndexDTO> newsIndexDTOSOS = new ArrayList<NewsIndexDTO>();
+        for (News news1:news){
+            newsIndexDTOSOS.add(new NewsIndexDTO(
+                    news1.getId(),
+                    news1.getSrc(),
+                    news1.getTitle(),
+                    news1.getDate(),
+                    news1.getType(),
+                    news1.getRank()
+            ));
+        }
+        return newsIndexDTOSOS;
+    }
+
+    public List<NewsIndexDTO> findNewsByDate(Date fromDate, Date ToDate) {
+        List<News> newsList = newsDAO.findNewsBetweenDate(fromDate,ToDate);
+        List<NewsIndexDTO> newsIndexDTOSOS = new ArrayList<NewsIndexDTO>();
+        for (News news1:newsList){
+            newsIndexDTOSOS.add(new NewsIndexDTO(
+                    news1.getId(),
+                    news1.getSrc(),
+                    news1.getTitle(),
+                    news1.getDate(),
+                    news1.getType(),
+                    news1.getRank()
+            ));
+        }
+        return newsIndexDTOSOS;
     }
 
     public List<CommentDTO> findAllComments() {

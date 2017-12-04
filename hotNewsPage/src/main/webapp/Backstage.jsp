@@ -30,19 +30,11 @@
             <label class="radio-inline">
                 <input type="radio" id="userNameKey" name="optionsRadiosinline" value="Name">Name
             </label>
-            <%--<label class="radio-inline">
-                <input type="radio" id="commentUserIdKey" name="optionsRadiosinline1" value="ID" checked>
-            </label>
-            <label class="radio-inline">
-                <input type="radio" id="commentNewsIdKey" name="optionsRadiosinline1" value="Name">
-            </label>--%>
             <div class="selectButton">
                 <select class="selectpicker" id="SearchType">
                     <option id="newsIdKey" value="newsIdKey">ID</option>
-                    <option id="newsTittleKey" value="newsTittleKey">标题</option>
+                    <option id="newsTittleKey" value="newsTitleKey">标题</option>
                     <option id="newsDateKey" value="newsDateKey">日期</option>
-                    <option id="newsTypeKey" value="newsTypeKey">类型</option>
-                    <option id="newsSrcKey" value="newsSrcKey">来源</option>
                 </select>
             </div>
             <div class="commentSelectButton">
@@ -102,6 +94,15 @@
             <td class="newsRank"></td>
             <td class="newsSrc"></td>
         </tr>
+        <tr hidden class="showNewsInfo1">
+            <td><input type="checkbox"  name="newsCheckbox"/></td>
+            <td class="newsID"></td>
+            <td class="newsTitle" data-toggle="tooltip" data-placement="bottom" title=""></td>
+            <td class="newsDate"></td>
+            <td class="newsType"></td>
+            <td class="newsRank"></td>
+            <td class="newsSrc"></td>
+        </tr>
     </table>
 </div>
 <div class="comment-info" hidden="hidden">
@@ -112,7 +113,9 @@
             <td>UserID</td>
             <td>News_ID</td>
             <td>Content</td>
-            <td>Time</td>
+            <td  class="CommentTime">Time</td>
+            <td></td>
+            <td></td>
         </tr>
         <tr hidden class="showCommentInfo">
             <td><input type="checkbox" name="commentCheckbox"/></td>
@@ -121,6 +124,8 @@
             <td class="NewsId"></td>
             <td class="CommentContent"></td>
             <td class="CommentTime"></td>
+            <td></td>
+            <td></td>
         </tr>
         <tr hidden class="showCommentInfo1">
             <td><input type="checkbox" name="commentCheckbox"/></td>
@@ -129,6 +134,8 @@
             <td class="NewsId"></td>
             <td class="CommentContent"></td>
             <td class="CommentTime"></td>
+            <td></td>
+            <td></td>
         </tr>
     </table>
 </div>
@@ -184,12 +191,12 @@
 <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
 
 <!-- (Optional) Latest compiled and minified JavaScript translation files -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/i18n/defaults-*.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/i18n/defaults-*.min.js"></script>
 <script type="text/javascript" src="./js/Backstage.js" ></script>
 </html>
