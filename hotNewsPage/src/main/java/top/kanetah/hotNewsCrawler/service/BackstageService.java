@@ -6,6 +6,7 @@ import top.kanetah.hotNewsCrawler.dto.NewsIndexDTO;
 import top.kanetah.hotNewsCrawler.dto.UserDTO;
 import top.kanetah.hotNewsCrawler.model.Comment;
 
+import java.sql.Date;
 import java.util.List;
 
 public interface BackstageService {
@@ -41,6 +42,12 @@ public interface BackstageService {
     List<NewsIndexDTO> getAllNews();
 
     boolean deleteNewsById(int id);
+
+    NewsIndexDTO findNewsById(int id);
+
+    List<NewsIndexDTO> findNewsByTitle_Like(String title);
+
+    List<NewsIndexDTO> findNewsByDate(Date fromDate, Date ToDate);
 
     /*
      * comment

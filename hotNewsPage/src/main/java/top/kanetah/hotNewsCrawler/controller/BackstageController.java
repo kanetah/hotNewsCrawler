@@ -9,6 +9,7 @@ import top.kanetah.hotNewsCrawler.service.BackstageService;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.sql.Date;
 import java.util.List;
 
 @Controller("backstageController")
@@ -190,5 +191,30 @@ public class BackstageController {
             @RequestParam int userId
     ){
         return backstageService.findCommentByUserId(userId);
+    }
+
+    @RequestMapping("/findNewsById")
+    @ResponseBody
+    public NewsIndexDTO findNewsById(
+            @RequestParam int id
+    ){
+        return backstageService.findNewsById(id);
+    }
+
+    @RequestMapping("/findNewsByTitle")
+    @ResponseBody
+    public List<NewsIndexDTO> findNewsByTitle(
+            @RequestParam String title
+    ){
+        return backstageService.findNewsByTitle_Like(title);
+    }
+
+    @RequestMapping("/findNewsByDate")
+    @ResponseBody
+    public List<NewsIndexDTO> findNewsByDate(
+            @RequestParam Date fromDate,
+            @RequestParam Date toDate
+    ){
+        return backstageService.findNewsByDate(fromDate, toDate);
     }
 }
