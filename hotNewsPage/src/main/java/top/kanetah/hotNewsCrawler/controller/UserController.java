@@ -2,13 +2,9 @@ package top.kanetah.hotNewsCrawler.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import top.kanetah.hotNewsCrawler.dto.UserDTO;
-import top.kanetah.hotNewsCrawler.model.Comment;
 import top.kanetah.hotNewsCrawler.service.UserService;
 
 import javax.annotation.Resource;
-import java.sql.Date;
-import java.util.List;
 
 /**
  * created by kane on 2017/11/6.

@@ -74,7 +74,7 @@ $(function () {
                 content: editor.txt.html()
             },
             beforeSend: function () {
-                if (0 === $.cookie('name').length) {
+                if (void(0) === $.cookie('name') || 0 === $.cookie('name').length) {
                     alert('请先登陆');
                     return false;
                 } else

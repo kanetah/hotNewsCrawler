@@ -13,6 +13,7 @@ import top.kanetah.hotNewsCrawler.service.NewsService;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -66,20 +67,21 @@ public class NewsServiceImpl implements NewsService {
         return newsDAO.findNewsIdByTypeOrderByRank(type);
     }
 
-    public List<Integer> searchNews(String title){
+    public List<Integer> searchNews(String title) {
         List<Integer> list = new ArrayList<Integer>();
-        for (News news:newsDAO.findNewsByTitle_Like("%" + title + "%"))
+        for (News news : newsDAO.findNewsByTitle_Like("%" + title + "%"))
             list.add(news.getId());
         return list;
     }
 
     public List<News> getRelatedNews(String title) {
-        List<News> result = new ArrayList<News>();
-        List<String> titles = newsDAO.findAllTitle();
-        for (String t : titles)
+        List<News> result = new ArrayList<>();
+        newsDAO.findAllTitle().forEach((t) -> {
             if (minDistance(t, title) < 20)
                 result.addAll(newsDAO.findNewsByTitle_Like(t));
-        return result;
+        });
+        result.sort(Comparator.comparingInt(o -> minDistance(o.getTitle(), title)));
+        return result.subList(1, result.size() > 20 ? 20 : result.size());
     }
 
     /*

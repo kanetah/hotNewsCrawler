@@ -75,7 +75,7 @@
         </div>
     </div>
     <div class="sider">
-        <h2 style="text-align: center">相关新闻</h2>
+        <h4 style="text-align: center">推荐新闻</h4>
         <ul class="list-group" id="relatedNews">
         </ul>
     </div>

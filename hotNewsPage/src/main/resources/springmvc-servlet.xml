@@ -35,25 +35,13 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
-    <!-- web请求的拦截器
+    <!-- web请求的拦截器 -->
     <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/**" />
-            <mvc:exclude-mapping path="/register"/>
-            <mvc:exclude-mapping path="/test/*"/>
-            <mvc:exclude-mapping path="/login"/>
-            <mvc:exclude-mapping path="/findPwd"/>
-            <mvc:exclude-mapping path="/getTRegion"/>
-            <mvc:exclude-mapping path="/getIndustry"/>
-            <mvc:exclude-mapping path="/getTRegionByParentId"/>
-            <mvc:exclude-mapping path="/getMessageCode"/>
-            <mvc:exclude-mapping path="/listRecommend"/>
-            <mvc:exclude-mapping path="/news/getNewsDetail"/>
-            <mvc:exclude-mapping path="/css/ceos.css"/>
-            <bean class="top.kanetah.hotNewsCrawler.interceptor.MyInterceptor"></bean>
+            <mvc:mapping path="/back/**" />
+            <bean class="top.kanetah.hotNewsCrawler.interceptor.BackstageInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
-    -->
 
     <bean
             class="org.springframework.web.servlet.view.InternalResourceViewResolver">

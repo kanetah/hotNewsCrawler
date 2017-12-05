@@ -97,3 +97,12 @@
     background: #FFFFCC;
     cursor: hand;
 }
+
+#relatedNews > li {
+    border: none;
+    /*border-bottom: solid lightgray 1px;*/
+}
+
+#relatedNews > li:nth-child(2) {
+    /*border-top: solid lightgray 1px;*/
+}
