@@ -1,15 +1,18 @@
 package top.kanetah.hotNewsCrawler.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import sdk.BackstageConfig;
+import sdk.GeetestLib;
 import top.kanetah.hotNewsCrawler.service.LoginService;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
 
 /**
  * created by kane on 2017/11/6.
@@ -43,7 +46,7 @@ public class LoginController {
             @RequestParam String name,
             HttpServletResponse response
     ) {
-        if(!loginService.logout(name))
+        if (!loginService.logout(name))
             return;
         Cookie cookie = new Cookie("name", "");
         cookie.setPath("/");
@@ -58,5 +61,25 @@ public class LoginController {
     ) {
         return loginService.register(name, password) ?
                 "success" : "fail";
+    }
+
+    @RequestMapping("/backLogin")
+    @ResponseBody
+    public String backLogin(
+            @RequestParam String password,
+            @RequestParam String challenge,
+            @RequestParam String validate,
+            @RequestParam String seccode,
+            HttpServletRequest request
+    ) throws IOException {
+        return loginService.backstageLogin(password, challenge, validate, seccode, request);
+    }
+
+    @RequestMapping("/startCaptcha")
+    @ResponseBody
+    public void startCaptcha(
+            HttpServletRequest request, HttpServletResponse response
+    ) throws IOException {
+        loginService.startCaptcha(request, response);
     }
 }

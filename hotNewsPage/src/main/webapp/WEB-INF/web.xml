@@ -69,4 +69,22 @@
         <extension>zip</extension>
         <mime-type>application/zip</mime-type>
     </mime-mapping>
+
+    <!--<servlet>-->
+        <!--<servlet-name>StartCaptchaServlet</servlet-name>-->
+        <!--<servlet-class>geetest.StartCaptchaServlet</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet>-->
+        <!--<servlet-name>VerifyLoginServlet</servlet-name>-->
+        <!--<servlet-class>geetest.VerifyLoginServlet</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>VerifyLoginServlet</servlet-name>-->
+        <!--<url-pattern>/gt/ajax-validate2</url-pattern>-->
+    <!--</servlet-mapping>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>StartCaptchaServlet</servlet-name>-->
+        <!--<url-pattern>/gt/register2</url-pattern>-->
+    <!--</servlet-mapping>-->
+
 </web-app>

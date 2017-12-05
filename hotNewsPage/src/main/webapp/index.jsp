@@ -193,6 +193,7 @@
 <!-- jQuery -->
 <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
 <!-- jQuery Easing -->
+
 <script src="https://cdn.bootcss.com/jquery-easing/1.3/jquery.easing.js"></script>
 <!-- jQuery Cookie -->
 <script type="text/javascript" src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
