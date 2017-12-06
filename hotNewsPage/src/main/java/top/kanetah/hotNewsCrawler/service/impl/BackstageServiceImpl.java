@@ -282,14 +282,20 @@ public class BackstageServiceImpl implements BackstageService {
 
     public CommentDTO  findCommentById(int id){
         Comment comment = commentDAO.findCommentById(id);
-        CommentDTO commentDTO = new CommentDTO(
-                comment.getId(),
-                String.valueOf(comment.getUserId()),
-                String.valueOf(comment.getNewsId()),
-                comment.getContent(),
-                String.valueOf(comment.getTime())
-        );
-        return commentDTO;
+        CommentDTO commentDTO = new CommentDTO();
+        System.out.println("54645"+comment);
+        if (comment!=null){
+            commentDTO = new CommentDTO(
+                    comment.getId(),
+                    String.valueOf(comment.getUserId()),
+                    String.valueOf(comment.getNewsId()),
+                    comment.getContent(),
+                    String.valueOf(comment.getTime())
+            );
+            return commentDTO;
+        }else {
+            return null;
+        }
     }
 
     public List<CommentDTO>  findCommentByNewsId(int newsId){

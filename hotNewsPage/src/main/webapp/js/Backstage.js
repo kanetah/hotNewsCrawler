@@ -159,7 +159,6 @@ $(function(){
     $("#Delete-btn").click(function () {
         $('input[name="checkbox"]:checked').each(function () {
             var id = $(this).parent().parent().attr('id');
-            alert(id);
             $.ajax({
                 url:"/deleteUserById",
                 data:{
@@ -187,7 +186,6 @@ $(function(){
         $('#UserAdd').modal('show')
     });
     $('#AddUserBtn').click(function () {
-        // newNameText  passwordText
         var newName = $('#newNameText').val();
         var password = $('#passwordText').val();
         $.ajax({
@@ -487,13 +485,11 @@ $(function(){
     };
 
     $("#Delete-btn-comment").click(function () {
-        // alert($('input[name="userCheckbox"]:checked').size());
         $('input[name="commentCheckbox"]:checked').each(function () {
             var row = $(this).parent().parent();
             var id = row.attr('id');
             var userId = row.find('.UserId').html();
             var newsId = row.find('.NewsId').html();
-            alert(userId + newsId);
             $.ajax({
                 url:"/deleteComments",
                 data:{
@@ -704,9 +700,7 @@ $(function(){
         var showNewsInfo = $('.showNewsInfo1');
         var showComment = $('.showCommentInfo1');
         $("#searchGroup").css('marginLeft',745);
-        // alert(commentKeyType);
         if($('#userIdKey').prop('checked')){
-            // alert("Id"+key);
             $.ajax({
                 url:'/findUserById',
                 data:{
@@ -722,8 +716,6 @@ $(function(){
             $("#showAllInfo1").show();
         }
         else if($('#userNameKey').prop('checked')){
-            // $("#searchGroup").css('marginLeft',745);
-            // alert(key);
             $.ajax({
                 url:'/findUserByName',
                 data:{
@@ -796,13 +788,20 @@ $(function(){
                         id:key
                     },
                     success:function (result) {
-                        searchCommentById(result, showComment);
+                        if(result===null){
+                            alert("Does not exist !");
+                        }
+                        else{
+                            alert("to else: " + result);
+                            console.log("to else: " + result);
+                            searchCommentById(result, showComment);
+                            $("#showAllInfo3").show();
+                        }
                     },
                     error:function () {
-                        alert("Does not exist !");
+                        alert("555555");
                     }
                 });
-                $("#showAllInfo3").show();
             }
             else if(commentKeyType === 'commentNewsIdKey'){
                 $.ajax({
@@ -812,12 +811,12 @@ $(function(){
                     },
                     success:function (result) {
                         searchComments(result, showComment);
+                        $("#showAllInfo3").show();
                     },
                     error:function () {
                         alert("Does not exist !");
                     }
                 });
-                $("#showAllInfo3").show();
             }
             else if(commentKeyType === 'commentUserIdKey'){
                 $.ajax({
@@ -827,12 +826,12 @@ $(function(){
                     },
                     success:function (result) {
                         searchComments(result, showComment);
+                        $("#showAllInfo3").show();
                     },
                     error:function () {
                         alert("Does not exist!");
                     }
                 });
-                $("#showAllInfo3").show();
             }
         }
     });
