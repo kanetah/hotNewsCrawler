@@ -17,5 +17,7 @@ public interface LoginService {
 
     String backstageLogin(String password, String challenge, String validate, String seccode, HttpServletRequest request);
 
+    void backstageLogout(HttpServletRequest request);
+
     void startCaptcha(HttpServletRequest request, HttpServletResponse response) throws IOException;
 }

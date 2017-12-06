@@ -114,3 +114,17 @@ p{
 	margin-left: 0px;
 	margin-right: 0px;
 }
+/*
+.CommentTime{
+	 text-align: left;
+ }*/
+
+.table {
+	position: relative;
+}
+
+#return {
+	position: absolute;
+	top: 20px;
+	right: 50px;
+}

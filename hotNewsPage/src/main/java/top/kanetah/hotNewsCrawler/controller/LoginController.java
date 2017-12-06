@@ -63,6 +63,14 @@ public class LoginController {
                 "success" : "fail";
     }
 
+    @RequestMapping("/backLogout")
+    @ResponseBody
+    public void backLogout(
+            HttpServletRequest request
+    ){
+        loginService.backstageLogout(request);
+    }
+
     @RequestMapping("/backLogin")
     @ResponseBody
     public String backLogin(

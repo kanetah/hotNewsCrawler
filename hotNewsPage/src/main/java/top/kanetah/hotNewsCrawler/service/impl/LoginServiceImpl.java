@@ -56,6 +56,11 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
+    public void backstageLogout(HttpServletRequest request) {
+        request.getSession().setAttribute("backstage", Boolean.FALSE);
+    }
+
+    @Override
     public void startCaptcha(HttpServletRequest request, HttpServletResponse response
     ) throws IOException {
         GeetestLib gtSdk = new GeetestLib(BackstageConfig.getGeetest_id(), BackstageConfig.getGeetest_key(),
