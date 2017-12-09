@@ -16,35 +16,41 @@
 </head>
 <body>
 <nav>
+    <div id="myAlert" class="alert alert-warning" hidden>
+        <a class="close" >&times;</a>
+        <strong>Does not exist ！</strong>您搜索的信息不存在！
+    </div>
     <ul class="nav nav-tabs">
         <li role="presentation" class="active" id="user"><a href="javascript:void(0)">用户信息</a></li>
         <li role="presentation" id="news"><a href="javascript:void(0)">新闻信息</a></li>
         <li role="presentation" id="comment"><a href="javascript:void(0)">评论信息</a></li>
+        <li id="showAllBtn">
+            <input type="button" name="showAllInfo" id="showAllInfo1" class="btn btn-link" value="查看全部用户" />
+            <input type="button" name="showAllInfo" id="showAllInfo2" class="btn btn-link" value="查看全部新闻" />
+            <input type="button" name="showAllInfo" id="showAllInfo3" class="btn btn-link" value="查看全部评论" />
+        </li>
         <li id="searchGroup">
-            <input type="button" name="showAllInfo" id="showAllInfo1" class="btn btn-link" value="查看全部用户"/>
-            <input type="button" name="showAllInfo" id="showAllInfo2" class="btn btn-link" value="查看全部新闻"/>
-            <input type="button" name="showAllInfo" id="showAllInfo3" class="btn btn-link" value="查看全部评论"/>
             <label class="radio-inline">
                 <input type="radio" id="userIdKey" name="optionsRadiosinline" value="ID" checked>ID
             </label>
             <label class="radio-inline">
                 <input type="radio" id="userNameKey" name="optionsRadiosinline" value="Name">Name
             </label>
-            <div class="selectButton">
+            <div class="selectButton" hidden>
                 <select class="selectpicker" id="SearchType">
                     <option id="newsIdKey" value="newsIdKey">ID</option>
                     <option id="newsTittleKey" value="newsTitleKey">标题</option>
                     <option id="newsDateKey" value="newsDateKey">日期</option>
                 </select>
             </div>
-            <div class="commentSelectButton">
+            <div class="commentSelectButton" hidden>
                 <select class="selectpicker" id="SearchComment">
                     <option id="commentIdKey" value="commentIdKey">ID</option>
                     <option id="commentUserIdKey" value="commentUserIdKey">用户ID</option>
                     <option id="commentNewsIdKey" value="commentNewsIdKey">新闻ID</option>
                 </select>
             </div>
-            <div class="dateChoose"><input type="date" id="From"/>-<input type="date" id="To"/></div>
+            <div class="dateChoose" hidden><input type="date" id="From"/>-<input type="date" id="To"/></div>
             <input type="text" id="SearchText"/><input type="button" id="SearchBtn" value="Search"/>
         </li>
     </ul>

@@ -15,9 +15,6 @@ public class CommentDTO {
         this.time = time;
     }
 
-    public CommentDTO() {
-    }
-
     public int getId() {
         return id;
     }

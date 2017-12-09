@@ -1,0 +1,36 @@
+#photo{
+	margin-left: 355px;
+}
+.container{
+    width: 600px;
+	margin-left: 500px;
+}
+h3{
+	font-family: "黑体";
+	letter-spacing: 1px;
+}
+hr{
+	width: 300px;
+}
+.info{
+	width: 450px;
+	float: left;
+    text-align: center;
+}
+.addr{
+	width: 100px;
+	text-align: center;
+	border-left: solid 1px lightgrey;
+	margin-left: 450px;
+}
+li{
+	list-style: none;
+	height: 30px;
+}
+li a{
+	color: black;
+	text-decoration: none;
+}
+#list{
+	padding-left: 10px;
+}

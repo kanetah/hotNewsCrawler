@@ -104,20 +104,30 @@ public class BackstageServiceImpl implements BackstageService {
 
     public UserDTO findUserById(int id) {
         User user = userDAO.findUserById(id);
-        UserDTO userDTO = new UserDTO(
-                user.getId(),
-                user.getName()
-        );
-        return userDTO;
+        UserDTO userDTO;
+        if (user!=null){
+            userDTO = new UserDTO(
+                    user.getId(),
+                    user.getName()
+            );
+            return userDTO;
+        }else {
+            return null;
+        }
     }
 
     public UserDTO findUserByName(String name) {
         User user = userDAO.findUserByName(name);
-        UserDTO userDTO = new UserDTO(
-                user.getId(),
-                user.getName()
-        );
-        return userDTO;
+        UserDTO userDTO ;
+        if (user!=null){
+            userDTO = new UserDTO(
+                    user.getId(),
+                    user.getName()
+            );
+            return userDTO;
+        }else {
+            return null;
+        }
     }
 
     /*
@@ -175,46 +185,50 @@ public class BackstageServiceImpl implements BackstageService {
 
     public NewsIndexDTO findNewsById(int id){
         News news = newsDAO.findNewsById(id);
-        NewsIndexDTO newsIndexDTO = new NewsIndexDTO(
-                news.getId(),
-                news.getSrc(),
-                news.getTitle(),
-                news.getDate(),
-                news.getType(),
-                news.getRank()
-        );
-        return newsIndexDTO;
+        NewsIndexDTO newsIndexDTO;
+        if (news!=null){
+            newsIndexDTO = new NewsIndexDTO(
+                    news.getId(),
+                    news.getSrc(),
+                    news.getTitle(),
+                    news.getDate(),
+                    news.getType(),
+                    news.getRank()
+            );
+            return newsIndexDTO;
+        }else{
+            return null;
+        }
+    }
+
+    public List<NewsIndexDTO> News(List<News> news){
+        if(news!=null){
+            List<NewsIndexDTO> newsIndexDTOSOS = new ArrayList<NewsIndexDTO>();
+            for (News news1:news){
+                newsIndexDTOSOS.add(new NewsIndexDTO(
+                        news1.getId(),
+                        news1.getSrc(),
+                        news1.getTitle(),
+                        news1.getDate(),
+                        news1.getType(),
+                        news1.getRank()
+                ));
+            }
+            return newsIndexDTOSOS;
+        }else {
+            return null;
+        }
     }
 
     public List<NewsIndexDTO> findNewsByTitle_Like(String title){
         List<News> news = newsDAO.findNewsByTitle_Like("%"+title+"%");
-        List<NewsIndexDTO> newsIndexDTOSOS = new ArrayList<NewsIndexDTO>();
-        for (News news1:news){
-            newsIndexDTOSOS.add(new NewsIndexDTO(
-                    news1.getId(),
-                    news1.getSrc(),
-                    news1.getTitle(),
-                    news1.getDate(),
-                    news1.getType(),
-                    news1.getRank()
-            ));
-        }
+        List<NewsIndexDTO> newsIndexDTOSOS = News(news);
         return newsIndexDTOSOS;
     }
 
     public List<NewsIndexDTO> findNewsByDate(Date fromDate, Date ToDate) {
         List<News> newsList = newsDAO.findNewsBetweenDate(fromDate,ToDate);
-        List<NewsIndexDTO> newsIndexDTOSOS = new ArrayList<NewsIndexDTO>();
-        for (News news1:newsList){
-            newsIndexDTOSOS.add(new NewsIndexDTO(
-                    news1.getId(),
-                    news1.getSrc(),
-                    news1.getTitle(),
-                    news1.getDate(),
-                    news1.getType(),
-                    news1.getRank()
-            ));
-        }
+        List<NewsIndexDTO> newsIndexDTOSOS = News(newsList);
         return newsIndexDTOSOS;
     }
 
@@ -282,8 +296,7 @@ public class BackstageServiceImpl implements BackstageService {
 
     public CommentDTO  findCommentById(int id){
         Comment comment = commentDAO.findCommentById(id);
-        CommentDTO commentDTO = new CommentDTO();
-        System.out.println("54645"+comment);
+        CommentDTO commentDTO;
         if (comment!=null){
             commentDTO = new CommentDTO(
                     comment.getId(),
@@ -298,33 +311,33 @@ public class BackstageServiceImpl implements BackstageService {
         }
     }
 
+    public List<CommentDTO> Comments(List<Comment> comments){
+        if (comments!=null){
+            List<CommentDTO> commentDTOS = new ArrayList<CommentDTO>();
+            for (Comment comment:comments){
+                commentDTOS.add(new CommentDTO(
+                        comment.getId(),
+                        String.valueOf(comment.getUserId()),
+                        String.valueOf(comment.getNewsId()),
+                        comment.getContent(),
+                        String.valueOf(comment.getTime())
+                ));
+            }
+            return commentDTOS;
+        }else {
+            return null;
+        }
+    }
+
     public List<CommentDTO>  findCommentByNewsId(int newsId){
         List<Comment> comments = commentDAO.findCommentByNews_Id(newsId);
-        List<CommentDTO> commentDTOS = new ArrayList<CommentDTO>();
-        for (Comment comment:comments){
-            commentDTOS.add(new CommentDTO(
-                    comment.getId(),
-                    String.valueOf(comment.getUserId()),
-                    String.valueOf(comment.getNewsId()),
-                    comment.getContent(),
-                    String.valueOf(comment.getTime())
-            ));
-        }
+        List<CommentDTO> commentDTOS = Comments(comments);
         return commentDTOS;
     }
 
     public List<CommentDTO> findCommentByUserId(int userId) {
         List<Comment> comments = commentDAO.findCommentByUser_Id(userId);
-        List<CommentDTO> commentDTOS = new ArrayList<CommentDTO>();
-        for (Comment comment:comments){
-            commentDTOS.add(new CommentDTO(
-                    comment.getId(),
-                    String.valueOf(comment.getUserId()),
-                    String.valueOf(comment.getNewsId()),
-                    comment.getContent(),
-                    String.valueOf(comment.getTime())
-            ));
-        }
+        List<CommentDTO> commentDTOS = Comments(comments);
         return commentDTOS;
     }
 }
