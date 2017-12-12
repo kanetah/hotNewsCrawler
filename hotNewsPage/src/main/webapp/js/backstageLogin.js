@@ -19,8 +19,12 @@ var handler = function (captchaObj) {
                 success: function (data) {
                     if ("success" === data)
                         location.reload();
-                    else
-                        alert("登陆失败: " + data);
+                    else {
+                        $("#fail").show();
+                        setTimeout(function () {
+                            $("#fail").hide();
+                        }, 2000);
+                    }
                 },
                 error: function () {
                     alert('error')

@@ -79,7 +79,7 @@ public class LoginController {
             @RequestParam String validate,
             @RequestParam String seccode,
             HttpServletRequest request
-    ) throws IOException {
+    ) {
         return loginService.backstageLogin(password, challenge, validate, seccode, request);
     }
 

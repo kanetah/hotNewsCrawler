@@ -22,6 +22,7 @@
     <br>
     <input class="btn" id="submit" type="submit" value="登陆">
     <p id="notice" class="hide">请先完成验证</p>
+    <p id="fail" class="hide">请输入正确的口令</p>
 </form>
 <script src="js/vendor/gt.js"></script>
 <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>

@@ -42,7 +42,7 @@ body {
     display: none;
 }
 
-#notice {
+#notice, #fail {
     color: red;
 }
 
