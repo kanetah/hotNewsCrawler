@@ -296,7 +296,8 @@ public class GeetestLib {
 	 * 
 	 * @param challenge
 	 * @param validate
-	 * @param seccode
+	 * @param sec
+	 *
 	 * @return 验证结果,1表示验证成功0表示验证失败
 	 */
 	public int enhencedValidateRequest(String challenge, String validate, String seccode) {
