@@ -84,6 +84,10 @@
     overflow: auto;
 }
 
+iframe{
+    max-width: 100%;
+}
+
 .comment_content:hover {
     text-shadow: 1px 1px 1px gray;
 }
@@ -94,7 +98,6 @@
     top: 100px;
     max-width: 300px;
     overflow: hidden;
-    z-index: -1;
 }
 
 .sider .list-group-item:hover {
