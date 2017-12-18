@@ -45,7 +45,7 @@ td{
 }
 #UserEditor .modal-dialog, #UserAdd .modal-dialog{
 	min-width: 425px;
-	max-width: 430px;
+	max-width: 480px;
 }
 #UserEditor .modal-body, #UserAdd .modal-body{
 	min-width: 425px;
@@ -92,7 +92,7 @@ td{
 }
 .dateChoose{
 	float: left;
-	width: 230px;
+	width: 300px;
 	height: 25px;
 	margin-top: 12px;
 }

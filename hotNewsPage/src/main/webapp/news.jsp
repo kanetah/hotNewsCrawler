@@ -39,7 +39,7 @@
                     </a>
                     <a id="logout_button">注销</a>
                 </li>
-                <li class="home"><a href="">首页</a></li>
+                <li class="home"><a href="">Home</a></li>
                 <li><a href="/about">About</a></li>
                 <li><a href="/contact">Contact</a></li>
             </ul>

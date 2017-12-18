@@ -162,6 +162,7 @@ public class BackstageServiceImpl implements BackstageService {
         }
         return pageCount;
     }
+
     public List<NewsIndexDTO> newsPagination(int pageCode, String addr) {
 
         newsMap.put(addr, getAllNews());
@@ -278,8 +279,8 @@ public class BackstageServiceImpl implements BackstageService {
         return commentDTOList;
     }
 
-    public boolean deleteCommentByUserAndNewsId(int userId, int newsId){
-        int result = commentDAO.deleteCommentByNews_IdAndUser_Id(newsId, userId);
+    public boolean deleteCommentById(int id){
+        int result = commentDAO.deleteCommentById(id);
         System.out.println(result!=0);
         return result!=0;
     }
