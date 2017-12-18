@@ -40,8 +40,7 @@
                     <a id="logout_button">注销</a>
                 </li>
                 <li class="home"><a href="">首页</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
+                <li><a href="/about">关于</a></li>
             </ul>
         </div>
     </div>

@@ -20,7 +20,7 @@
             <hr>
         </div>
         <div class="addr">
-            <h3>相关网站</h3>
+            <h3>内容来源</h3>
             <ul id="list">
                 <li><a href="http://www.163.com/">网易</a></li>
                 <li><a href="http://www.sina.com.cn/">新浪</a></li>

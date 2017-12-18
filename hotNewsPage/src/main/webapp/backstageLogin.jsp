@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/backstageLogin.css">
 </head>
 <body>
-<a id="return" href="">返回</a><h1>登陆后台</h1>
+<a id="return" href="/">返回</a><h1>登陆后台</h1>
 <form>
     <div>
         <input class="inp" id="password" type="password" placeholder="口令">
