@@ -58,7 +58,7 @@ public interface BackstageService {
 
     List<CommentDTO> commentPagination(int pageCode, String addr);
 
-    boolean deleteCommentByUserAndNewsId(int userId, int newsId);
+    boolean deleteCommentById(int id);
 
     boolean deleteCommentByUserId(int userId);
 

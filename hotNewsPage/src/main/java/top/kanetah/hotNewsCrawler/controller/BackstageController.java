@@ -131,10 +131,9 @@ public class BackstageController {
     @RequestMapping("/deleteComments")
     @ResponseBody
     public boolean deleteCommentByUserAndNewsId(
-            @RequestParam int userId,
-            @RequestParam int newsId
+            @RequestParam int id
     ){
-                return backstageService.deleteCommentByUserAndNewsId(userId, newsId);
+                return backstageService.deleteCommentById(id);
     }
 
     @RequestMapping("/findUserById")

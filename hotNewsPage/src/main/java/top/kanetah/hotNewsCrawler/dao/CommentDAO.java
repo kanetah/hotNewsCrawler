@@ -53,6 +53,13 @@ public interface CommentDAO {
     int deleteCommentByNews_IdAndUser_Id(@Param("newsId") int newsId, @Param("userId") int userId);
 
     /**
+     * 删除指定id的留言
+     * @param id
+     * @return 被影响的总行数
+     */
+    int deleteCommentById(int id);
+
+    /**
      * 修改一条留言
      *
      * @param comment 留言实体

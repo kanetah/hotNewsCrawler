@@ -39,9 +39,14 @@
                     </a>
                     <a id="logout_button">注销</a>
                 </li>
+<<<<<<< HEAD
                 <li class="home"><a href="">首页</a></li>
+                <li><a href="/about">关于</a></li>
+=======
+                <li class="home"><a href="">Home</a></li>
                 <li><a href="/about">About</a></li>
                 <li><a href="/contact">Contact</a></li>
+>>>>>>> f516da7bb2c2ebb3fe46b9f85931f9bb545b65ac
             </ul>
         </div>
     </div>
