@@ -83,7 +83,7 @@
                 <a class="navbar-brand" href="">热点新闻</a>
                 <div class="input-group">
                     <div class="input-group-addon"><i class="icon-search"></i></div>
-                    <input type="text" class="form-control" id="search" placeholder="快速搜素">
+                    <input type="text" class="form-control" id="search" placeholder="快速搜索">
                 </div>
             </div>
         </div>

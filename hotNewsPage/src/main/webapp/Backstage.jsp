@@ -115,7 +115,10 @@
 <div class="comment-info" hidden="hidden">
     <table class="table table-striped">
         <tr>
-            <td></td>
+            <td>
+                <input type="checkbox" name="SelectAll" id="SelectAll_CSA" class="SelectAll" />全选 &nbsp;
+                <input type="checkbox" name="Anti-election" id="Anti-election_CAe" class="Anti-election" />反选
+            </td>
             <td>ID</td>
             <td>UserID</td>
             <td>News_ID</td>
