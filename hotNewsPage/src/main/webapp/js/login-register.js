@@ -70,9 +70,12 @@ $(function () {
                 name: login_name.val(),
                 password: login_password.val()
             },
-            success: function () {
-                $('#loginModalClose').trigger('click');
-                $.setName();
+            success: function (data) {
+                if(data==="success") {
+                    $('#loginModalClose').trigger('click');
+                    $.setName();
+                } else
+                    alert("登录失败");
             },
             error: function (xhr) {
                 alert(xhr.responseJSON);
@@ -105,10 +108,16 @@ $(function () {
                 password: register_password.val()
             },
             beforeSend: function () {
-                return password_confirmation.val() === register_password.val();
+                var flag = password_confirmation.val() === register_password.val();
+                if (!flag)
+                    alert("密码不一致");
+                return flag;
             },
-            success: function () {
-                showLoginForm();
+            success: function (data) {
+                if(data==="success")
+                    showLoginForm();
+                else
+                    alert("非法用户名");
             }
         })
     });

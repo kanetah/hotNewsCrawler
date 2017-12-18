@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * created by kane on 2017/11/6.
@@ -32,7 +34,10 @@ public class LoginServiceImpl implements LoginService {
     }
 
     public boolean register(String name, String password) {
-        return userDAO.insertUser(new User(name, password)) > 0;
+        String regEx = "[ _`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]|\n|\r|\t";
+        Pattern p = Pattern.compile(regEx);
+        Matcher m = p.matcher(name);
+        return !m.find() && userDAO.insertUser(new User(name, password)) > 0;
     }
 
     @Override
