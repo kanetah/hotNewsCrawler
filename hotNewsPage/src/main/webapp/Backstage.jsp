@@ -171,7 +171,7 @@
             </div>
             <div class="modal-body">
                 <label>ID:</label><input type="text" readonly="readonly" id="IDText"/>
-                <label>用户名:</label><input type="text" id="userNameText"/>
+                <label>用户名:</label><input type="text" id="userNameText" required/>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-submit" id="updateUserBtn">提交</button>
@@ -187,9 +187,8 @@
                 <h4>用户编辑</h4>
             </div>
             <div class="modal-body">
-                <%--<label>ID:</label><input type="text" readonly="readonly" value="1" id="newIDText"/>--%>
-                <label>用户名:</label><input type="text"  id="newNameText" value=""/>
-                <label>密码:</label><input type="password" id="passwordText"/>
+                <label>用户名:</label><input type="text"  id="newNameText" value="" required/>
+                <label>密码:</label><input type="password" id="passwordText" required/>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-submit" id="AddUserBtn">提交</button>

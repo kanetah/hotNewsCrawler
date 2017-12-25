@@ -47,7 +47,13 @@ $(function () {
     $("#updateUserBtn").click(function () {
         var id = $("#IDText").val()
         var name = $("#userNameText").val()
+        var regEn = /[`~!@#$%^&*()_+<>?:"{},.\/;'[\]]/im,
+            regCn = /[·！#￥（——）：；“”‘、，|《。》？、【】[\]]/im;
 
+        if(regEn.test(name) || regCn.test(name)) {
+            alert("名称不能包含特殊字符.");
+            return false;
+        }
         $.ajax({
             url: '/updateUserInfo',
             data: {
@@ -150,22 +156,22 @@ $(function () {
     $("#Delete-btn").click(function () {
         $('input[name="checkbox"]:checked').each(function () {
             var id = $(this).parent().parent().attr('id');
-            alert(id);
             $.ajax({
                 url: "/deleteUserById",
                 data: {
                     id: id
                 },
                 success: function () {
+                    $('#' + id).remove();
                     $.ajax({
                         url: '/deleteCommentByUserId',
                         data: {
                             userId: id
                         },
                         success: function () {
-                            $('#' + id).remove();
                         }
                     })
+                    location.replace()
                 },
                 error: function () {
                     alert("delete error");
@@ -179,6 +185,13 @@ $(function () {
     $('#AddUserBtn').click(function () {
         var newName = $('#newNameText').val();
         var password = $('#passwordText').val();
+        var regEn = /[`~!@#$%^&*()_+<>?:"{},.\/;'[\] ]/im,
+            regCn = /[·！#￥（——）：；“”‘、，|《。》？、【】[\]]/im;
+
+        if(regEn.test(newName) || regCn.test(newName)) {
+            alert("名称不能包含特殊字符.");
+            return false;
+        }
         $.ajax({
             url: "/insertUser",
             data: {
@@ -360,9 +373,16 @@ $(function () {
                 },
                 success: function () {
                     $('#' + id).remove();
+                    $.ajax({
+                        url: '/deleteCommentByNewsId',
+                        data: {
+                            userId: id
+                        },
+                        success: function () {
+                        }
+                    })
                 },
                 error: function () {
-                    alert("delete error");
                 }
             });
         })
@@ -419,7 +439,6 @@ $(function () {
                 });
             },
             error: function () {
-                alert("error")
             }
         })
     };
